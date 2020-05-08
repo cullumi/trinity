@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Actor.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape" id=1]
+height = 2.0
+
+[sub_resource type="CapsuleMesh" id=2]
+mid_height = 2.0
+
+[sub_resource type="SphereMesh" id=4]
+radius = 0.125
+height = 0.25
+
+[sub_resource type="CapsuleMesh" id=5]
+radius = 0.063
+mid_height = 0.25
+
+[sub_resource type="CapsuleMesh" id=3]
+radius = 0.1
+mid_height = 7.0
+
+[node name="Actor" type="KinematicBody"]
+script = ExtResource( 1 )
+ranks = {
+"Crime": 0,
+"Law": 0,
+"Politics": 0
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.07325, 0 )
+shape = SubResource( 1 )
+
+[node name="Avatar" type="Spatial" parent="."]
+
+[node name="Happy Person" type="MeshInstance" parent="Avatar"]
+transform = Transform( -1.62921e-07, 1, 0, 1.62921e-07, 2.65431e-14, -1, -1, -1.62921e-07, -1.62921e-07, 0, 2.07325, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Eye" type="MeshInstance" parent="Avatar/Happy Person"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.889137, 0.418345, -1.24562 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Eye2" type="MeshInstance" parent="Avatar/Happy Person"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.888744, -0.418, -1.246 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Smile" type="MeshInstance" parent="Avatar/Happy Person"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.987152, 9.2962e-08, -0.570597 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Smile Pivot 1" type="Spatial" parent="Avatar/Happy Person/Smile"]
+transform = Transform( 1, 0, 0, 0, 0.667534, 0.74458, 0, -0.74458, 0.667534, 0, 0, -0.125 )
+
+[node name="Smile2" type="MeshInstance" parent="Avatar/Happy Person/Smile/Smile Pivot 1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Smile Pivot 2" type="Spatial" parent="Avatar/Happy Person/Smile"]
+transform = Transform( 1, 0, 0, 0, -0.744579, 0.667534, 0, -0.667534, -0.744579, 0, 0, 0.125 )
+
+[node name="Smile2" type="MeshInstance" parent="Avatar/Happy Person/Smile/Smile Pivot 2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Camera Pivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07325, 0 )
+
+[node name="Camera Aim Pivot" type="Spatial" parent="Camera Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052, 7.042 )
+
+[node name="Camera Point Low" type="Spatial" parent="Camera Pivot/Camera Aim Pivot"]
+transform = Transform( 1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 5.70647, -11.8473 )
+
+[node name="Camera Point High" type="Spatial" parent="Camera Pivot/Camera Aim Pivot"]
+transform = Transform( 1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 11.58, -15.4224 )
+
+[node name="Camera Aim Target" type="Spatial" parent="Camera Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052, 7.042 )
+
+[node name="Camera Left Offset" type="Spatial" parent="Camera Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -2, 4 )
+
+[node name="Camera Right Offset" type="Spatial" parent="Camera Pivot/Camera Left Offset"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+
+[node name="TargetRay" type="RayCast" parent="Camera Pivot"]
+enabled = true
+cast_to = Vector3( 0, 0, 7 )
+
+[node name="TargetRayMesh" type="MeshInstance" parent="Camera Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="TestCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07325, 0 )
+cast_to = Vector3( 0, 0, 7 )
