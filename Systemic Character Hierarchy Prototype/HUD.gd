@@ -17,6 +17,7 @@ signal change_rules
 
 var player_actor
 var target_actor
+var last_ray_event : RayCastEvent
 
 func _ready():
 	target_panel.visible = false
@@ -26,8 +27,7 @@ func _ready():
 
 func set_player_actor(actor):
 	player_actor = actor
-	role_label.text = player_actor.role
-	rank_label.text = PoolStringArray(player_actor.ranks.values()).join(" / ")
+	update_player_hud()
 
 func update_hud(target_object=null):
 	update_player_hud()
@@ -35,13 +35,17 @@ func update_hud(target_object=null):
 
 func update_player_hud():
 	role_label.text = player_actor.role
-	rank_label.text = PoolStringArray(player_actor.ranks.values()).join(" / ")
+	var ranks = player_actor.ranks
+	rank_label.text = "Crime   Law   Politics\n%d   |   %d   |    %d   " % [ranks["Crime"], ranks["Law"], ranks["Politics"]]
 
 func set_velocity_label(velocity):
-	velocity_label.text = str(velocity)
+	velocity_label.text = "(%8d %8d %8d        )" % [velocity.x, abs(velocity.y), velocity.z]
+
+func set_ray_event(ray_event):
+	last_ray_event = ray_event
 
 # Updated when the player looks at an object, or when that object is changed in some way.
-func update_target_hud(target_object=null):
+func update_target_hud(target_object =null):
 	if target_object != null:
 		var target_changed = false
 		if (target_actor != target_object):
@@ -53,7 +57,8 @@ func update_target_hud(target_object=null):
 				button.disabled = false
 			op_buttons[0].grab_focus()
 		target_role.text = target_actor.role
-		target_rank.text = PoolStringArray(target_actor.ranks.values()).join(" / ")
+		var ranks = target_actor.ranks
+		target_rank.text = "%d / %d / %d" % [ranks["Crime"], ranks["Law"], ranks["Politics"]]
 	else:
 		target_actor = null
 		target_panel.visible = false
@@ -61,6 +66,15 @@ func update_target_hud(target_object=null):
 			button.disabled = true
 
 #Signal Methods
+func press():
+	var game_event = GameEvent.new()
+	game_event.presser = player_actor
+	if (last_ray_event != null):
+		game_event.press_normal = last_ray_event.collision_normal
+		game_event.press_point = last_ray_event.collision_point
+		last_ray_event.free()
+	target_actor.press(game_event)
+
 func swap_roles():
 	emit_signal("swap_roles", target_actor)
 	update_hud(target_actor)

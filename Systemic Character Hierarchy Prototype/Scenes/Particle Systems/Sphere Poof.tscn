@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Particles/Poof.tres" type="Material" id=1]
+[ext_resource path="res://Scenes/Particle Systems/Effect.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.125
+height = 0.25
+
+[node name="Sphere Poof" type="Spatial"]
+script = ExtResource( 2 )
+particle_systems = [ NodePath("Sphere Poof") ]
+
+[node name="Sphere Poof" type="Particles" parent="."]
+emitting = false
+amount = 64
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+visibility_aabb = AABB( -4, -2.9873, -4, 8, 8, 8 )
+process_material = ExtResource( 1 )
+draw_pass_1 = SubResource( 1 )

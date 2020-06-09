@@ -1,24 +1,19 @@
- extends KinematicBody
+# NOT YET READY FOR USE-- STILL EXPERIMENTING
 
-# Object Targeting
+extends Interactable
+
+# Signals
 signal target_found
 signal target_lost
+signal pressed
 
 # Hierarchy
-export var role = "Citizen"
-export var ranks = {"Law":0, "Politics":0, "Crime":0}
+#export var role = "Citizen"
+#export var ranks = {"Law":0, "Politics":0, "Crime":0}
 
 # Player Control
 export var is_controlled = false
-onready var cam_pivot = get_node("Camera Pivot")
-onready var cam_aim_target = get_node("Camera Pivot/Camera Aim Target")
-onready var cam_aim_pivot = get_node("Camera Pivot/Camera Aim Pivot")
-onready var cam_point_low = get_node("Camera Pivot/Camera Aim Pivot/Camera Point Low")
-onready var cam_point_high = get_node("Camera Pivot/Camera Aim Pivot/Camera Point High")
-onready var cam_left_offset = get_node("Camera Pivot/Camera Left Offset")
-onready var cam_right_offset = get_node("Camera Pivot/Camera Left Offset/Camera Right Offset")
 onready var target_ray = get_node("Camera Pivot/TargetRay")
-onready var test_ray = get_node("TestCast")
 onready var avatar = get_node("Avatar")
 
 # Physics
@@ -31,9 +26,17 @@ var is_moving = false
 var velocity = Vector3(0, 0, 0)
 var UP = Vector3(0, 1, 0)
 var cam_offset = Vector3(1,0,0)
+var gravity_multiplier = 10
+var gravity = -9.8
+var current_grav_velocity = 0
+
+var animation_player = null
+
+func _ready():
+	animation_player = get_parent().find_node("AnimationPlayer")
 
 # Handles Velocity Limits and Cancelers as well as Raycast Positioning.
-func _physics_process(_delta):
+func _physics_process(delta):
 
 	# Object Target Raycasting (for character interactions)
 	if (target_ray.is_colliding() and is_controlled):
@@ -46,15 +49,15 @@ func _physics_process(_delta):
 	
 	# Y-Velocity Gravity, Limits, and Cancelers.
 	# ** Currently Not in Use **
-#	if !is_on_floor():
-#		velocity.y -= 9.8 * delta
-#
-#		if velocity.y < -53:
-#			velocity.y = -53
-#	else:
-#		velocity.y = 0
-#		if velocity.y > -.64 and velocity.y < .64:
-#			velocity.y = 0
+	if !is_on_floor():
+		current_grav_velocity += gravity * gravity_multiplier * delta
+		velocity.y += current_grav_velocity
+		if velocity.y < -53:
+			velocity.y = -53
+	else:
+		current_grav_velocity = 0
+		if velocity.y > -.64 and velocity.y < .64:
+			velocity.y = 0
 	
 	# X/Z-Velocity Cancelers
 	if !is_moving:
@@ -80,9 +83,10 @@ func _physics_process(_delta):
 			velocity.z = -max_speed
 		
 		# Final Movement / Raycasting
-		#test_ray.cast_to = velocity
-		velocity.y = 0
-		avatar.look_at(translation+velocity, Vector3.UP)
+		if (velocity.x != 0 and velocity.z != 0):
+			var look_dir = Vector3(velocity.x, 0, velocity.z)
+			avatar.look_at(translation+look_dir, Vector3.UP)
+		# warning-ignore:return_value_discarded
 		move_and_slide(velocity, UP)
 
 # Returns the object the character is currently looking at.
@@ -95,3 +99,8 @@ func get_target_object():
 func apply_velocity_vector(vector, moving):
 	is_moving = moving
 	velocity = vector * move_acceleration
+
+#func press(presser):
+#	emit_signal("pressed")
+#	if (animation_player != null):
+#		animation_player.play("Press")

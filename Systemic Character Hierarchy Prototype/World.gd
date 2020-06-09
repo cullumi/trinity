@@ -1,12 +1,20 @@
 extends Node
 
 onready var actors = get_node("Actors").get_children()
-onready var camera = get_node("Camera")
+onready var camera = get_node("Player Camera")
 onready var hud = get_node("HUD")
+onready var resources = get_node("Resources")
+onready var event_handler = get_node("EventHandler")
 var player_actor
+
+var last_ray_event = null
 
 func _ready():
 	set_rand_target_actor()
+	camera.connect("target_found", self, "update_target_hud")
+	camera.connect("target_lost", self, "update_target_hud")
+	event_handler.resources = resources
+	get_tree().call_group("Interactables", "connect_pressed", event_handler, "trigger_press_event")
 
 func _input(event):
 	if event.is_action_pressed("reroll"):
@@ -15,15 +23,12 @@ func _input(event):
 		get_tree().quit()
 
 func set_rand_target_actor():
-	print (actors)
 	if player_actor != null:
 		player_actor.is_controlled = false
 		player_actor.velocity = Vector3()
-		player_actor.disconnect("target_found", self, "update_target_hud")
-		player_actor.disconnect("target_lost", self, "update_target_hud")
 		
 	randomize()
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	rand_seed(randi())
 	var rand_index = randi()%actors.size()
 	if actors[rand_index] == player_actor:
@@ -34,26 +39,23 @@ func set_rand_target_actor():
 	player_actor = actors[rand_index]
 		
 	player_actor.is_controlled = true
-	#player_actor.connect("target_found", self, "update_target_hud")
-	#player_actor.connect("target_lost", self, "update_target_hud")
-	camera.set_target_actor(player_actor)
-	camera.connect("target_found", self, "update_target_hud")
-	camera.connect("target_lost", self, "update_target_hud")
+	camera.set_player_actor(player_actor)
 	hud.set_player_actor(player_actor)
 
 func set_actor_role(new_role, actor=player_actor):
 	actor.role = new_role
-	#hud.update_hud()
 
 func set_actor_ranks(rank_law, rank_politics, rank_crime, actor=player_actor):
-	actor.ranks = {"Law":rank_law, "Politics":rank_politics, "Crime":rank_crime}
-	#hud.update_hud()
+	actor.ranks = {"Crime":rank_crime, "Politics":rank_politics, "Law":rank_law}
+
+func add_ray_event(ray_event):
+	hud.set_ray_event(ray_event)
 
 # Used when the player looks at an object.
 func update_target_hud(target_actor=null):
 	hud.update_target_hud(target_actor)
 
-#Should be signaled by the HUD object (or by other relevant means).
+# Should be signaled by the HUD object (or by other relevant means).
 func swap_roles(actor1, actor2=player_actor):
 	var role1 = actor1.role
 	var role2 = actor2.role
