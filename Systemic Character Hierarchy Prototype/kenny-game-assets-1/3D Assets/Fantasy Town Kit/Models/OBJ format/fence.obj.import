@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/fence.obj-a675f352d4997859e5cd3066a39e87e1.mesh"
+
+[deps]
+
+files=[ "res://.import/fence.obj-a675f352d4997859e5cd3066a39e87e1.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/fence.obj"
+dest_files=[ "res://.import/fence.obj-a675f352d4997859e5cd3066a39e87e1.mesh", "res://.import/fence.obj-a675f352d4997859e5cd3066a39e87e1.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/click3.ogg-ae1bd67202de386b31ea91f346ed9c74.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/UI sounds (50 sounds)/click3.ogg"
+dest_files=[ "res://.import/click3.ogg-ae1bd67202de386b31ea91f346ed9c74.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

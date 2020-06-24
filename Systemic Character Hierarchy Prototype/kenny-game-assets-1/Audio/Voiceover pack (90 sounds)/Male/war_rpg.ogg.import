@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/war_rpg.ogg-8eb020c49ff5ba8f25e3891b78979f96.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/war_rpg.ogg"
+dest_files=[ "res://.import/war_rpg.ogg-8eb020c49ff5ba8f25e3891b78979f96.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/windmill.obj-04dc50835cc3ccd813a4585c7e25ded1.mesh"
+
+[deps]
+
+files=[ "res://.import/windmill.obj-04dc50835cc3ccd813a4585c7e25ded1.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/windmill.obj"
+dest_files=[ "res://.import/windmill.obj-04dc50835cc3ccd813a4585c7e25ded1.mesh", "res://.import/windmill.obj-04dc50835cc3ccd813a4585c7e25ded1.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

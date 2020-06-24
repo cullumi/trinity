@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/lantern.obj-3c7adcd9dcb57f986ad8ba3cd732ef4b.mesh"
+
+[deps]
+
+files=[ "res://.import/lantern.obj-3c7adcd9dcb57f986ad8ba3cd732ef4b.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/lantern.obj"
+dest_files=[ "res://.import/lantern.obj-3c7adcd9dcb57f986ad8ba3cd732ef4b.mesh", "res://.import/lantern.obj-3c7adcd9dcb57f986ad8ba3cd732ef4b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

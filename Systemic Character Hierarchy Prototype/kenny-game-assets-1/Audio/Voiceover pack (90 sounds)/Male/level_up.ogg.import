@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/level_up.ogg-05714ad11d602fd77c9ae5363f1780b1.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/level_up.ogg"
+dest_files=[ "res://.import/level_up.ogg-05714ad11d602fd77c9ae5363f1780b1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

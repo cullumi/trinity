@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/call_for_backup.ogg-85e6fe551f9ff2cf17c6c69ae0322bd9.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/call_for_backup.ogg"
+dest_files=[ "res://.import/call_for_backup.ogg-85e6fe551f9ff2cf17c6c69ae0322bd9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

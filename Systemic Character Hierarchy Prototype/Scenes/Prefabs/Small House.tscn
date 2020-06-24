@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/wallWoodWindowShutters.glb" type="PackedScene" id=1]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/roofLeft.glb" type="PackedScene" id=2]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/chimneyTop.glb" type="PackedScene" id=3]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/roofRight.glb" type="PackedScene" id=4]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/roofWindow.glb" type="PackedScene" id=5]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/wallWoodDoor.glb" type="PackedScene" id=6]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/wallWood.glb" type="PackedScene" id=7]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/wallWoodWindowGlass.glb" type="PackedScene" id=8]
+
+[node name="Small House" type="Spatial"]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )
+
+[node name="House Body" type="Spatial" parent="."]
+
+[node name="wallWoodDoor" parent="House Body" instance=ExtResource( 6 )]
+
+[node name="wallWood" parent="House Body" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="wallWood2" parent="House Body" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1 )
+
+[node name="wallWood3" parent="House Body" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 1 )
+
+[node name="wallWoodWindowGlass" parent="House Body" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0 )
+
+[node name="wallWoodWindowGlass2" parent="House Body" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1, 0, 0 )
+
+[node name="wallWoodWindowShutters" parent="House Body" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 1 )
+
+[node name="wallWoodWindowGlass3" parent="House Body" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="House Cube" type="Spatial" parent="."]
+
+[node name="Roof" type="Spatial" parent="."]
+
+[node name="roofLeft" parent="Roof" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 1, 1 )
+
+[node name="roofRight" parent="Roof" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0 )
+
+[node name="roofLeft2" parent="Roof" instance=ExtResource( 2 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1, 1, 0 )
+
+[node name="roofRight2" parent="Roof" instance=ExtResource( 4 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1, 1, 1 )
+
+[node name="roofWindow" parent="Roof" instance=ExtResource( 5 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.847247, 1, 1 )
+
+[node name="chimneyTop" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.96046e-08, 1, 0 )

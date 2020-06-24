@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dropLeather.ogg-73a5c4f1da03b0edf3a22a0975ab2687.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/dropLeather.ogg"
+dest_files=[ "res://.import/dropLeather.ogg-73a5c4f1da03b0edf3a22a0975ab2687.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

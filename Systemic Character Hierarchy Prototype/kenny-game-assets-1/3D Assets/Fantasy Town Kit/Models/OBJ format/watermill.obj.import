@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/watermill.obj-ac75d8e568040bc0adc1af52d93ed074.mesh"
+
+[deps]
+
+files=[ "res://.import/watermill.obj-ac75d8e568040bc0adc1af52d93ed074.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/watermill.obj"
+dest_files=[ "res://.import/watermill.obj-ac75d8e568040bc0adc1af52d93ed074.mesh", "res://.import/watermill.obj-ac75d8e568040bc0adc1af52d93ed074.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

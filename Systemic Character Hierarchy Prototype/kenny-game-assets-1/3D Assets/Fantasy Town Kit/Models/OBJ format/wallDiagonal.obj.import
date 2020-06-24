@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallDiagonal.obj-cffafc150d81ac9c2e344e914fb39c40.mesh"
+
+[deps]
+
+files=[ "res://.import/wallDiagonal.obj-cffafc150d81ac9c2e344e914fb39c40.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/wallDiagonal.obj"
+dest_files=[ "res://.import/wallDiagonal.obj-cffafc150d81ac9c2e344e914fb39c40.mesh", "res://.import/wallDiagonal.obj-cffafc150d81ac9c2e344e914fb39c40.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallWoodWindowStone.obj-36fe9cf59e895440f63fc9934bc8807a.mesh"
+
+[deps]
+
+files=[ "res://.import/wallWoodWindowStone.obj-36fe9cf59e895440f63fc9934bc8807a.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/wallWoodWindowStone.obj"
+dest_files=[ "res://.import/wallWoodWindowStone.obj-36fe9cf59e895440f63fc9934bc8807a.mesh", "res://.import/wallWoodWindowStone.obj-36fe9cf59e895440f63fc9934bc8807a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

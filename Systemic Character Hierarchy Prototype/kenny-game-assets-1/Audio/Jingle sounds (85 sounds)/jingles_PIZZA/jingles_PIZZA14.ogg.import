@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jingles_PIZZA14.ogg-d898af215a7c379afa897d50945b989c.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_PIZZA/jingles_PIZZA14.ogg"
+dest_files=[ "res://.import/jingles_PIZZA14.ogg-d898af215a7c379afa897d50945b989c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

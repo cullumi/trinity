@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/fountainCorner.obj-b64b330d51e488aa7e4b0bb9ee6ba2ca.mesh"
+
+[deps]
+
+files=[ "res://.import/fountainCorner.obj-b64b330d51e488aa7e4b0bb9ee6ba2ca.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/fountainCorner.obj"
+dest_files=[ "res://.import/fountainCorner.obj-b64b330d51e488aa7e4b0bb9ee6ba2ca.mesh", "res://.import/fountainCorner.obj-b64b330d51e488aa7e4b0bb9ee6ba2ca.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

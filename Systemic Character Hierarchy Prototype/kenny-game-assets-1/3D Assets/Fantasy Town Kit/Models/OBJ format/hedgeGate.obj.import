@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/hedgeGate.obj-18806c98bb183e720eb06fc8a2863e8d.mesh"
+
+[deps]
+
+files=[ "res://.import/hedgeGate.obj-18806c98bb183e720eb06fc8a2863e8d.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/hedgeGate.obj"
+dest_files=[ "res://.import/hedgeGate.obj-18806c98bb183e720eb06fc8a2863e8d.mesh", "res://.import/hedgeGate.obj-18806c98bb183e720eb06fc8a2863e8d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

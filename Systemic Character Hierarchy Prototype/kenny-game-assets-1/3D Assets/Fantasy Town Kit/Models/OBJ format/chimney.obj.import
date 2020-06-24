@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/chimney.obj-f5f71a2a329b74148b7678b1a2f9d318.mesh"
+
+[deps]
+
+files=[ "res://.import/chimney.obj-f5f71a2a329b74148b7678b1a2f9d318.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/chimney.obj"
+dest_files=[ "res://.import/chimney.obj-f5f71a2a329b74148b7678b1a2f9d318.mesh", "res://.import/chimney.obj-f5f71a2a329b74148b7678b1a2f9d318.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

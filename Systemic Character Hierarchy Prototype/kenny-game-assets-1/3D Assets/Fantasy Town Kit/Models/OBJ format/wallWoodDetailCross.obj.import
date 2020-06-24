@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallWoodDetailCross.obj-c1f58bc1128c19ac4ac387e3bbcc4092.mesh"
+
+[deps]
+
+files=[ "res://.import/wallWoodDetailCross.obj-c1f58bc1128c19ac4ac387e3bbcc4092.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/wallWoodDetailCross.obj"
+dest_files=[ "res://.import/wallWoodDetailCross.obj-c1f58bc1128c19ac4ac387e3bbcc4092.mesh", "res://.import/wallWoodDetailCross.obj-c1f58bc1128c19ac4ac387e3bbcc4092.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

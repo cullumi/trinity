@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/laser1.ogg-4e29e149d1efb10f40ae4d0e3e0cd791.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/laser1.ogg"
+dest_files=[ "res://.import/laser1.ogg-4e29e149d1efb10f40ae4d0e3e0cd791.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

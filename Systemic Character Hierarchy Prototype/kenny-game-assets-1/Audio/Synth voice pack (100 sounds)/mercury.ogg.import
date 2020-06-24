@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mercury.ogg-489adee8a69ee6cf3fd3676c2ed53f38.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/mercury.ogg"
+dest_files=[ "res://.import/mercury.ogg-489adee8a69ee6cf3fd3676c2ed53f38.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

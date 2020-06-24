@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chipsHandle4.ogg-f2417bc07957d72c21459c8c79344219.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Casino sounds (50 sounds)/chipsHandle4.ogg"
+dest_files=[ "res://.import/chipsHandle4.ogg-f2417bc07957d72c21459c8c79344219.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

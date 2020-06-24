@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/color_yellow.ogg-67c74128321852dc82ee47ea40b4e9a3.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/color_yellow.ogg"
+dest_files=[ "res://.import/color_yellow.ogg-67c74128321852dc82ee47ea40b4e9a3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

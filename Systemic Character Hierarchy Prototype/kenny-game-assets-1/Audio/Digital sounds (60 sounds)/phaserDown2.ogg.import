@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/phaserDown2.ogg-8834ffa6bc6805250c86633d139f6c00.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/phaserDown2.ogg"
+dest_files=[ "res://.import/phaserDown2.ogg-8834ffa6bc6805250c86633d139f6c00.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

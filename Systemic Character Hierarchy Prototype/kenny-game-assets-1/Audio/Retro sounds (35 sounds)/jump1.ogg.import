@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jump1.ogg-17cf8cce1cc37d092368c0f4b39a1f38.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/jump1.ogg"
+dest_files=[ "res://.import/jump1.ogg-17cf8cce1cc37d092368c0f4b39a1f38.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

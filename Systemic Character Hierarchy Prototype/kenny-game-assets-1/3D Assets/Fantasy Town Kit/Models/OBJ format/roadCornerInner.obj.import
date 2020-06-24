@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/roadCornerInner.obj-94074eb168bce4b0aea270e4673002f3.mesh"
+
+[deps]
+
+files=[ "res://.import/roadCornerInner.obj-94074eb168bce4b0aea270e4673002f3.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/roadCornerInner.obj"
+dest_files=[ "res://.import/roadCornerInner.obj-94074eb168bce4b0aea270e4673002f3.mesh", "res://.import/roadCornerInner.obj-94074eb168bce4b0aea270e4673002f3.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rockHit1.ogg-6ff64a297e5a3e6cbb18d0f7eca9e2dd.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Foley sounds (85 sounds)/Stone and rocks (16 sounds)/rockHit1.ogg"
+dest_files=[ "res://.import/rockHit1.ogg-6ff64a297e5a3e6cbb18d0f7eca9e2dd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

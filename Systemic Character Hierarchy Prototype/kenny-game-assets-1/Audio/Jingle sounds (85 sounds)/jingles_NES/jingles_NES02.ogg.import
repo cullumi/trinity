@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jingles_NES02.ogg-ce2de60a3b112429a8b8568f798bcfa5.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_NES/jingles_NES02.ogg"
+dest_files=[ "res://.import/jingles_NES02.ogg-ce2de60a3b112429a8b8568f798bcfa5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

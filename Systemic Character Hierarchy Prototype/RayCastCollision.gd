@@ -2,6 +2,6 @@ class_name RayCastEvent
 
 extends Node
 
-var collider : Object
-var collision_normal : Vector3
-var collision_point : Vector3
+var collider : Object = null
+var collision_normal = null
+var collision_point = null

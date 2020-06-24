@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/war_medic.ogg-0c0ca7b9dd96befd10a25605f62c9c93.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/war_medic.ogg"
+dest_files=[ "res://.import/war_medic.ogg-0c0ca7b9dd96befd10a25605f62c9c93.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

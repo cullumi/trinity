@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rollover1.ogg-604f4d58ec2b309871e2cdb7cd31b605.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/UI sounds (50 sounds)/rollover1.ogg"
+dest_files=[ "res://.import/rollover1.ogg-604f4d58ec2b309871e2cdb7cd31b605.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

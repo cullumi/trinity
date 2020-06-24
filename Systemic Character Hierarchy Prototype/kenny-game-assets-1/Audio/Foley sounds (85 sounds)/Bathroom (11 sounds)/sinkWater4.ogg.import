@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sinkWater4.ogg-5b42753f3385d0840682262a517a756a.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Foley sounds (85 sounds)/Bathroom (11 sounds)/sinkWater4.ogg"
+dest_files=[ "res://.import/sinkWater4.ogg-5b42753f3385d0840682262a517a756a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

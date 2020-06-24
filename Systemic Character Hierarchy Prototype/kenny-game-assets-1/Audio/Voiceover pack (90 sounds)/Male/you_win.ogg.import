@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/you_win.ogg-a59ce435d33cb4d65d721a25bce06378.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/you_win.ogg"
+dest_files=[ "res://.import/you_win.ogg-a59ce435d33cb4d65d721a25bce06378.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

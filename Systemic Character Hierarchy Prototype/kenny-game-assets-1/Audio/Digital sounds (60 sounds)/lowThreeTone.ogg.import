@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lowThreeTone.ogg-ea858e98020f6523ab5595dc3a6e673c.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/lowThreeTone.ogg"
+dest_files=[ "res://.import/lowThreeTone.ogg-ea858e98020f6523ab5595dc3a6e673c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5.ogg-754ad0577c71594b17480a4c7163d811.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Female/5.ogg"
+dest_files=[ "res://.import/5.ogg-754ad0577c71594b17480a4c7163d811.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

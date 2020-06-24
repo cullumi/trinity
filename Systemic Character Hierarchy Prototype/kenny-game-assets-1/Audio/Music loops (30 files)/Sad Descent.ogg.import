@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sad Descent.ogg-2617e42f3f530b88192527814634b306.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Sad Descent.ogg"
+dest_files=[ "res://.import/Sad Descent.ogg-2617e42f3f530b88192527814634b306.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

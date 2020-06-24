@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/stairsStoneRound.obj-1d2ad89d12e7c093f0a17f12c563e353.mesh"
+
+[deps]
+
+files=[ "res://.import/stairsStoneRound.obj-1d2ad89d12e7c093f0a17f12c563e353.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/stairsStoneRound.obj"
+dest_files=[ "res://.import/stairsStoneRound.obj-1d2ad89d12e7c093f0a17f12c563e353.mesh", "res://.import/stairsStoneRound.obj-1d2ad89d12e7c093f0a17f12c563e353.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

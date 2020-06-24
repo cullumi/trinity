@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/stairsStoneHandrail.obj-56b3eaded0e866e2da7ca9a5dd92e424.mesh"
+
+[deps]
+
+files=[ "res://.import/stairsStoneHandrail.obj-56b3eaded0e866e2da7ca9a5dd92e424.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/stairsStoneHandrail.obj"
+dest_files=[ "res://.import/stairsStoneHandrail.obj-56b3eaded0e866e2da7ca9a5dd92e424.mesh", "res://.import/stairsStoneHandrail.obj-56b3eaded0e866e2da7ca9a5dd92e424.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

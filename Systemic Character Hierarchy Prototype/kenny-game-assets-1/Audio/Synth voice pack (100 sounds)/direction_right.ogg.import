@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/direction_right.ogg-ec076ac2c31e06b45cbaae1734cecc9c.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/direction_right.ogg"
+dest_files=[ "res://.import/direction_right.ogg-ec076ac2c31e06b45cbaae1734cecc9c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

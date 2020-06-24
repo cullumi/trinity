@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/German Virtue.ogg-95585b1ecf0c305b4e895a518a001fe1.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/German Virtue.ogg"
+dest_files=[ "res://.import/German Virtue.ogg-95585b1ecf0c305b4e895a518a001fe1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

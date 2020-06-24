@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/winner.ogg-1c0da48d2e2d96c418fc38df846eafbe.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/winner.ogg"
+dest_files=[ "res://.import/winner.ogg-1c0da48d2e2d96c418fc38df846eafbe.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lets_fight.ogg-3f4159276edb8187bfc0c8e900bd736d.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/lets_fight.ogg"
+dest_files=[ "res://.import/lets_fight.ogg-3f4159276edb8187bfc0c8e900bd736d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

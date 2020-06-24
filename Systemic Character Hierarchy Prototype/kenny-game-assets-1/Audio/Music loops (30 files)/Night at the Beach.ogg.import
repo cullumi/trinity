@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Night at the Beach.ogg-120959693ccdb66baf413c26b440dc0a.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Night at the Beach.ogg"
+dest_files=[ "res://.import/Night at the Beach.ogg-120959693ccdb66baf413c26b440dc0a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

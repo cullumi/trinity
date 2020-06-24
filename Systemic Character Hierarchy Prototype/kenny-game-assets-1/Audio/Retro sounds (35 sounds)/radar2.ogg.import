@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/radar2.ogg-977ed6545fbf8ac7772305e755a38df1.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/radar2.ogg"
+dest_files=[ "res://.import/radar2.ogg-977ed6545fbf8ac7772305e755a38df1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jingles_HIT00.ogg-7d82915900653210fad1fa4e9ca5ce7b.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_HIT/jingles_HIT00.ogg"
+dest_files=[ "res://.import/jingles_HIT00.ogg-7d82915900653210fad1fa4e9ca5ce7b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

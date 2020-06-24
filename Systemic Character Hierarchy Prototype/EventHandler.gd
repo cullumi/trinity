@@ -37,9 +37,10 @@ func trigger_press_event(press_event:GameEvent):
 		if (effect_scene != null):
 			var particles = effect_scene.instance()
 			get_tree().root.add_child(particles)
-			particles.translation = point
 			var normal = press_event.press_normal
-			particles.look_at(point - normal, particles.global_transform.basis.y.normalized())
+			var up_vector = point-Vector3(normal.y,-normal.x,-normal.z)
+			particles.look_at_from_position(point, point-normal, up_vector)
+			#particles.look_at(point - normal, particles.global_transform.basis.y.normalized())
 			if (dynamic_particles):
 				particles.process_material.gravity = -9.8 * particles.to_local(particles.global_transform.origin + Vector3.UP)
 			#particles.emitting = true

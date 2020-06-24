@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zapTwoTone2.ogg-2515ac05981168795596bf79b2b65cad.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/zapTwoTone2.ogg"
+dest_files=[ "res://.import/zapTwoTone2.ogg-2515ac05981168795596bf79b2b65cad.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

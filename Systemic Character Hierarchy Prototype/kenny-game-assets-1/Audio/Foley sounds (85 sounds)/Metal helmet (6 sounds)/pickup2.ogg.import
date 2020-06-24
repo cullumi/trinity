@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pickup2.ogg-c8d32d4b4c44dad07a39390c824dc2c8.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Foley sounds (85 sounds)/Metal helmet (6 sounds)/pickup2.ogg"
+dest_files=[ "res://.import/pickup2.ogg-c8d32d4b4c44dad07a39390c824dc2c8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

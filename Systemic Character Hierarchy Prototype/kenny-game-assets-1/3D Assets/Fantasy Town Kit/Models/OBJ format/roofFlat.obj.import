@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/roofFlat.obj-f39c0f22b17cbbea2da87b9546535738.mesh"
+
+[deps]
+
+files=[ "res://.import/roofFlat.obj-f39c0f22b17cbbea2da87b9546535738.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/roofFlat.obj"
+dest_files=[ "res://.import/roofFlat.obj-f39c0f22b17cbbea2da87b9546535738.mesh", "res://.import/roofFlat.obj-f39c0f22b17cbbea2da87b9546535738.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

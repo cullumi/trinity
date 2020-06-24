@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/4.ogg-89b99d9eb803331d9ceb798521123d7e.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/4.ogg"
+dest_files=[ "res://.import/4.ogg-89b99d9eb803331d9ceb798521123d7e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

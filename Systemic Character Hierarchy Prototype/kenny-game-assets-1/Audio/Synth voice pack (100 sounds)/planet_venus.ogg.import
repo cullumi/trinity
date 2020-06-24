@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/planet_venus.ogg-1ef6c6f88eeb45d00770ebc7ae05e6ed.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/planet_venus.ogg"
+dest_files=[ "res://.import/planet_venus.ogg-1ef6c6f88eeb45d00770ebc7ae05e6ed.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

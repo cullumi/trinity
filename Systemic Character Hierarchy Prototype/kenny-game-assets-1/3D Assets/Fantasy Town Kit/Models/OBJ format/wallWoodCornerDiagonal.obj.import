@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallWoodCornerDiagonal.obj-99f29ab0b55c77656f0e0f4f0bc33ff8.mesh"
+
+[deps]
+
+files=[ "res://.import/wallWoodCornerDiagonal.obj-99f29ab0b55c77656f0e0f4f0bc33ff8.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/wallWoodCornerDiagonal.obj"
+dest_files=[ "res://.import/wallWoodCornerDiagonal.obj-99f29ab0b55c77656f0e0f4f0bc33ff8.mesh", "res://.import/wallWoodCornerDiagonal.obj-99f29ab0b55c77656f0e0f4f0bc33ff8.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

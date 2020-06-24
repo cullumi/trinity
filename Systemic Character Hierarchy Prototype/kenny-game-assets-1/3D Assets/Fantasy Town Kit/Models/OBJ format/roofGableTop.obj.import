@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/roofGableTop.obj-2dcb6522467f7b7ec6e9a979eb1b7c28.mesh"
+
+[deps]
+
+files=[ "res://.import/roofGableTop.obj-2dcb6522467f7b7ec6e9a979eb1b7c28.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/roofGableTop.obj"
+dest_files=[ "res://.import/roofGableTop.obj-2dcb6522467f7b7ec6e9a979eb1b7c28.mesh", "res://.import/roofGableTop.obj-2dcb6522467f7b7ec6e9a979eb1b7c28.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

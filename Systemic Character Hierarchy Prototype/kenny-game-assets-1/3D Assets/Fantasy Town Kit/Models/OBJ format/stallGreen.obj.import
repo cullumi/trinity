@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/stallGreen.obj-b0dfd5fd26cfba93514eda0a759d3d11.mesh"
+
+[deps]
+
+files=[ "res://.import/stallGreen.obj-b0dfd5fd26cfba93514eda0a759d3d11.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/stallGreen.obj"
+dest_files=[ "res://.import/stallGreen.obj-b0dfd5fd26cfba93514eda0a759d3d11.mesh", "res://.import/stallGreen.obj-b0dfd5fd26cfba93514eda0a759d3d11.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallWoodWindowShutters.obj-9023ce0c186cff683ff4317d700b36ad.mesh"
+
+[deps]
+
+files=[ "res://.import/wallWoodWindowShutters.obj-9023ce0c186cff683ff4317d700b36ad.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/wallWoodWindowShutters.obj"
+dest_files=[ "res://.import/wallWoodWindowShutters.obj-9023ce0c186cff683ff4317d700b36ad.mesh", "res://.import/wallWoodWindowShutters.obj-9023ce0c186cff683ff4317d700b36ad.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

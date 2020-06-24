@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zapThreeToneUp.ogg-4ab5cdfa928fa12bd58c34e7321b4ccf.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/zapThreeToneUp.ogg"
+dest_files=[ "res://.import/zapThreeToneUp.ogg-4ab5cdfa928fa12bd58c34e7321b4ccf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

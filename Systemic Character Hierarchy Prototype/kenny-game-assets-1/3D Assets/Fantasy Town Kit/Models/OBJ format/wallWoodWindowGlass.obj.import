@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallWoodWindowGlass.obj-2b1d850b6163f63aaea6b24d4a36c92a.mesh"
+
+[deps]
+
+files=[ "res://.import/wallWoodWindowGlass.obj-2b1d850b6163f63aaea6b24d4a36c92a.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/wallWoodWindowGlass.obj"
+dest_files=[ "res://.import/wallWoodWindowGlass.obj-2b1d850b6163f63aaea6b24d4a36c92a.mesh", "res://.import/wallWoodWindowGlass.obj-2b1d850b6163f63aaea6b24d4a36c92a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

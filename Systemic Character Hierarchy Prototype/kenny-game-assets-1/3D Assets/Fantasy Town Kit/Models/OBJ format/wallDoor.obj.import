@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallDoor.obj-a29529d2a2dae250a5dbf2ce967d852a.mesh"
+
+[deps]
+
+files=[ "res://.import/wallDoor.obj-a29529d2a2dae250a5dbf2ce967d852a.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/wallDoor.obj"
+dest_files=[ "res://.import/wallDoor.obj-a29529d2a2dae250a5dbf2ce967d852a.mesh", "res://.import/wallDoor.obj-a29529d2a2dae250a5dbf2ce967d852a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

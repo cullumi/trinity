@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallWoodArchTop.obj-c363bd3a961dc5b1bdedfaad8fd3b3ce.mesh"
+
+[deps]
+
+files=[ "res://.import/wallWoodArchTop.obj-c363bd3a961dc5b1bdedfaad8fd3b3ce.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/wallWoodArchTop.obj"
+dest_files=[ "res://.import/wallWoodArchTop.obj-c363bd3a961dc5b1bdedfaad8fd3b3ce.mesh", "res://.import/wallWoodArchTop.obj-c363bd3a961dc5b1bdedfaad8fd3b3ce.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

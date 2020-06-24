@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jingles_STEEL13.ogg-d4dca981b36e0aa21df7afa568094a7f.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_STEEL/jingles_STEEL13.ogg"
+dest_files=[ "res://.import/jingles_STEEL13.ogg-d4dca981b36e0aa21df7afa568094a7f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

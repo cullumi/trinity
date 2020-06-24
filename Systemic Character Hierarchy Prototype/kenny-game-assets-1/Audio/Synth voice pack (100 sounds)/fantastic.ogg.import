@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fantastic.ogg-618543d93704e7c9e1f1792efc9cd984.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/fantastic.ogg"
+dest_files=[ "res://.import/fantastic.ogg-618543d93704e7c9e1f1792efc9cd984.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

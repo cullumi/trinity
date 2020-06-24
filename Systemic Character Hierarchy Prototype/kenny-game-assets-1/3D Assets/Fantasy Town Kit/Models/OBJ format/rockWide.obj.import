@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/rockWide.obj-d798040810d1e3c8b8b3aca533d0b3bc.mesh"
+
+[deps]
+
+files=[ "res://.import/rockWide.obj-d798040810d1e3c8b8b3aca533d0b3bc.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/rockWide.obj"
+dest_files=[ "res://.import/rockWide.obj-d798040810d1e3c8b8b3aca533d0b3bc.mesh", "res://.import/rockWide.obj-d798040810d1e3c8b8b3aca533d0b3bc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

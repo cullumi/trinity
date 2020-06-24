@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rumble3.ogg-1a70249704736a8ca35cfadc34265138.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/rumble3.ogg"
+dest_files=[ "res://.import/rumble3.ogg-1a70249704736a8ca35cfadc34265138.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

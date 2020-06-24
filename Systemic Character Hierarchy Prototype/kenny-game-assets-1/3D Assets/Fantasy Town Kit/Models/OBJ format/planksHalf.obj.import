@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/planksHalf.obj-edfab9c686c2cfeccd7fc8b7f5e3ec9a.mesh"
+
+[deps]
+
+files=[ "res://.import/planksHalf.obj-edfab9c686c2cfeccd7fc8b7f5e3ec9a.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/planksHalf.obj"
+dest_files=[ "res://.import/planksHalf.obj-edfab9c686c2cfeccd7fc8b7f5e3ec9a.mesh", "res://.import/planksHalf.obj-edfab9c686c2cfeccd7fc8b7f5e3ec9a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

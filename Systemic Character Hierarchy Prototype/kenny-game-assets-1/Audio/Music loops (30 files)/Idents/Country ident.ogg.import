@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Country ident.ogg-96d83060a01936b2159906f84d060cf3.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Idents/Country ident.ogg"
+dest_files=[ "res://.import/Country ident.ogg-96d83060a01936b2159906f84d060cf3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

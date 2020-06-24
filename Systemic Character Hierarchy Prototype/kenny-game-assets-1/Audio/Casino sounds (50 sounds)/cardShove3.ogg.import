@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cardShove3.ogg-aea0420397ef40c0ed6d87a2b5041639.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Casino sounds (50 sounds)/cardShove3.ogg"
+dest_files=[ "res://.import/cardShove3.ogg-aea0420397ef40c0ed6d87a2b5041639.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

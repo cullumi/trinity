@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Mishief Stroll.ogg-1d8dc877bbd180478038537d07440b13.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Mishief Stroll.ogg"
+dest_files=[ "res://.import/Mishief Stroll.ogg-1d8dc877bbd180478038537d07440b13.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

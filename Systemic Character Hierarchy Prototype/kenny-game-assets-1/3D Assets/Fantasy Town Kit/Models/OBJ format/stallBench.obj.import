@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/stallBench.obj-2d9592799af6947ea424321ff005dcc1.mesh"
+
+[deps]
+
+files=[ "res://.import/stallBench.obj-2d9592799af6947ea424321ff005dcc1.mesh" ]
+
+source_file="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/OBJ format/stallBench.obj"
+dest_files=[ "res://.import/stallBench.obj-2d9592799af6947ea424321ff005dcc1.mesh", "res://.import/stallBench.obj-2d9592799af6947ea424321ff005dcc1.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

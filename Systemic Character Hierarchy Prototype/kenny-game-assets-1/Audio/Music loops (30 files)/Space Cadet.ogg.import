@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Space Cadet.ogg-2e22470fb203ccf4c117245a14c5172f.oggstr"
+
+[deps]
+
+source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Space Cadet.ogg"
+dest_files=[ "res://.import/Space Cadet.ogg-2e22470fb203ccf4c117245a14c5172f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
