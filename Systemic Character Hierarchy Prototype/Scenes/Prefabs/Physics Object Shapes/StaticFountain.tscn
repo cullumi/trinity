@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Interactables/Interactable.gd" type="Script" id=1]
+
+
+
+
+[sub_resource type="CylinderShape" id=15]
+height = 0.56
+
+[sub_resource type="CylinderShape" id=16]
+radius = 0.39
+height = 0.96
+
+[node name="StaticFountain" type="StaticBody"]
+script = ExtResource( 1 )
+char_name = "Fountain"
+role = "Fountain"
+
+[node name="Base Collider" type="CollisionShape" parent="."]
+shape = SubResource( 15 )
+
+[node name="Center Collider" type="CollisionShape" parent="."]
+shape = SubResource( 16 )

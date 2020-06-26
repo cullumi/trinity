@@ -8,11 +8,14 @@
 [ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/wallWoodDoor.glb" type="PackedScene" id=6]
 [ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/wallWood.glb" type="PackedScene" id=7]
 [ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/wallWoodWindowGlass.glb" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Interactables/Generics/Interactable.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Interactables/Interactable.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/Prefabs/Physics Object Shapes/StaticWall.tscn" type="PackedScene" id=10]
 [ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/bannerGreen.glb" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Prefabs/Physics Object Shapes/StaticRoof.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Prefabs/Physics Object Shapes/StaticChimneyTop.tscn" type="PackedScene" id=13]
+
+
+
 
 [node name="Small House" type="Spatial"]
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )

@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Interactables/Interactable.gd" type="Script" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( -0.375, 0, 0.2, -0.449, 0, 0.25, -0.375, 0.38, 0.2, -0.449, 0.38, 0.25, -0.425, 0, 0, -0.499, 0, 0, -0.425, 0.38, 0, -0.499, 0.38, 0 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -0.425, 0, -0.5, -0.499, 0, -0.5, -0.425, 0.38, -0.5, -0.499, 0.38, -0.5, -0.425, 0, 0, -0.499, 0, 0, -0.425, 0.38, 0, -0.499, 0.38, 0 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -0.425, 0, -0.5, -0.499, 0, -0.5, -0.425, 0.38, -0.5, -0.499, 0.38, -0.5, -0.425, 0, 0, -0.499, 0, 0, -0.425, 0.38, 0, -0.499, 0.38, 0 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -0.375, 0, 0.2, -0.449, 0, 0.25, -0.375, 0.38, 0.2, -0.449, 0.38, 0.25, -0.425, 0, 0, -0.499, 0, 0, -0.425, 0.38, 0, -0.499, 0.38, 0 )
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( -0.375, 0, 0.2, -0.449, 0, 0.25, -0.375, 0.38, 0.2, -0.449, 0.38, 0.25, -0.2, 0, 0.375, -0.25, 0, 0.449, -0.2, 0.38, 0.375, -0.25, 0.38, 0.449 )
+
+[node name="StaticFenceCurved" type="StaticBody"]
+script = ExtResource( 1 )
+
+[node name="RightMid" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Right" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="Left" type="CollisionShape" parent="."]
+transform = Transform( 1.62921e-07, 0, -1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="LeftMid" type="CollisionShape" parent="."]
+transform = Transform( 1.62921e-07, 0, -1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Mid" type="CollisionShape" parent="."]
+shape = SubResource( 5 )
+
+[node name="MidPivotRight" type="Spatial" parent="."]
+visible = false
+
+[node name="1" type="Position3D" parent="MidPivotRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, 0.2 )
+
+[node name="3" type="Position3D" parent="MidPivotRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0.38, 0.2 )
+
+[node name="2" type="Position3D" parent="MidPivotRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449, 0, 0.25 )
+
+[node name="4" type="Position3D" parent="MidPivotRight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449, 0.38, 0.25 )
+
+[node name="MidPivotLeft" type="Spatial" parent="."]
+transform = Transform( 1.62921e-07, 0, -1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+visible = false
+
+[node name="1" type="Position3D" parent="MidPivotLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, 0.2 )
+
+[node name="2" type="Position3D" parent="MidPivotLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449, 0, 0.25 )
+
+[node name="3" type="Position3D" parent="MidPivotLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0.38, 0.2 )
+
+[node name="4" type="Position3D" parent="MidPivotLeft"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449, 0.38, 0.25 )
