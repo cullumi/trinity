@@ -11,7 +11,7 @@ extends Node
 # + ID: some instance id (must have been assigned)
 # + Animation: must be a valid animation name for the object.
 # + Effects: particle systems, for example.
-# + Effects: particle systems, for example.
+# + Audio Samples
 
 export (Array) var event_settings = [
 	{"Type":"Button", "Role":"Button", "Animation":"Press Button", "Effects":"res://Scenes/Particle Systems/Sphere Poof.tscn"},

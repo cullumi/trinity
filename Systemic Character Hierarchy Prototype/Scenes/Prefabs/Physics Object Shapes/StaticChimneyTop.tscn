@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Interactables/Generics/Interactable.gd" type="Script" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( -0.45, 0, -0.12, -0.45, 0, 0.12, -0.45, 0.625, -0.12, -0.45, 0.625, 0.12, -0.42, 0, -0.15, -0.42, 0, 0.15, -0.42, 0.625, -0.15, -0.42, 0.625, 0.15, -0.26, 0, -0.15, -0.26, 0, 0.15, -0.26, 0.625, -0.15, -0.26, 0.625, 0.15, -0.23, 0, -0.12, -0.23, 0, 0.12, -0.23, 0.625, -0.12, -0.23, 0.625, 0.12 )
+
+[node name="StaticChimneyTop" type="StaticBody"]
+script = ExtResource( 1 )
+char_name = "Chimney Top"
+role = "Chimney Top"
+
+[node name="ChimneyTopCollider" type="CollisionShape" parent="."]
+shape = SubResource( 1 )

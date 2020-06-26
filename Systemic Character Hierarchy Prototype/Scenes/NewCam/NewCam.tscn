@@ -33,7 +33,7 @@ fov = 90.0
 far = 200.0
 
 [node name="FP Pivot" type="Spatial" parent="Camera Pivot"]
-transform = Transform( 1, 1.05879e-22, 0, 0, 1, 0, 0, 0, 1, 6.44498e-15, 3.14959, -9.38227e-07 )
+transform = Transform( 1, 1.05879e-22, 3.38813e-21, -1.05879e-22, 1, -1.77636e-15, -1.41059e-37, 1.77636e-15, 1, 8.14511e-15, 3.6965, -9.34152e-07 )
 
 [node name="FP Target" type="Spatial" parent="Camera Pivot/FP Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.042 )

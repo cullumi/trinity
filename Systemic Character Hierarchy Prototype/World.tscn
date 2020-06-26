@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Interactables/Generics/Button.tscn" type="PackedScene" id=2]
@@ -10,7 +10,15 @@
 [ext_resource path="res://Resources.gd" type="Script" id=8]
 [ext_resource path="res://EventHandler.gd" type="Script" id=9]
 [ext_resource path="res://RigidActor.gd" type="Script" id=10]
-[ext_resource path="res://Scenes/Prefabs/Small House.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Prefabs/Wood Structures/Small House.tscn" type="PackedScene" id=11]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fenceBroken.glb" type="PackedScene" id=12]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fence.glb" type="PackedScene" id=13]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fenceCurved.glb" type="PackedScene" id=14]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fenceGate.glb" type="PackedScene" id=15]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fountainRoundDetail.glb" type="PackedScene" id=17]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/cart.glb" type="PackedScene" id=18]
+[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/cartHigh.glb" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Prefabs/Town Objects/Lantern.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ProceduralSky" id=1]
 sun_longitude = 180.0
@@ -25,11 +33,11 @@ ssao_quality = 2
 dof_blur_far_distance = 55.44
 
 [sub_resource type="ConvexPolygonShape" id=3]
-points = PoolVector3Array( 50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, -50 )
+points = PoolVector3Array( 100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, -100 )
 
 [sub_resource type="PlaneMesh" id=4]
 lightmap_size_hint = Vector2( 32, 32 )
-size = Vector2( 100, 100 )
+size = Vector2( 300, 300 )
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.320313, 0.222463, 0.157654, 1 )
@@ -84,8 +92,243 @@ hud = NodePath("../HUD")
 
 [node name="Structures" type="Node" parent="."]
 
-[node name="Small House" parent="Structures" instance=ExtResource( 11 )]
-transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 7, 0, -7 )
+[node name="Wood Houses" type="Node" parent="Structures"]
+
+[node name="Small House" parent="Structures/Wood Houses" instance=ExtResource( 11 )]
+transform = Transform( 6.76148, 0, 1.81173, 0, 7, 0, -1.81173, 0, 6.76148, 30, 0, -15 )
+
+[node name="Small House3" parent="Structures/Wood Houses" instance=ExtResource( 11 )]
+transform = Transform( 6.76148, 0, -1.81173, 0, 7, 0, 1.81173, 0, 6.76148, 31, 0, 9 )
+ranks = {
+"Crime": 0,
+"Law": 0,
+"Politics": 0
+}
+
+[node name="Small House4" parent="Structures/Wood Houses" instance=ExtResource( 11 )]
+transform = Transform( 3.5, 0, -6.06218, 0, 7, 0, 6.06218, 0, 3.5, 17.8708, 0, 26 )
+ranks = {
+"Crime": 0,
+"Law": 0,
+"Politics": 0
+}
+
+[node name="Small House5" parent="Structures/Wood Houses" instance=ExtResource( 11 )]
+transform = Transform( -1.81173, 0, -6.76148, 0, 7, 0, 6.76148, 0, -1.81173, -3.12921, 0, 31 )
+ranks = {
+"Crime": 0,
+"Law": 0,
+"Politics": 0
+}
+
+[node name="Small House2" parent="Structures/Wood Houses" instance=ExtResource( 11 )]
+transform = Transform( 1.81173, 0, 6.76148, 0, 7, 0, -6.76148, 0, 1.81173, 14, 0, -31 )
+ranks = {
+"Crime": 0,
+"Law": 0,
+"Politics": 0
+}
+
+[node name="Small House6" parent="Structures/Wood Houses" instance=ExtResource( 11 )]
+transform = Transform( 1.19209e-07, 0, 7, 0, 7, 0, -7, 0, 1.19209e-07, -8.6567, 0, -31.791 )
+ranks = {
+"Crime": 0,
+"Law": 0,
+"Politics": 0
+}
+
+[node name="Small House7" parent="Structures/Wood Houses" instance=ExtResource( 11 )]
+transform = Transform( -4.94975, 0, 4.94975, 0, 7, 0, -4.94975, 0, -4.94975, -28.6567, 0, -23.791 )
+ranks = {
+"Crime": 0,
+"Law": 0,
+"Politics": 0
+}
+
+[node name="Fences" type="Node" parent="Structures"]
+
+[node name="fence" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 63, 0, 0 )
+
+[node name="fence6" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, -7, 0, 7, 0, 7, 0, -3.0598e-07, 15.5, 0, -62 )
+
+[node name="fence7" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, -7, 0, 7, 0, 7, 0, -3.0598e-07, 8.5, 0, -62 )
+
+[node name="fence8" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, -7, 0, 7, 0, 7, 0, -3.0598e-07, 1.5, 0, -62 )
+
+[node name="fence9" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, -7, 0, 7, 0, 7, 0, -3.0598e-07, -5.5, 0, -62 )
+
+[node name="fence13" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, -7, 0, 7, 0, 7, 0, -3.0598e-07, -12.5, 0, -62 )
+
+[node name="fence12" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, -7, 0, 7, 0, 7, 0, -3.0598e-07, -19.5, 0, -62 )
+
+[node name="fence11" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, -7, 0, 7, 0, 7, 0, -3.0598e-07, -26.5, 0, -62 )
+
+[node name="fence10" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, -7, 0, 7, 0, 7, 0, -3.0598e-07, -33.5, 0, -62 )
+
+[node name="fence16" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, -28 )
+
+[node name="fence15" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, -21 )
+
+[node name="fence14" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, -14 )
+
+[node name="fence18" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, 3.8147e-06 )
+
+[node name="fence17" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, 7 )
+
+[node name="fence20" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, 21 )
+
+[node name="fence19" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, 28 )
+
+[node name="fence25" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -33.5, 0, 62 )
+
+[node name="fence26" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -26.5, 0, 62 )
+
+[node name="fence24" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -19.5, 0, 62 )
+
+[node name="fence23" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -12.5, 0, 62 )
+
+[node name="fence22" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 1.5, 0, 62 )
+
+[node name="fence21" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 8.5, 0, 62 )
+
+[node name="fence29" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 15.5, 0, 62 )
+
+[node name="fence28" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 29.5, 0, 62 )
+
+[node name="fence27" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 36.5, 0, 62 )
+
+[node name="fence30" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -7, 0, -6.11959e-07, 0, 7, 0, 6.11959e-07, 0, -7, 70.5, 0, 27.5 )
+
+[node name="fence31" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( -7, 0, -6.11959e-07, 0, 7, 0, 6.11959e-07, 0, -7, 70, 0, 20.5 )
+
+[node name="fence2" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 63, 0, -7 )
+
+[node name="fence3" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 63, 0, -14 )
+
+[node name="fence4" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 63, 0, -21 )
+
+[node name="fence5" parent="Structures/Fences" instance=ExtResource( 13 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 63, 0, -28 )
+
+[node name="fenceBroken" parent="Structures/Fences" instance=ExtResource( 12 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 22.5, 0, -68.5 )
+
+[node name="fenceBroken2" parent="Structures/Fences" instance=ExtResource( 12 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, -7 )
+
+[node name="fenceBroken3" parent="Structures/Fences" instance=ExtResource( 12 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -67.5, 0, 14 )
+
+[node name="fenceBroken4" parent="Structures/Fences" instance=ExtResource( 12 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -5.5, 0, 62 )
+
+[node name="fenceBroken5" parent="Structures/Fences" instance=ExtResource( 12 )]
+transform = Transform( -3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 22.5, 0, 62 )
+
+[node name="fenceCurved" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -7, 0, -6.11959e-07, 0, 7, 0, 6.11959e-07, 0, -7, 56.5, 0, -35 )
+
+[node name="fenceCurved2" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 7, 0, 1.22392e-06, 0, 7, 0, -1.22392e-06, 0, 7, 49.5, 0, -41.5 )
+
+[node name="fenceCurved3" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -7, 0, -1.83588e-06, 0, 7, 0, 1.83588e-06, 0, -7, 43, 0, -48.5 )
+
+[node name="fenceCurved4" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 7, 0, 2.44784e-06, 0, 7, 0, -2.44784e-06, 0, 7, 36, 0, -55 )
+
+[node name="fenceCurved5" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -7, 0, -3.0598e-06, 0, 7, 0, 3.0598e-06, 0, -7, 29.5, 0, -62 )
+
+[node name="fenceCurved10" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 9.17939e-07, 0, -7, 0, 7, 0, 7, 0, 9.17939e-07, -40.5, 0, -62 )
+
+[node name="fenceCurved9" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -1.5299e-06, 0, 7, 0, 7, 0, -7, 0, -1.5299e-06, -47, 0, -55 )
+
+[node name="fenceCurved8" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 2.14186e-06, 0, -7, 0, 7, 0, 7, 0, 2.14186e-06, -54, 0, -48.5 )
+
+[node name="fenceCurved7" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -2.75382e-06, 0, 7, 0, 7, 0, -7, 0, -2.75382e-06, -60.5, 0, -41.5 )
+
+[node name="fenceCurved6" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 3.36578e-06, 0, -7, 0, 7, 0, 7, 0, 3.36578e-06, -67.5, 0, -35 )
+
+[node name="fenceCurved15" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 7, 0, 1.22392e-06, 0, 7, 0, -1.22392e-06, 0, 7, -67.5, 0, 35 )
+
+[node name="fenceCurved14" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -7, 0, -1.83588e-06, 0, 7, 0, 1.83588e-06, 0, -7, -60.5, 0, 41.5 )
+
+[node name="fenceCurved13" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 7, 0, 2.44784e-06, 0, 7, 0, -2.44784e-06, 0, 7, -54, 0, 48.5 )
+
+[node name="fenceCurved12" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -7, 0, -3.0598e-06, 0, 7, 0, 3.0598e-06, 0, -7, -47, 0, 55 )
+
+[node name="fenceCurved11" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 7, 0, 3.67176e-06, 0, 7, 0, -3.67176e-06, 0, 7, -40.5, 0, 62 )
+
+[node name="fenceCurved20" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -1.5299e-06, 0, 7, 0, 7, 0, -7, 0, -1.5299e-06, 43.5, 0, 62 )
+
+[node name="fenceCurved19" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 2.14186e-06, 0, -7, 0, 7, 0, 7, 0, 2.14186e-06, 50, 0, 55 )
+
+[node name="fenceCurved18" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -2.75382e-06, 0, 7, 0, 7, 0, -7, 0, -2.75382e-06, 57, 0, 48.5 )
+
+[node name="fenceCurved17" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 3.36578e-06, 0, -7, 0, 7, 0, 7, 0, 3.36578e-06, 63.5, 0, 41.5 )
+
+[node name="fenceCurved16" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -3.97774e-06, 0, 7, 0, 7, 0, -7, 0, -3.97774e-06, 70.5, 0, 34.5 )
+
+[node name="fenceCurved21" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( -7, 0, -4.28372e-06, 0, 7, 0, 4.28372e-06, 0, -7, 70, 0, 13.5 )
+
+[node name="fenceCurved22" parent="Structures/Fences" instance=ExtResource( 14 )]
+transform = Transform( 7, 0, 4.89568e-06, 0, 7, 0, -4.89568e-06, 0, 7, 63, 0, 7.00001 )
+
+[node name="fenceGate" parent="Structures/Fences" instance=ExtResource( 15 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 33.5, 0, 0.5 )
+
+[node name="Fountain" type="Spatial" parent="Structures"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038125, 0 )
+
+[node name="fountainRoundDetail" parent="Structures/Fountain" instance=ExtResource( 17 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )
 
 [node name="Objects" type="Node" parent="."]
 
@@ -125,7 +368,7 @@ material/0 = null
 [node name="City Infrastructure" type="Node" parent="Objects"]
 
 [node name="City Wall" type="CSGMesh" parent="Objects/City Infrastructure"]
-use_collision = true
+visible = false
 mesh = SubResource( 8 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -169,9 +412,44 @@ mesh = SubResource( 12 )
 [node name="Ramp Pivot" type="Spatial" parent="Objects/City Infrastructure/Ramp"]
 transform = Transform( 0.819152, -0.573577, 0, 0.573577, 0.819152, 0, 0, 0, 1, -12.5, -5, 0 )
 
+[node name="cart" parent="Objects" instance=ExtResource( 18 )]
+transform = Transform( 4.94975, 0, 4.94975, 0, 7, 0, -4.94975, 0, 4.94975, -33, 0, 55.5 )
+
+[node name="cartHigh" parent="Objects" instance=ExtResource( 19 )]
+transform = Transform( 3.5, 0, -6.06218, 0, 7, 0, 6.06218, 0, 3.5, -18, 0, 56 )
+
+[node name="Lanterns" type="Node" parent="Objects"]
+
+[node name="Lantern" parent="Objects/Lanterns" instance=ExtResource( 20 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 19.5227, -0.0205441, -15.5144 )
+
+[node name="Lantern2" parent="Objects/Lanterns" instance=ExtResource( 20 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 5, 0, -22.5 )
+
+[node name="Lantern3" parent="Objects/Lanterns" instance=ExtResource( 20 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -11.5, 0, -21 )
+
+[node name="Lantern4" parent="Objects/Lanterns" instance=ExtResource( 20 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -22.5, 0, -12 )
+
+[node name="Lantern5" parent="Objects/Lanterns" instance=ExtResource( 20 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 3.5, 0, 21 )
+
+[node name="Lantern6" parent="Objects/Lanterns" instance=ExtResource( 20 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 19, 0, 14 )
+
+[node name="Lantern7" parent="Objects/Lanterns" instance=ExtResource( 20 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 23, 0, -0.5 )
+
+[node name="Lantern8" parent="Objects/Lanterns" instance=ExtResource( 20 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, -22, 0, 12.5 )
+
 [node name="RigidBodyCharacter" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51224, 5.24842 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51224, 13.2113 )
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBodyCharacter"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
@@ -189,7 +467,7 @@ material/0 = null
 [node name="Actors" type="Node" parent="."]
 
 [node name="Citizen" parent="Actors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2816, 0, -21.6991 )
+transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -16.6587, -0.0140724, -15.9524 )
 ranks = {
 "Crime": 2,
 "Law": 2,
@@ -197,7 +475,7 @@ ranks = {
 }
 
 [node name="Police Recruit" parent="Actors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1149, 0, 15.0545 )
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17.1149, 0, 15.0545 )
 role = "Police Recruit"
 ranks = {
 "Crime": 0,
@@ -206,7 +484,7 @@ ranks = {
 }
 
 [node name="Volunteer" parent="Actors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6178, 0, 15.4921 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1178, 0, 12.9921 )
 role = "Volunteer"
 ranks = {
 "Crime": 0,
@@ -215,7 +493,7 @@ ranks = {
 }
 
 [node name="Petty Criminal" parent="Actors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488214, 0, -6.67676 )
+transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -1.48821, 0, -20.1768 )
 role = "Petty Criminal"
 ranks = {
 "Crime": 4,
@@ -224,7 +502,7 @@ ranks = {
 }
 
 [node name="Police Chief" parent="Actors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8893, 0, -4.0515 )
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 17.8893, 0, -8.5515 )
 role = "Police Chief"
 ranks = {
 "Crime": 0,
@@ -233,7 +511,7 @@ ranks = {
 }
 
 [node name="Mayor" parent="Actors" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5341, 0, -23.0117 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.9659, 10, 3.4883 )
 role = "Mayor"
 ranks = {
 "Crime": 5,

@@ -1,8 +1,8 @@
 extends RigidBody
 
 # Signals
-signal target_found
-signal target_lost
+#signal target_found
+#signal target_lost
 signal pressed
 
 # Functionality
