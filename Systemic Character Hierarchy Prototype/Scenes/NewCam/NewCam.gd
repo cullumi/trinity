@@ -1,5 +1,7 @@
 extends Spatial
 
+# Scripts
+
 # Camera Components
 onready var camera = get_node("Camera Pivot/Camera")
 onready var cam_pivot = get_node("Camera Pivot")
@@ -148,11 +150,12 @@ func get_target_object():
 
 # Used when swapping characters
 func set_player_actor(actor):
-#	if (player_actor != null):
-#		aim_ray.remove_exception(player_actor)
 	aim_ray.clear_exceptions()
+	if (player_actor != null):
+		player_actor.make_visible(true)
 	player_actor = actor
 	player_avatar = actor.avatar
+	player_actor.make_visible(false)
 	aim_ray.add_exception(player_actor)
 	for body in player_actor.avatar_bodies:
 		aim_ray.add_exception(body)

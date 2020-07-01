@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Scenes/Interactables/Actors/Actor.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Interactables/Generics/Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Interactables/Actor.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Interactables/Button.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 2.0
@@ -136,6 +136,7 @@ anims/Pressed = SubResource( 9 )
 
 [node name="Happy Person" type="MeshInstance" parent="Avatar"]
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, 0, 2.25, 0 )
+layers = 2147483649
 mesh = SubResource( 10 )
 material/0 = null
 
@@ -143,7 +144,7 @@ material/0 = null
 transform = Transform( 1, 1.62921e-07, 1.62921e-07, -1.62921e-07, 1, 0, -1.62921e-07, -2.65431e-14, 1, 0, 0, 0 )
 
 [node name="Eye" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.889137, 0.418345, -1.24562 )
+transform = Transform( 1, 0, 0, 0, 0.701924, 0.712251, 0, -0.712251, 0.701924, 0.889137, 0.418345, -1.24562 )
 mesh = SubResource( 11 )
 material/0 = null
 
@@ -153,7 +154,7 @@ mesh = SubResource( 12 )
 material/0 = SubResource( 13 )
 
 [node name="Eye2" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.888744, -0.418, -1.246 )
+transform = Transform( 1, 0, 0, 0, -0.701925, -0.712252, 0, 0.712252, -0.701925, 0.888744, -0.418, -1.246 )
 mesh = SubResource( 11 )
 material/0 = null
 

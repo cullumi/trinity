@@ -53,7 +53,7 @@ func get_target_object():
 	return target_object
 
 # NOTE: Currently here for compatibility purposes.
-func apply_velocity_vector(vector, moving):
+func apply_velocity_vector(_vector, moving):
 	is_moving = moving
 	#velocity = vector * move_acceleration
 

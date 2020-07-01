@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Interactables/Interactable.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Interactables/Interactable.gd" type="Script" id=1]
+
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( -0.375, 0, 0.2, -0.449, 0, 0.25, -0.375, 0.38, 0.2, -0.449, 0.38, 0.25, -0.425, 0, 0, -0.499, 0, 0, -0.425, 0.38, 0, -0.499, 0.38, 0 )

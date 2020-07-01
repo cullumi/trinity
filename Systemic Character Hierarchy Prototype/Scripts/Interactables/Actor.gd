@@ -131,3 +131,17 @@ func populate_game_event(game_event):
 	game_event.pressee = self
 	game_event.anim_player = animation_player
 	game_event.effect_location = particle_location
+
+# Render Layer 0 --> Non-Player / Render Layer 1 --> All Objects
+func make_visible(is_visible):
+	var avatar_vis_insts : Array = []
+	recursive_vis_inst(avatar, avatar_vis_insts)
+	for vis_inst in avatar_vis_insts:
+		vis_inst.set_layer_mask_bit(0, is_visible)
+		vis_inst.set_layer_mask_bit(1, true)
+
+func recursive_vis_inst(node, array):
+	for child in node.get_children():
+		if child is VisualInstance:
+			array.append(child)
+		recursive_vis_inst(child, array)

@@ -50,7 +50,7 @@ func update_hud(target_object=null):
 
 func update_player_hud():
 	name_label.text = player_actor.char_name
-	id_label.text = "(" + player_actor.char_id + ")"
+	id_label.text = "[ " + player_actor.char_id + " ]"
 	role_label.text = player_actor.role
 	var ranks = player_actor.ranks
 	rank_label.text = "\n%d   |   %d   |    %d   " % [ranks["Crime"], ranks["Law"], ranks["Politics"]]
@@ -100,8 +100,8 @@ func swap_ranks():
 	emit_signal("swap_ranks", target_actor)
 	update_hud(target_actor)
 
-func change_rules():
-	emit_signal("change_rules")
+func change_events():
+	emit_signal("change_events")
 	edit_panel.visible = !edit_panel.visible
 	if (edit_panel.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)

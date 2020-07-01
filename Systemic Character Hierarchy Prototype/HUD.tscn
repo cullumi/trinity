@@ -1,0 +1,266 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://HUD.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/EventEditor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Crosshair.png" type="Texture" id=5]
+
+[node name="HUD" type="Control"]
+margin_left = 0.5
+margin_top = -1.0
+margin_right = 1024.5
+margin_bottom = 599.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 64, 64 )
+texture = ExtResource( 5 )
+stretch_mode = 4
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Panel" parent="."]
+margin_left = 760.0
+margin_top = 17.0
+margin_right = 1003.0
+margin_bottom = 57.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="IDLabel" type="Label" parent="Name"]
+margin_left = 19.0
+margin_top = 15.0
+margin_right = 59.0
+margin_bottom = 29.0
+text = "Name:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="Name"]
+margin_left = 80.0
+margin_top = 14.0
+margin_right = 222.0
+margin_bottom = 28.0
+text = "Citizen"
+align = 2
+
+[node name="Role" type="Panel" parent="."]
+margin_left = 23.0
+margin_top = 17.0
+margin_right = 266.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RoleLabel" type="Label" parent="Role"]
+margin_left = 19.0
+margin_top = 15.0
+margin_right = 63.0
+margin_bottom = 29.0
+text = "*Role*"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ranks" type="Label" parent="Role"]
+margin_left = 19.0
+margin_top = 36.0
+margin_right = 63.0
+margin_bottom = 50.0
+text = "(C/L/P)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RankLabel" type="Label" parent="Role"]
+margin_left = 79.7806
+margin_top = 18.5255
+margin_right = 221.781
+margin_bottom = 49.5255
+text = "
+%d  |   %d   |    %d"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_left = 25.0
+margin_top = 88.0
+margin_right = 266.0
+margin_bottom = 237.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+stretch = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 241, 149 )
+handle_input_locally = false
+msaa = 1
+render_target_clear_mode = 1
+render_target_update_mode = 3
+
+[node name="Camera2" type="Camera" parent="ViewportContainer/Viewport"]
+transform = Transform( 0.849904, 0.312841, -0.42402, 0, 0.804689, 0.593697, 0.526937, -0.504585, 0.683908, -15.1667, 21.2541, 30.6634 )
+current = true
+
+[node name="Player Velocity" type="Panel" parent="."]
+margin_left = 27.0
+margin_top = 248.0
+margin_right = 266.0
+margin_bottom = 288.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Player Velocity"]
+margin_left = 12.0
+margin_top = 8.0
+margin_right = 229.0
+margin_bottom = 33.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Target" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -175.0
+margin_top = 205.0
+margin_right = -26.0
+margin_bottom = 432.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Role" type="Label" parent="Target"]
+margin_left = 19.0
+margin_top = 18.0
+margin_right = 131.0
+margin_bottom = 42.0
+size_flags_horizontal = 0
+text = "Citizen"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="ScrollContainer" parent="Target"]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 60.0
+margin_right = -16.0
+margin_bottom = 175.0
+follow_focus = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpContainer" type="VBoxContainer" parent="Target/Options"]
+margin_right = 117.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Press" type="Button" parent="Target/Options/OpContainer"]
+margin_right = 117.0
+margin_bottom = 20.0
+focus_next = NodePath("../Swap Roles")
+focus_previous = NodePath("../Change Rules")
+text = "Press"
+
+[node name="Swap Roles" type="Button" parent="Target/Options/OpContainer"]
+margin_top = 24.0
+margin_right = 117.0
+margin_bottom = 44.0
+focus_next = NodePath("../Swap Ranks")
+focus_previous = NodePath("../Press")
+text = "Swap Roles"
+
+[node name="Swap Ranks" type="Button" parent="Target/Options/OpContainer"]
+margin_top = 48.0
+margin_right = 117.0
+margin_bottom = 68.0
+focus_next = NodePath("../Change Rules")
+focus_previous = NodePath("../Swap Roles")
+text = "Swap Ranks"
+
+[node name="Change Events" type="Button" parent="Target/Options/OpContainer"]
+margin_top = 72.0
+margin_right = 117.0
+margin_bottom = 92.0
+focus_next = NodePath("../Press")
+focus_previous = NodePath("../Swap Ranks")
+text = "Change Events"
+
+[node name="Rank" type="Label" parent="Target"]
+margin_left = 20.0
+margin_top = 187.0
+margin_right = 130.0
+margin_bottom = 211.0
+text = "0 / 0 / 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Edit" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 278.5
+margin_top = 89.0
+margin_right = -187.0
+margin_bottom = -87.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Rules" type="Control" parent="Edit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EventEditor" parent="Edit" instance=ExtResource( 4 )]
+[connection signal="pressed" from="Target/Options/OpContainer/Press" to="." method="press"]
+[connection signal="pressed" from="Target/Options/OpContainer/Swap Roles" to="." method="swap_roles"]
+[connection signal="pressed" from="Target/Options/OpContainer/Swap Ranks" to="." method="swap_ranks"]
+[connection signal="pressed" from="Target/Options/OpContainer/Change Events" to="." method="change_events"]
+[connection signal="close" from="Edit/EventEditor" to="." method="change_rules"]
