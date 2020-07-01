@@ -143,7 +143,7 @@ material/0 = null
 transform = Transform( 1, 1.62921e-07, 1.62921e-07, -1.62921e-07, 1, 0, -1.62921e-07, -2.65431e-14, 1, 0, 0, 0 )
 
 [node name="Eye" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, 0.626036, 0.779794, 0, -0.779794, 0.626036, 0.889137, 0.418345, -1.24562 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.889137, 0.418345, -1.24562 )
 mesh = SubResource( 11 )
 material/0 = null
 
@@ -153,7 +153,7 @@ mesh = SubResource( 12 )
 material/0 = SubResource( 13 )
 
 [node name="Eye2" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, -0.626036, -0.779794, 0, 0.779794, -0.626036, 0.888744, -0.418, -1.246 )
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.888744, -0.418, -1.246 )
 mesh = SubResource( 11 )
 material/0 = null
 

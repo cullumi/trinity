@@ -39,6 +39,7 @@ var cam_offset = Vector3(1,0,0)
 var gravity_multiplier = 10
 var gravity = -9.8
 var current_grav_velocity = 0
+var avatar_bodies : Array = []
 
 # For Press Events
 onready var animation_player:AnimationPlayer = find_node("AnimationPlayer")
@@ -46,6 +47,9 @@ onready var particle_location:Spatial = find_node("ParticleLocation")
 
 func _ready():
 	add_to_group("Interactables")
+	for node in avatar.get_children():
+		if node is PhysicsBody:
+			avatar_bodies.append(node)
 
 # Handles Velocity Limits and Cancelers as well as Raycast Positioning.
 func _physics_process(delta):

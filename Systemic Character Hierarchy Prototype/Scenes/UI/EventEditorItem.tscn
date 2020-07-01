@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UI/EventEditorItem.gd" type="Script" id=1]
+
+[node name="EventEditorItem" type="HBoxContainer"]
+margin_right = 446.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_top = 3.0
+margin_right = 59.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Button"
+align = 1
+autowrap = true
+
+[node name="Type" type="MenuButton" parent="."]
+margin_left = 63.0
+margin_right = 122.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Button"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Role" type="MenuButton" parent="."]
+margin_left = 126.0
+margin_right = 185.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Button"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Animation" type="MenuButton" parent="."]
+margin_left = 189.0
+margin_right = 283.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Press Button"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Effects" type="MenuButton" parent="."]
+margin_left = 287.0
+margin_right = 375.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Sphere Poof"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="MoveUp" type="Button" parent="."]
+margin_left = 379.0
+margin_right = 398.0
+margin_bottom = 20.0
+text = "^"
+
+[node name="MoveDown" type="Button" parent="."]
+margin_left = 402.0
+margin_right = 421.0
+margin_bottom = 20.0
+text = "v"
+
+[node name="Delete" type="Button" parent="."]
+margin_left = 425.0
+margin_right = 445.0
+margin_bottom = 20.0
+text = "X"
+[connection signal="pressed" from="MoveUp" to="." method="move_up"]
+[connection signal="pressed" from="MoveDown" to="." method="move_down"]
+[connection signal="pressed" from="Delete" to="." method="delete"]

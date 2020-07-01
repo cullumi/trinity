@@ -49,41 +49,42 @@ func _ready():
 
 # Player Inputs
 func _input(event):
-	# Perspective Cycling
-	if event.is_action_pressed("swap_view"):
-		cycle_perspectives()
-	# UI Selection
-	elif event.is_action_pressed("select"):
-		trigger_ray_event()
-		trigger_input_action("ui_accept", true)
-	elif event.is_action_released("select"):
-		trigger_ray_event()
-		trigger_input_action("ui_accept", false)
-	# Mouse Movements --> First vs Third Person Aiming
-	elif event is InputEventMouseMotion:
-		if (first_person):
-			fp_aiming(event)
-		else:
-			tp_aiming(event)
-	# Scroll Wheel --> UI Focus vs Camera Zoom
-	elif event.is_action_pressed("zoom_mode"):
-		zoom_mode_active = true
-	elif event.is_action_released("zoom_mode"):
-		zoom_mode_active = false
-	elif event.is_action_pressed("scroll_down"):
-		if zoom_mode_active:
-			zoom_level += zoom_sensitivity * get_process_delta_time()
-			zoom_level = clamp(zoom_level, 0, 1)
-		else:
-			trigger_input_action("ui_focus_next", true)
-			trigger_input_action("ui_focus_next", false)
-	elif event.is_action_pressed("scroll_up"):
-		if zoom_mode_active:
-			zoom_level -= zoom_sensitivity * get_process_delta_time()
-			zoom_level = clamp(zoom_level, 0, 1)
-		else:
-			trigger_input_action("ui_focus_prev", true)
-			trigger_input_action("ui_focus_prev", false)
+	if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
+		# Perspective Cycling
+		if event.is_action_pressed("swap_view"):
+			cycle_perspectives()
+		# UI Selection
+		elif event.is_action_pressed("select"):
+			trigger_ray_event()
+			trigger_input_action("ui_accept", true)
+		elif event.is_action_released("select"):
+			trigger_ray_event()
+			trigger_input_action("ui_accept", false)
+		# Mouse Movements --> First vs Third Person Aiming
+		elif event is InputEventMouseMotion:
+			if (first_person):
+				fp_aiming(event)
+			else:
+				tp_aiming(event)
+		# Scroll Wheel --> UI Focus vs Camera Zoom
+		elif event.is_action_pressed("zoom_mode"):
+			zoom_mode_active = true
+		elif event.is_action_released("zoom_mode"):
+			zoom_mode_active = false
+		elif event.is_action_pressed("scroll_down"):
+			if zoom_mode_active:
+				zoom_level += zoom_sensitivity * get_process_delta_time()
+				zoom_level = clamp(zoom_level, 0, 1)
+			else:
+				trigger_input_action("ui_focus_next", true)
+				trigger_input_action("ui_focus_next", false)
+		elif event.is_action_pressed("scroll_up"):
+			if zoom_mode_active:
+				zoom_level -= zoom_sensitivity * get_process_delta_time()
+				zoom_level = clamp(zoom_level, 0, 1)
+			else:
+				trigger_input_action("ui_focus_prev", true)
+				trigger_input_action("ui_focus_prev", false)
 
 # Raycast pinging and camera perspective updates.
 func _process(_delta):
@@ -108,18 +109,20 @@ func _physics_process(_delta):
 	# Interpret direction from player inputs.
 	var dir = Vector3()
 	var is_moving = false
-	if Input.is_action_pressed("move_right"):
-		is_moving = true
-		dir.x -= 1
-	if Input.is_action_pressed("move_left"):
-		dir.x += 1
-		is_moving = true
-	if Input.is_action_pressed("move_up"):
-		dir.z += 1
-		is_moving = true
-	if Input.is_action_pressed("move_down"):
-		dir.z -= 1
-		is_moving = true
+	
+	if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
+		if Input.is_action_pressed("move_right"):
+			is_moving = true
+			dir.x -= 1
+		if Input.is_action_pressed("move_left"):
+			dir.x += 1
+			is_moving = true
+		if Input.is_action_pressed("move_up"):
+			dir.z += 1
+			is_moving = true
+		if Input.is_action_pressed("move_down"):
+			dir.z -= 1
+			is_moving = true
 	
 	# Create direction vector based on horizontal camera orientation.
 	var vector = Vector3()
@@ -145,9 +148,14 @@ func get_target_object():
 
 # Used when swapping characters
 func set_player_actor(actor):
+#	if (player_actor != null):
+#		aim_ray.remove_exception(player_actor)
+	aim_ray.clear_exceptions()
 	player_actor = actor
 	player_avatar = actor.avatar
 	aim_ray.add_exception(player_actor)
+	for body in player_actor.avatar_bodies:
+		aim_ray.add_exception(body)
 	update_perspective()
 
 # Cycles through first person as well as third person left/center/right perspectives.

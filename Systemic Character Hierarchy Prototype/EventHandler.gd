@@ -18,7 +18,7 @@ func trigger_press_event(press_event:GameEvent):
 		var particle_loc: Spatial = press_event.effect_location
 		var particle_scene: PackedScene = null
 		if (settings["Effects"] != ""):
-			particle_scene = load(settings["Effects"])
+			particle_scene = load(resources.setting_choices["Effects"][settings["Effects"]] + "/" + settings["Effects"])
 		if (particle_loc != null and particle_scene != null):
 			var particles = particle_scene.instance()
 			particle_loc.add_child(particles)
@@ -33,7 +33,7 @@ func trigger_press_event(press_event:GameEvent):
 	var effect_scene = null
 	if (point != null and variation != null):
 		if (variation["Effects"] != ""):
-			effect_scene = load(variation["Effects"])
+			effect_scene = load(resources.setting_choices["Effects"][variation["Effects"]] + "/" + variation["Effects"])
 		if (effect_scene != null):
 			var particles = effect_scene.instance()
 			get_tree().root.add_child(particles)

@@ -10,15 +10,19 @@ var player_actor
 var last_ray_event = null
 
 func _ready():
+	print("World Ready")
 	set_rand_target_actor()
 	camera.connect("target_found", self, "update_target_hud")
 	camera.connect("target_lost", self, "update_target_hud")
 	event_handler.resources = resources
+	hud.resources = resources
+	hud.initialize()
 	get_tree().call_group("Interactables", "connect_pressed", event_handler, "trigger_press_event")
 
 func _input(event):
-	if event.is_action_pressed("reroll"):
-		set_rand_target_actor()
+	if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
+		if event.is_action_pressed("reroll"):
+			set_rand_target_actor()
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 
@@ -26,6 +30,7 @@ func set_rand_target_actor():
 	if player_actor != null:
 		player_actor.is_controlled = false
 		player_actor.velocity = Vector3()
+		player_actor.avatar.visible = true
 		
 	randomize()
 	# warning-ignore:return_value_discarded
