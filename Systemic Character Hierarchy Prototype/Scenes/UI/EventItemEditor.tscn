@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UI/EventItemEditor.gd" type="Script" id=1]
+
+[node name="EventItemEditor" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top Row" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 24.0
+
+[node name="EvID" type="LineEdit" parent="Top Row"]
+margin_right = 201.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Button"
+align = 1
+expand_to_text_length = true
+caret_blink = true
+
+[node name="Type" type="MenuButton" parent="Top Row"]
+margin_left = 205.0
+margin_right = 406.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Button"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Role" type="MenuButton" parent="Top Row"]
+margin_left = 410.0
+margin_right = 611.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Button"
+flat = false
+items = [ "Crime", null, 0, false, false, 0, 0, null, "", false, "Law", null, 0, false, false, 1, 0, null, "", false, "Politics", null, 0, false, false, 2, 0, null, "", false, "Neutral", null, 0, false, false, 3, 0, null, "", false ]
+
+[node name="Animation" type="MenuButton" parent="Top Row"]
+margin_left = 615.0
+margin_right = 816.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Press Button"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Effects" type="MenuButton" parent="Top Row"]
+margin_left = 820.0
+margin_right = 1024.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Sphere Poof"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Bottom Row" type="HBoxContainer" parent="."]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InCharIDs" type="MenuButton" parent="Bottom Row"]
+margin_right = 510.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "0"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="OutEventIDs" type="MenuButton" parent="Bottom Row"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "0"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]

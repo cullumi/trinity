@@ -1,0 +1,132 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UI/ItemWindowItem.gd" type="Script" id=1]
+
+[node name="ItemWindowItem" type="HBoxContainer"]
+anchor_right = 1.0
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContentPos" type="HBoxContainer" parent="."]
+margin_right = 977.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ExampleContent" type="VBoxContainer" parent="ContentPos"]
+visible = false
+margin_right = 977.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top Row" type="HBoxContainer" parent="ContentPos/ExampleContent"]
+margin_right = 977.0
+margin_bottom = 24.0
+
+[node name="EvID" type="LineEdit" parent="ContentPos/ExampleContent/Top Row"]
+margin_right = 192.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Button"
+align = 1
+expand_to_text_length = true
+caret_blink = true
+
+[node name="Type" type="MenuButton" parent="ContentPos/ExampleContent/Top Row"]
+margin_left = 196.0
+margin_right = 388.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Button"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Role" type="MenuButton" parent="ContentPos/ExampleContent/Top Row"]
+margin_left = 392.0
+margin_right = 584.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Button"
+flat = false
+items = [ "Crime", null, 0, false, false, 0, 0, null, "", false, "Law", null, 0, false, false, 1, 0, null, "", false, "Politics", null, 0, false, false, 2, 0, null, "", false, "Neutral", null, 0, false, false, 3, 0, null, "", false ]
+
+[node name="Animation" type="MenuButton" parent="ContentPos/ExampleContent/Top Row"]
+margin_left = 588.0
+margin_right = 780.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Press Button"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Effects" type="MenuButton" parent="ContentPos/ExampleContent/Top Row"]
+margin_left = 784.0
+margin_right = 977.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Sphere Poof"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Bottom Row" type="HBoxContainer" parent="ContentPos/ExampleContent"]
+margin_top = 28.0
+margin_right = 977.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InCharIDs" type="MenuButton" parent="ContentPos/ExampleContent/Bottom Row"]
+margin_right = 486.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "0"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="OutEventIDs" type="MenuButton" parent="ContentPos/ExampleContent/Bottom Row"]
+margin_left = 490.0
+margin_right = 977.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "0"
+flat = false
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="SideBar" type="VBoxContainer" parent="."]
+margin_left = 981.0
+margin_right = 1024.0
+margin_bottom = 44.0
+
+[node name="UpDelete" type="HBoxContainer" parent="SideBar"]
+margin_right = 43.0
+margin_bottom = 20.0
+
+[node name="MoveUp" type="Button" parent="SideBar/UpDelete"]
+margin_right = 19.0
+margin_bottom = 20.0
+text = "^"
+
+[node name="Delete" type="Button" parent="SideBar/UpDelete"]
+margin_left = 23.0
+margin_right = 43.0
+margin_bottom = 20.0
+text = "X"
+
+[node name="MoveDown" type="Button" parent="SideBar"]
+margin_top = 24.0
+margin_right = 19.0
+margin_bottom = 44.0
+size_flags_horizontal = 0
+text = "v"
+[connection signal="pressed" from="SideBar/UpDelete/MoveUp" to="." method="move_up"]
+[connection signal="pressed" from="SideBar/UpDelete/Delete" to="." method="delete"]
+[connection signal="pressed" from="SideBar/MoveDown" to="." method="move_down"]

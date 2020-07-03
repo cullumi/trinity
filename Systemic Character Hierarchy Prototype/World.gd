@@ -3,19 +3,17 @@ extends Node
 onready var actors = get_node("Actors").get_children()
 onready var camera = get_node("Player Camera")
 onready var hud = get_node("HUD")
-onready var resources = get_node("Resources")
 onready var event_handler = get_node("EventHandler")
 var player_actor
 
 var last_ray_event = null
 
 func _ready():
+	Resources.update_world()
 	print("World Ready")
 	set_rand_target_actor()
 	camera.connect("target_found", self, "update_target_hud")
 	camera.connect("target_lost", self, "update_target_hud")
-	event_handler.resources = resources
-	hud.resources = resources
 	hud.initialize()
 	get_tree().call_group("Interactables", "connect_pressed", event_handler, "trigger_press_event")
 

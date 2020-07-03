@@ -18,12 +18,12 @@ onready var op_container = get_node("Target/Options/OpContainer")
 onready var op_buttons = op_container.get_children()
 
 onready var edit_panel = get_node("Edit")
-onready var edit_rules = get_node("Edit/Rules")
+#onready var edit_rules = get_node("Edit/Rules")
 onready var event_editor : EventEditor = get_node("Edit/EventEditor")
 
 signal swap_roles
 signal swap_ranks
-signal change_rules
+signal change_events
 
 var player_actor
 var target_actor

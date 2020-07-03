@@ -1,11 +1,10 @@
 extends Node
 
 export (bool) var dynamic_particles
-var resources: Resources
 
 func trigger_press_event(press_event:GameEvent):
 	var object = press_event.pressee
-	var settings = resources.find_most_restrictive_settings(object)
+	var settings = Resources.find_most_restrictive_settings(object)
 	if (settings != null):
 		
 		# Animation
@@ -18,7 +17,7 @@ func trigger_press_event(press_event:GameEvent):
 		var particle_loc: Spatial = press_event.effect_location
 		var particle_scene: PackedScene = null
 		if (settings["Effects"] != ""):
-			particle_scene = load(resources.setting_choices["Effects"][settings["Effects"]] + "/" + settings["Effects"])
+			particle_scene = load(Resources.setting_choices["Effects"][settings["Effects"]] + "/" + settings["Effects"])
 		if (particle_loc != null and particle_scene != null):
 			var particles = particle_scene.instance()
 			particle_loc.add_child(particles)
@@ -29,11 +28,11 @@ func trigger_press_event(press_event:GameEvent):
 	
 	# Collision Point Effects
 	var point = press_event.press_point
-	var variation = resources.find_variation_by_texture(object.texture)
+	var variation = Resources.find_variation_by_texture(object.texture)
 	var effect_scene = null
 	if (point != null and variation != null):
 		if (variation["Effects"] != ""):
-			effect_scene = load(resources.setting_choices["Effects"][variation["Effects"]] + "/" + variation["Effects"])
+			effect_scene = load(Resources.setting_choices["Effects"][variation["Effects"]] + "/" + variation["Effects"])
 		if (effect_scene != null):
 			var particles = effect_scene.instance()
 			get_tree().root.add_child(particles)

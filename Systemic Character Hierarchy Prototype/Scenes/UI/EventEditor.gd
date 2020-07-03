@@ -8,16 +8,13 @@ onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
 
 signal close
 
-var resources : Resources
 var events : Array
 
 # Fully re-loads the item list.
 func update_item_list(res = null):
 	for child in item_container.get_children():
 		child.queue_free()
-	if (res != null):
-		resources = res
-		events = res.event_settings
+		events = Resources.event_settings
 	var index = 0
 	for event in events:
 		add_item(index, event)
@@ -64,23 +61,24 @@ func populate_menu_button(item, button, type, event_id, setting, choices = null)
 	popup.clear()
 	popup.raise()
 	if (choices == null):
-		choices = resources.find_restricted_choices(type, setting)
+		choices = Resources.find_restricted_choices(type, setting)
 	for option in choices:
 		popup.add_item(option)
 
 # Changes an event's id and updates the given text field.
 func change_event_id(new_id, event, ev_name):
-	resources.edit_event_id(new_id, event)
+	Resources.edit_event_id(new_id, event)
 	ev_name.text = event["EvID"]
 
+# Change the given item / edit the corresponding event.
 func change_item(index, item, button, event_id, setting):
 	print(event_id)
 	var new_value = button.get_popup().get_item_text(index)
 	button.text = new_value
-	resources.edit_event_by_id(event_id, setting, new_value)
+	Resources.edit_event_by_id(event_id, setting, new_value)
 	#update_item_list()
 	
-	var event = resources.get_event_by_id(event_id)
+	var event = Resources.get_event_by_id(event_id)
 	update_item(item, event)
 	#populate_menu_button(button, event["Type"], event_id, setting)
 
@@ -120,10 +118,11 @@ func delete_item(item):
 
 # Used for adding items at runtime.
 func add_new_item(id = null):
-	var event = resources.empty_event(id)
-	resources.add_event(event)
+	var event = Resources.empty_event(id)
+	Resources.add_event(event)
 	var last_index = events.size()-1
 	add_item(last_index, event)
 
+# Close the edit window.
 func close():
 	emit_signal("close")

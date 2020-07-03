@@ -196,7 +196,8 @@ size_flags_vertical = 3
 margin_right = 117.0
 margin_bottom = 20.0
 focus_next = NodePath("../Swap Roles")
-focus_previous = NodePath("../Change Rules")
+focus_previous = NodePath("../Change Events")
+action_mode = 0
 text = "Press"
 
 [node name="Swap Roles" type="Button" parent="Target/Options/OpContainer"]
@@ -211,7 +212,7 @@ text = "Swap Roles"
 margin_top = 48.0
 margin_right = 117.0
 margin_bottom = 68.0
-focus_next = NodePath("../Change Rules")
+focus_next = NodePath("../Change Events")
 focus_previous = NodePath("../Swap Roles")
 text = "Swap Ranks"
 
@@ -247,7 +248,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Rules" type="Control" parent="Edit"]
+[node name="RuleSelector" type="Control" parent="Edit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VariationEditor" type="Control" parent="Edit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -263,4 +275,4 @@ __meta__ = {
 [connection signal="pressed" from="Target/Options/OpContainer/Swap Roles" to="." method="swap_roles"]
 [connection signal="pressed" from="Target/Options/OpContainer/Swap Ranks" to="." method="swap_ranks"]
 [connection signal="pressed" from="Target/Options/OpContainer/Change Events" to="." method="change_events"]
-[connection signal="close" from="Edit/EventEditor" to="." method="change_rules"]
+[connection signal="close" from="Edit/EventEditor" to="." method="change_events"]

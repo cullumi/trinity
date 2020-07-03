@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Interactables/Button.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Interactables/Interactable.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/NewCam/NewCam.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scripts/Resources.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/EventHandler.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Interactables/RigidActor.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Prefabs/Wood Structures/Small House.tscn" type="PackedScene" id=11]
@@ -1133,7 +1132,4 @@ ranks = {
 
 [node name="EventHandler" type="Node" parent="."]
 script = ExtResource( 9 )
-
-[node name="Resources" type="Node" parent="."]
-script = ExtResource( 8 )
 [connection signal="ray_event" from="Player Camera" to="." method="add_ray_event"]

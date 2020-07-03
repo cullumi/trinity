@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/UI/EventEditorItem.gd"
 }, {
+"base": "Control",
+"class": "EventItemEditor",
+"language": "GDScript",
+"path": "res://Scenes/UI/EventItemEditor.gd"
+}, {
 "base": "Node",
 "class": "GameEvent",
 "language": "GDScript",
@@ -39,25 +44,32 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Interactables/Interactable.gd"
 }, {
+"base": "Control",
+"class": "ItemWindow",
+"language": "GDScript",
+"path": "res://Scenes/UI/ItemWindow.gd"
+}, {
+"base": "Control",
+"class": "ItemWindowItem",
+"language": "GDScript",
+"path": "res://Scenes/UI/ItemWindowItem.gd"
+}, {
 "base": "Reference",
 "class": "RayCastEvent",
 "language": "GDScript",
 "path": "res://Scripts/RayCastCollision.gd"
-}, {
-"base": "Node",
-"class": "Resources",
-"language": "GDScript",
-"path": "res://Scripts/Resources.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
 "EventEditor": "",
 "EventEditorItem": "",
+"EventItemEditor": "",
 "GameEvent": "",
 "HUD": "",
 "Interactable": "",
-"RayCastEvent": "",
-"Resources": ""
+"ItemWindow": "",
+"ItemWindowItem": "",
+"RayCastEvent": ""
 }
 
 [application]
@@ -67,6 +79,10 @@ config/description="https://poly.google.com/view/aDvY62amHAp
 "
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Resources="*res://Scripts/Resources.gd"
 
 [input]
 

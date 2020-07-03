@@ -1,4 +1,4 @@
-class_name Resources
+#class_name Resources
 
 extends Node
 
@@ -10,27 +10,39 @@ extends Node
 
 # NOTE:  Empty strings are to be ignored in implementation of this data structure.
 
-# Intended be a 2D Array of the following structure:
-# + Type: some functionality type (i.e.: "Interactable", "Button", or "Actor")
+# Event_Settings is intended be a 2D Array of the following structure:
+# + EvID: a unique event id.
+# + Type: some functionality type (i.e.: "Interactable", "Button", or "Actor").
 # + Role: some object role name.
-# + Name: some object name.
-# + ID: some instance id (must have been assigned)
 # + Animation: must be a valid animation name for the object.
 # + Effects: particle systems, for example.
+# + InCharIDs: some character id (or ids) corresponding to interactable objects that can trigger this event.
+# + OutEventIDs: some event id (or ids) corresponding to events that should be triggered by this event.
 # + Audio Samples
+# + Name
 
+# Defines the standardized event structure.
+var event_structure : Array = [
+	"EvID",
+	"Type",
+	"Role",
+	"Animation",
+	"Effects",
+	"InCharIDs",
+	"OutEventIDs"]
+
+# Defines any restrictions given an interactable type. (Intended for object specifics, such as animations)
 var type_restrictions : Dictionary = {
 	"Intble":{"Animation":[""]},
 	"Button":{"Animation":["","Press Button"]},
 	"Actor":{"Animation":["","Pressed"]}}
 
-# Define Valid 
-onready var setting_choices : Dictionary = {
+# Defines valid choices given setting names. 
+var setting_choices : Dictionary = {
 	"Type":["Intble","Button","Actor"],
 	"Texture":["Smooth","Dusty"],
 	"Role":["","Button","Mayor"],
-	"Animation":["","Press Button","Pressed"],
-	}
+	"Animation":["","Press Button","Pressed"]}
 
 var event_settings : Array = [
 	{"EvID":"button-1","Type":"Button", "Role":"Button", "Animation":"Press Button", "Effects":"Sphere Poof.tscn", "InCharIDs":"", "OutEventIDs":""},
@@ -41,26 +53,46 @@ var event_settings : Array = [
 var variation_settings : Array = [
 	{"Texture":"Dusty", "Effects":"Small Sphere Poof.tscn"}]
 
+# Defines Settings Arrays
+var settings_arrays : Dictionary = {
+	"Events":event_settings,
+	"Variations":variation_settings}
+
 var char_id_dict : Dictionary = {}
 var event_ids : Array = []
 
 func _ready():
+	load_particle_events()
+	update_event_choices()
+	update_role_choices()
+	update_char_id_choices()
 	print("Resources Ready")
-	initialize_intble_events()
+
+func update_full():
+	update_event_choices()
+	update_role_choices()
+	update_char_id_choices()
+
+func update_world():
+	update_role_choices()
+	update_char_id_choices()
+
+func update_event_choices():
 	for event in event_settings:
 		event_ids.append(event["EvID"])
 	setting_choices["OutEventIDs"] = event_ids
-	load_particle_events()
 
-func initialize_intble_events():
+func update_role_choices():
 	var intbles = get_tree().get_nodes_in_group("Interactables")
 	var roles : Array = [""]
 	for intble in intbles:
 		if (not intble.role in roles):
 			roles.append(intble.role)
 	setting_choices["Role"] = roles
-	
-	var char_id_intbles = []
+
+func update_char_id_choices():
+	var intbles = get_tree().get_nodes_in_group("Interactables")
+	var char_id_intbles : Array = []
 	for intble in intbles:
 		if (intble.char_id != ""):
 			char_id_intbles.append(intble)
@@ -129,10 +161,21 @@ func edit_event_by_id(id, setting, new_value):
 			rule_set[setting] = new_value
 			apply_restrictions_to_event(rule_set)
 
+func edit_event(event, setting, new_value):
+	var adjusted_value
+	if (setting == "EvID"):
+		adjusted_value = edit_event_id(new_value, event)
+	else:
+		event[setting] = new_value
+		adjusted_value = new_value
+	apply_restrictions_to_event(event)
+	return adjusted_value
+
 func edit_event_id(new_id, event):
 	var old_id = event["EvID"]
 	var id = new_id
 	var num = -1
+	
 	var done = false
 	while not done:
 		done = true
@@ -141,7 +184,7 @@ func edit_event_id(new_id, event):
 				continue
 			var ev_id : String = ev["EvID"]
 			if (num == -1 and ev_id == new_id):
-				print(ev_id + "  /  " + ev_id.right(ev_id.length()-1))
+				#print(ev_id + "  /  " + ev_id.right(ev_id.length()-1))
 				if (ev_id.right(ev_id.length()-1).is_valid_integer()):
 					print(new_id.left(new_id.length()-1))
 					id = new_id.left(new_id.length()-1)
@@ -152,14 +195,14 @@ func edit_event_id(new_id, event):
 				num = num+1
 				done = false
 				break
-	if (num == -1):
-		event["EvID"] = id
-	else:
-		event["EvID"] = (id + String(num))
+	
+	if (num != -1):
+		id = (id + String(num))
 	if (event in event_settings):
 		var index = event_ids.find(old_id)
 		event_ids.erase(old_id)
 		event_ids.insert(index, id)
+	event["EvID"] = id
 	return id
 
 func apply_restrictions_to_event(event):
@@ -172,6 +215,8 @@ func apply_restrictions_to_event(event):
 
 func find_restricted_choices(type, setting):
 	var choices = setting_choices[setting]
+	if (choices is Dictionary):
+		choices = choices.keys()
 	if (setting != "Type" and not type_restrictions.keys().has(type)):
 		return [""]
 	elif (setting == "Type" or not type_restrictions[type].keys().has(setting)):
@@ -192,6 +237,22 @@ func empty_event(id = null):
 		edit_event_id(id, new_event)
 		return new_event
 
-func add_event(event):
+func new_event(id = null):
+	return empty_event(id)
+
+func move_event(new_index:int, event):
+	var id = event["EvID"]
+	event_ids.erase(id)
+	event_ids.insert(new_index, id)
+	event_settings.erase(event)
+	event_settings.insert(new_index, event)
+
+func add_event(event=null):
+	if (event == null):
+		event = new_event()
 	event_settings.append(event)
 	setting_choices["OutEventIDs"].append(event["EvID"])
+
+func remove_event(event):
+	event_ids.erase(event["EvID"])
+	event_settings.erase(event)
