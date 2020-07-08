@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/UI/ItemWindow.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/OldUI/EventEditorItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/UI/ItemWindowItem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UI/EventItemEditor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/UI/MenuButton.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -75,14 +76,8 @@ margin_right = 936.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 
-[node name="Control" type="VBoxContainer" parent="VBoxContainer/Title Bar/HBoxContainer"]
-margin_right = 708.0
-margin_bottom = 37.0
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="Filter" type="LineEdit" parent="VBoxContainer/Title Bar/HBoxContainer/Control"]
-margin_right = 708.0
+[node name="Filter Text" type="LineEdit" parent="VBoxContainer/Title Bar/HBoxContainer"]
+margin_right = 652.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -90,6 +85,14 @@ expand_to_text_length = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Filters" type="MenuButton" parent="VBoxContainer/Title Bar/HBoxContainer"]
+margin_left = 656.0
+margin_right = 708.0
+margin_bottom = 37.0
+text = "Filters"
+items = [ "EvID", null, 1, true, false, 0, 0, null, "", false, "Type", null, 1, false, false, 1, 0, null, "", false, "Role", null, 1, false, false, 2, 0, null, "", false, "Animation", null, 1, false, false, 3, 0, null, "", false, "Effects", null, 1, false, false, 4, 0, null, "", false, "InCharIDs", null, 1, false, false, 5, 0, null, "", false, "OutEventIDs", null, 1, false, false, 6, 0, null, "", false, "Exclusive", null, 1, false, false, 7, 0, null, "", false ]
+script = ExtResource( 6 )
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/Title Bar"]
 show_behind_parent = true
@@ -155,7 +158,8 @@ margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "  +  "
-[connection signal="text_changed" from="VBoxContainer/Title Bar/HBoxContainer/Control/Filter" to="." method="list_update"]
+[connection signal="text_changed" from="VBoxContainer/Title Bar/HBoxContainer/Filter Text" to="." method="change_filter"]
+[connection signal="item_selected" from="VBoxContainer/Title Bar/HBoxContainer/Filters" to="." method="change_filter"]
 [connection signal="pressed" from="VBoxContainer/Title Bar/Close" to="." method="close"]
 [connection signal="text_entered" from="VBoxContainer/New Item ID" to="." method="add_new_item"]
 [connection signal="pressed" from="VBoxContainer/Option Bar/Add New Item" to="." method="add_new_item"]

@@ -21,7 +21,7 @@ extends Node
 # + Audio Samples
 # + Name
 
-# Defines the standardized event structure.
+# Standardized Structures
 var event_structure : Array = [
 	"EvID",
 	"Type",
@@ -64,6 +64,10 @@ var variation_settings : Array = [
 var settings_arrays : Dictionary = {
 	"Events":event_settings,
 	"Variations":variation_settings}
+
+var structure_arrays : Dictionary = {
+	"Events":event_structure,
+	"Variations":variation_structure}
 
 var default_event_template : Dictionary = {
 	"EvID":"",
@@ -216,11 +220,11 @@ func edit_event_by_id(id, setting, new_value):
 func edit_event(event, setting, new_value):
 	var adjusted_value
 	if (setting == "EvID"):
-		adjusted_value = edit_event_id(new_value, event)
+		edit_event_id(new_value, event)
 	else:
 		event[setting] = new_value
-		adjusted_value = new_value
 	apply_restrictions_to_event(event)
+	adjusted_value = event[setting]
 	return adjusted_value
 
 func edit_event_id(new_id, event):
@@ -262,7 +266,7 @@ func apply_restrictions_to_event(event):
 		if (key != "EvID"):
 			var valid_choices = find_restricted_choices(type, key)
 			if (not valid_choices.has(event[key])):
-				event[key] = ""
+				event[key] = default_event_template[key]
 
 
 # EVENT MOVEMENT FUNCTIONS

@@ -6,8 +6,7 @@ onready var vari_tex = $"Top Row/Tex"
 onready var vari_fx = $"Top Row/Effects"
 onready var variations = Resources.variation_settings
 
-signal filter
-signal unfilter
+signal apply_filter
 
 var fields = []
 var vari_structure = Resources.variation_structure
@@ -78,4 +77,13 @@ func delete():
 	Resources.remove_variation(variation)
 
 func list_update(filter=null):
-	pass
+	if (filter != null):
+		var filtered = false
+		if (filter["Value"] != ""):
+			for key in variation.keys():
+				if (filter["Keys"][key]):
+					if (not (filter["Value"] in variation[key])):
+						filtered = true
+						break
+		emit_signal("apply_filter", filtered)
+			

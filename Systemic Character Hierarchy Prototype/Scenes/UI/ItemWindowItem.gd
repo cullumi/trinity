@@ -27,8 +27,7 @@ func add_content(template : PackedScene, id = null):#node : Node = null):
 	content.index = index
 	content.id = id
 	content_pos.add_child(content)
-	content.connect("filter", self, "set_filter", [true])
-	content.connect("unfilter", self, "set_filter", [false])
+	content.connect("apply_filter", self, "apply_filter")
 
 func update_position(last_index, new_index = null):
 	if (new_index != null):
@@ -57,7 +56,7 @@ func delete():
 func list_update(filter = null):
 	content.list_update(filter)
 
-func set_filter(filtered : bool):
+func apply_filter(filtered : bool):
 	if (filtered):
 		visible = false
 	else:

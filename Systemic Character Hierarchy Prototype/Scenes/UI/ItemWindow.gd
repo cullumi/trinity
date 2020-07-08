@@ -8,11 +8,15 @@ export (String, "Events", "Variations") var content_source
 
 onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
 onready var title_label = $"VBoxContainer/Title Bar/Title"
+onready var filter_selector = $"VBoxContainer/Title Bar/HBoxContainer/Filters"
 
 signal close
 
 var item_count : int
 var has_been_initialized = false
+
+var last_filter_value
+var filter : Dictionary = {"Value":"", "Boolean":false, "Keys":{}}
 
 func initialize():
 	title_label.text = content_source
@@ -20,11 +24,16 @@ func initialize():
 	if (content_source in Resources.settings_arrays.keys()):
 		for index in range(0, Resources.settings_arrays[content_source].size()):
 			add_item(index)
+	if (content_source in Resources.structure_arrays.keys()):
+		for key in Resources.structure_arrays[content_source]:
+			print(key)
+			filter["Keys"][key] = false
+			filter_selector.add_item(key)
 	has_been_initialized = true
 
-func list_update(filter = null):
+func list_update(fltr=null):
 	for child in item_container.get_children():
-		child.list_update(filter)
+		child.list_update(fltr)
 
 func position_update(last_index, start_index):
 	var idx = start_index
@@ -95,3 +104,11 @@ func move_item_down(item):
 # Close the edit window.
 func close():
 	emit_signal("close")
+
+func change_filter(new, key=null):
+	print(new, " / ", key)
+	if (key == null):
+		filter["Value"] = new
+	else:
+		filter["Keys"][key] = new
+	list_update(filter)

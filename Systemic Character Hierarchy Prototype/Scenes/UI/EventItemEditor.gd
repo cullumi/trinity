@@ -12,8 +12,7 @@ onready var ev_oEIDs = $"Bottom Row/OutEventIDs"
 onready var ev_excl = $"Bottom Row/Exclusive?"
 onready var events = Resources.event_settings
 
-signal filter
-signal unfilter
+signal apply_filter
 
 var fields = []
 var ev_structure = Resources.event_structure
@@ -57,7 +56,7 @@ func update_contents():
 	
 	for idx in range(0, ev_structure.size()-1):
 		fields[idx].text = event[ev_structure[idx]]
-	ev_excl.pressed = event["Exclusive"]
+	ev_excl.pressed = bool(event["Exclusive"])
 
 	for idx in range(1, ev_structure.size()-1):
 		var button = fields[idx]
@@ -77,9 +76,9 @@ func change_event(value, setting, signaler):
 	if (signaler is MenuButton):
 		value = signaler.get_popup().get_item_text(value) # Treat value as a popup index
 	var adjusted_value = Resources.edit_event(event, setting, value)
-	if (not signaler is CheckBox and not signaler is CheckButton):
+	if ((not signaler is CheckBox) and (not signaler is CheckButton)):
 		signaler.text = adjusted_value
-	else:
+	elif (adjusted_value != value):
 		signaler.pressed = adjusted_value
 	update_contents()
 
@@ -97,8 +96,15 @@ func delete():
 func list_update(filter = null):
 	if (filter == null):
 		populate(ev_oEIDs, Resources.find_restricted_choices(event["Type"], "OutEventIDs"))
-	elif (filter == "" or filter in event["EvID"]):
-		print(filter)
-		emit_signal("unfilter")
 	else:
-		emit_signal("filter")
+		var filtered = false
+		for key in event.keys():
+			if (filter["Keys"][key]):
+				if (event[key] is bool):
+					if (filter["Boolean"] == event[key]):
+						filtered = true
+						break
+				elif (filter["Value"] != "" and not filter["Value"] in event[key]):
+					filtered = true
+					break
+		emit_signal("apply_filter", filtered)
