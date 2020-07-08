@@ -2,33 +2,19 @@ extends Node
 
 export (bool) var dynamic_particles
 
+# Pass in a game event
 func trigger_press_event(press_event:GameEvent):
-	var object = press_event.pressee
-	var settings = Resources.find_most_restrictive_settings(object)
-	if (settings != null):
-		
-		# Animation
-		var animation_player: AnimationPlayer = press_event.anim_player
-		var animation: String = settings["Animation"]
-		if (animation_player != null and animation != ""):
-			animation_player.play(animation)
-		
-		# Effects
-		var particle_loc: Spatial = press_event.effect_location
-		var particle_scene: PackedScene = null
-		if (settings["Effects"] != ""):
-			particle_scene = load(Resources.setting_choices["Effects"][settings["Effects"]] + "/" + settings["Effects"])
-		if (particle_loc != null and particle_scene != null):
-			var particles = particle_scene.instance()
-			particle_loc.add_child(particles)
-			particles.translation = Vector3()
-			if (dynamic_particles):
-				particles.process_material.gravity = -9.8 * particles.to_local(particles.global_transform.origin + Vector3.UP)
-			#particles.emitting = true
+	var pressee = press_event.pressee
+#	var settings = Resources.find_first_restrictive_event(pressee)
+	var events = Resources.find_restricted_events(pressee)
+	if (events != null):
+		#perform_event_on_object(events, press_event)
+		for event in events:
+			perform_event_on_object(event, press_event)
 	
 	# Collision Point Effects
 	var point = press_event.press_point
-	var variation = Resources.find_variation_by_texture(object.texture)
+	var variation = Resources.find_variation_by_texture(pressee.texture)
 	var effect_scene = null
 	if (point != null and variation != null):
 		if (variation["Effects"] != ""):
@@ -43,3 +29,42 @@ func trigger_press_event(press_event:GameEvent):
 			if (dynamic_particles):
 				particles.process_material.gravity = -9.8 * particles.to_local(particles.global_transform.origin + Vector3.UP)
 			#particles.emitting = true
+
+# Pass in an event with a press_event or valid interactable.
+func perform_event_on_object(settings, press_event):
+	
+	# Find Anim Player and Effect Location
+	var anim_player : AnimationPlayer
+	var effect_location : Spatial
+	if (press_event is GameEvent):
+		anim_player = press_event.anim_player
+		effect_location = press_event.effect_location
+	elif (press_event is Actor or press_event is Interactable):
+		anim_player = press_event.animation_player
+		effect_location = press_event.particle_location
+	
+	# Animation
+	var animation_player: AnimationPlayer = anim_player
+	var animation: String = settings["Animation"]
+	if (animation_player != null and animation != ""):
+		animation_player.play(animation)
+	
+	# Effects
+	var particle_loc: Spatial = effect_location
+	var particle_scene: PackedScene = null
+	if (settings["Effects"] != ""):
+		particle_scene = load(Resources.setting_choices["Effects"][settings["Effects"]] + "/" + settings["Effects"])
+	if (particle_loc != null and particle_scene != null):
+		var particles = particle_scene.instance()
+		particle_loc.add_child(particles)
+		particles.translation = Vector3()
+		if (dynamic_particles):
+			particles.process_material.gravity = -9.8 * particles.to_local(particles.global_transform.origin + Vector3.UP)
+	
+	# Event Triggers
+	if (settings["OutEventIDs"] != ""):
+		var event_id = settings["OutEventIDs"]
+		var event = Resources.get_event_by_id(event_id)
+		var intbles = Resources.find_restricted_intbles(event)
+		for intble in intbles:
+			perform_event_on_object(event, intble)

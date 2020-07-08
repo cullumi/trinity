@@ -64,24 +64,34 @@ items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null
 [node name="Bottom Row" type="HBoxContainer" parent="."]
 margin_top = 28.0
 margin_right = 1024.0
-margin_bottom = 48.0
+margin_bottom = 52.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="InCharIDs" type="MenuButton" parent="Bottom Row"]
-margin_right = 510.0
-margin_bottom = 20.0
+margin_right = 461.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "0"
 flat = false
 items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="OutEventIDs" type="MenuButton" parent="Bottom Row"]
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 20.0
+margin_left = 465.0
+margin_right = 926.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "0"
 flat = false
 items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="Exclusive\?" type="CheckBox" parent="Bottom Row"]
+margin_left = 930.0
+margin_right = 1023.0
+margin_bottom = 24.0
+size_flags_vertical = 3
+text = "Exclusive?"
+__meta__ = {
+"_edit_use_anchors_": false
+}

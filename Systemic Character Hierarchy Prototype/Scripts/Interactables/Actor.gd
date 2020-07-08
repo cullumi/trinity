@@ -9,7 +9,9 @@ signal pressed
 
 # Functionality
 export (String, "Actor") var type = "Actor"
-export (String, "Smooth", "Dusty") var texture = "Smooth"
+export (String, "Smooth", "Dusty", "Splashy") var texture = "Smooth"
+export (bool) var prepare_back_button_event = true
+onready var back_button = $Avatar/Button
 
 # Identification
 export (String) var char_name = "Bob"
@@ -24,6 +26,12 @@ export var is_controlled = false
 onready var target_ray = get_node("TargetRay")
 onready var avatar = get_node("Avatar")
 onready var collider = $CollisionShape
+
+# Appearance
+onready var body_mesh = $"Avatar/Happy Person"
+onready var smile_center = $"Avatar/Happy Person/Face/Smile"
+onready var smile_left = $"Avatar/Happy Person/Face/Smile/Smile Pivot 1/Smile2"
+onready var smile_right = $"Avatar/Happy Person/Face/Smile/Smile Pivot 2/Smile2"
 
 # Physics
 var rotation_follow_velocity = true
@@ -46,10 +54,29 @@ onready var animation_player:AnimationPlayer = find_node("AnimationPlayer")
 onready var particle_location:Spatial = find_node("ParticleLocation")
 
 func _ready():
+	randomize_appearance()
 	add_to_group("Interactables")
+	prepare_events()
 	for node in avatar.get_children():
 		if node is PhysicsBody:
 			avatar_bodies.append(node)
+
+func prepare_events():
+	if (prepare_back_button_event):
+		if (char_id == ""):
+			char_id = char_name
+		back_button.char_id = "btn-" + char_id
+		Resources.construct_button_trigger_pair(back_button, self)
+
+func randomize_appearance():
+	randomize()
+	var unique_mat = body_mesh.get_surface_material(0).duplicate()
+	var color : Color = Color(rand_range(0, 1), rand_range(0, 1), rand_range(0, 1))
+	unique_mat.albedo_color = color
+	body_mesh.set_surface_material(0, unique_mat)
+	smile_center.set_surface_material(0, unique_mat)
+	smile_left.set_surface_material(0, unique_mat)
+	smile_right.set_surface_material(0, unique_mat)
 
 # Handles Velocity Limits and Cancelers as well as Raycast Positioning.
 func _physics_process(delta):

@@ -7,34 +7,24 @@ export (PackedScene) var item_content
 export (String, "Events", "Variations") var content_source
 
 onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
+onready var title_label = $"VBoxContainer/Title Bar/Title"
 
 signal close
 
 var item_count : int
-
-func _ready():
-	var array = [0, 1, 2, 3]
-	print(array)
-	array.erase(2)
-	array.insert(1, 2)
-	print(array)
-	
-	initialize()
+var has_been_initialized = false
 
 func initialize():
+	title_label.text = content_source
 	clear_item_list()
-	print("Looking for content source...")
-	print(content_source + " / " + String(Resources.settings_arrays.keys()))
 	if (content_source in Resources.settings_arrays.keys()):
-		print("Found Content Source")
 		for index in range(0, Resources.settings_arrays[content_source].size()):
 			add_item(index)
+	has_been_initialized = true
 
-func list_update():
-	print("List Update")
+func list_update(filter = null):
 	for child in item_container.get_children():
-		child.list_update()
-	print(Resources.event_ids)
+		child.list_update(filter)
 
 func position_update(last_index, start_index):
 	var idx = start_index

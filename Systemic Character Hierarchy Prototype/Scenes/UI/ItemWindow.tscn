@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/UI/ItemWindow.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/UI/EventEditorItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UI/OldUI/EventEditorItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/UI/ItemWindowItem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UI/EventItemEditor.tscn" type="PackedScene" id=5]
@@ -13,6 +13,8 @@ font_data = ExtResource( 3 )
 [node name="ItemWindow" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -40,10 +42,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="VBoxContainer/Title Bar"]
-margin_right = 964.0
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Title Bar"]
+show_behind_parent = true
+margin_right = 10.0
 margin_bottom = 37.0
-size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Title" type="Label" parent="VBoxContainer/Title Bar"]
+margin_left = 14.0
+margin_right = 210.0
+margin_bottom = 37.0
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 1 )
 text = "Event Editor"
@@ -53,12 +61,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer/Title Bar"]
+process_priority = 75
+show_behind_parent = true
+margin_left = 214.0
+margin_right = 224.0
+margin_bottom = 37.0
+custom_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Title Bar"]
+margin_left = 228.0
+margin_right = 936.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+
+[node name="Control" type="VBoxContainer" parent="VBoxContainer/Title Bar/HBoxContainer"]
+margin_right = 708.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Filter" type="LineEdit" parent="VBoxContainer/Title Bar/HBoxContainer/Control"]
+margin_right = 708.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_to_text_length = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Title Bar"]
+show_behind_parent = true
+margin_left = 940.0
+margin_right = 950.0
+margin_bottom = 37.0
+custom_constants/separation = 10
+
 [node name="Close" type="Button" parent="VBoxContainer/Title Bar"]
-margin_left = 968.0
-margin_right = 1004.0
+margin_left = 954.0
+margin_right = 990.0
 margin_bottom = 37.0
 size_flags_vertical = 3
 text = "  X  "
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Title Bar"]
+show_behind_parent = true
+margin_left = 994.0
+margin_right = 1004.0
+margin_bottom = 37.0
+custom_constants/separation = 10
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 51.0
@@ -103,6 +155,7 @@ margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "  +  "
+[connection signal="text_changed" from="VBoxContainer/Title Bar/HBoxContainer/Control/Filter" to="." method="list_update"]
 [connection signal="pressed" from="VBoxContainer/Title Bar/Close" to="." method="close"]
 [connection signal="text_entered" from="VBoxContainer/New Item ID" to="." method="add_new_item"]
 [connection signal="pressed" from="VBoxContainer/Option Bar/Add New Item" to="." method="add_new_item"]

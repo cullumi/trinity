@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scenes/UI/EventEditorItem.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/OldUI/EventEditorItem.gd" type="Script" id=1]
 
 [node name="EventEditorItem" type="VBoxContainer"]
 margin_right = 446.0

@@ -4,7 +4,7 @@ extends Node
 
 # Functionality
 export (String, "Intble", "Button") var type = "Intble"
-export (String, "Smooth", "Dusty") var texture = "Smooth"
+export (String, "Smooth", "Dusty", "Splashy") var texture = "Smooth"
 
 # Identification
 export (String) var char_name = "Button"

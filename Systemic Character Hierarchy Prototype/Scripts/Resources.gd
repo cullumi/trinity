@@ -29,7 +29,12 @@ var event_structure : Array = [
 	"Animation",
 	"Effects",
 	"InCharIDs",
-	"OutEventIDs"]
+	"OutEventIDs",
+	"Exclusive"]
+
+var variation_structure : Array = [
+	"Texture",
+	"Effects"]
 
 # Defines any restrictions given an interactable type. (Intended for object specifics, such as animations)
 var type_restrictions : Dictionary = {
@@ -40,26 +45,42 @@ var type_restrictions : Dictionary = {
 # Defines valid choices given setting names. 
 var setting_choices : Dictionary = {
 	"Type":["Intble","Button","Actor"],
-	"Texture":["Smooth","Dusty"],
+	"Texture":["Smooth","Dusty","Splashy"],
 	"Role":["","Button","Mayor"],
-	"Animation":["","Press Button","Pressed"]}
+	"Animation":["","Press Button","Pressed"],
+	"Exclusive":[false, true]}
 
 var event_settings : Array = [
-	{"EvID":"button-1","Type":"Button", "Role":"Button", "Animation":"Press Button", "Effects":"Sphere Poof.tscn", "InCharIDs":"", "OutEventIDs":""},
-	{"EvID":"button","Type":"Button", "Role":"", "Animation":"Press Button", "Effects":"Sphere Poof.tscn", "InCharIDs":"", "OutEventIDs":""},
-	{"EvID":"p-mayor","Type":"Actor", "Role":"Mayor", "Animation":"Pressed", "Effects":"Prism Poof.tscn", "InCharIDs":"", "OutEventIDs":""},
-	{"EvID":"person","Type":"Actor", "Role":"", "Animation":"Pressed", "Effects":"Sphere Poof.tscn", "InCharIDs":"", "OutEventIDs":""}]
+	{"EvID":"button-1","Type":"Button", "Role":"Button", "Animation":"Press Button", "Effects":"Sphere Poof.tscn", "InCharIDs":"", "OutEventIDs":"", "Exclusive":false},
+	{"EvID":"button","Type":"Button", "Role":"", "Animation":"Press Button", "Effects":"Sphere Poof.tscn", "InCharIDs":"", "OutEventIDs":"", "Exclusive":false},
+	{"EvID":"p-mayor","Type":"Actor", "Role":"Mayor", "Animation":"Pressed", "Effects":"Prism Poof.tscn", "InCharIDs":"", "OutEventIDs":"", "Exclusive":true},
+	{"EvID":"person","Type":"Actor", "Role":"", "Animation":"Pressed", "Effects":"Sphere Poof.tscn", "InCharIDs":"", "OutEventIDs":"", "Exclusive":false}]
 
 var variation_settings : Array = [
-	{"Texture":"Dusty", "Effects":"Small Sphere Poof.tscn"}]
+	{"Texture":"Dusty", "Effects":"Small Sphere Poof.tscn"},
+	{"Texture":"Splashy", "Effects":"Small Water Poof.tscn"}]
 
 # Defines Settings Arrays
 var settings_arrays : Dictionary = {
 	"Events":event_settings,
 	"Variations":variation_settings}
 
+var default_event_template : Dictionary = {
+	"EvID":"",
+	"Type":"Intble", 
+	"Role":"", 
+	"Animation":"", 
+	"Effects":"", 
+	"InCharIDs":"", 
+	"OutEventIDs":"", 
+	"Exclusive":false}
+
+var intbles : Array
 var char_id_dict : Dictionary = {}
 var event_ids : Array = []
+
+
+# INITIALIZATION
 
 func _ready():
 	load_particle_events()
@@ -82,8 +103,11 @@ func update_event_choices():
 		event_ids.append(event["EvID"])
 	setting_choices["OutEventIDs"] = event_ids
 
+func update_intbles():
+	intbles = get_tree().get_nodes_in_group("Interactables")
+
 func update_role_choices():
-	var intbles = get_tree().get_nodes_in_group("Interactables")
+	update_intbles()
 	var roles : Array = [""]
 	for intble in intbles:
 		if (not intble.role in roles):
@@ -91,7 +115,7 @@ func update_role_choices():
 	setting_choices["Role"] = roles
 
 func update_char_id_choices():
-	var intbles = get_tree().get_nodes_in_group("Interactables")
+	update_intbles()
 	var char_id_intbles : Array = []
 	for intble in intbles:
 		if (intble.char_id != ""):
@@ -103,9 +127,7 @@ func update_char_id_choices():
 func load_particle_events():
 	var file_dict = Dictionary()
 	var dir : Directory = Directory.new()
-	# warning-ignore:return_value_discarded
 	dir.open("res://Scenes/Particle Systems/Particle Events")
-	# warning-ignore:return_value_discarded
 	dir.list_dir_begin()
 	while true:
 		var file = dir.get_next()
@@ -117,38 +139,68 @@ func load_particle_events():
 	file_dict[""] = ""
 	setting_choices["Effects"] = file_dict
 
-func find_settings_by_char_id(object):
-	if (object.char_id != ""):
-		for rule_set in event_settings:
-			if (rule_set["InCharIDs"] == object.char_id and rule_set["Type"] == object.type):
-				return rule_set
-	return null
 
-func find_settings_by_role(object):
-	for rule_set in event_settings:
-		if (rule_set["Role"] == object.role and rule_set["Type"] == object.type):
-			return rule_set
-	return null
+# EVENT FINDERS
 
-func find_settings_by_type(object):
-	for rule_set in event_settings:
-		if (rule_set["Role"] == "" and rule_set["Type"] == object.type):
-			return rule_set
-	return null
+#func find_events_by_char_id(object):
+#	var rule_sets = []
+#	if (object.char_id != ""):
+#		for rule_set in event_settings:
+#			if (rule_set["InCharIDs"] == object.char_id and rule_set["Type"] == object.type):
+#				rule_sets.append(rule_set)
+#	return rule_sets
+#
+#func find_events_by_role(object):
+#	var rule_sets = []
+#	for rule_set in event_settings:
+#		if (rule_set["Role"] == object.role and rule_set["Type"] == object.type):
+#			rule_sets.append(rule_set)
+#	return rule_sets
+#
+#func find_events_by_type(object):
+#	var rule_sets = []
+#	for rule_set in event_settings:
+#		if (rule_set["Role"] == "" and rule_set["Type"] == object.type):
+#			rule_sets.append(rule_set)
+#	return rule_sets
 
-func find_most_restrictive_settings(object):
-	var settings = find_settings_by_char_id(object)
-	if (settings == null):
-		settings = find_settings_by_role(object)
-	if (settings == null):
-		settings = find_settings_by_type(object)
-	return settings
+func find_restricted_events(object):
+#	var events = find_events_by_char_id(object)
+#	if (events == null or events.size() <= 0):
+#		events = find_events_by_role(object)
+#	if (events == null or events.size() <= 0):
+#		events = find_events_by_type(object)
+	var events = []
+	for event in event_settings:
+		if (object.type == event["Type"]):
+			if (event["Role"] == "" or object.role == event["Role"]):
+				if (event["InCharIDs"] == "" or object.char_id == event["InCharIDs"]):
+					events.append(event)
+					if (event["Exclusive"]):
+						break
+	return events
 
-func find_variation_by_texture(texture):
-	for variation in variation_settings:
-		if (variation["Texture"] == texture):
-			return variation
-	return null
+func find_most_restricted_event(object):
+	var events = find_restricted_events(object)
+	var restricted = []
+	for event in events:
+		if (object.char_id == event["InCharIDs"]):
+			restricted.append(event)
+	if (restricted.size() > 0):
+		events = restricted.duplicate()
+		restricted.clear()
+	for event in events:
+		if (object.role == event["Role"]):
+			restricted.append(event)
+	if (restricted.size() > 0):
+		return restricted.front()
+	elif (events.size() > 0):
+		return events.front()
+	else:
+		return null
+
+
+# EVENT FUNCTIONS
 
 func get_event_by_id(id):
 	for rule_set in event_settings:
@@ -184,7 +236,6 @@ func edit_event_id(new_id, event):
 				continue
 			var ev_id : String = ev["EvID"]
 			if (num == -1 and ev_id == new_id):
-				#print(ev_id + "  /  " + ev_id.right(ev_id.length()-1))
 				if (ev_id.right(ev_id.length()-1).is_valid_integer()):
 					print(new_id.left(new_id.length()-1))
 					id = new_id.left(new_id.length()-1)
@@ -213,22 +264,12 @@ func apply_restrictions_to_event(event):
 			if (not valid_choices.has(event[key])):
 				event[key] = ""
 
-func find_restricted_choices(type, setting):
-	var choices = setting_choices[setting]
-	if (choices is Dictionary):
-		choices = choices.keys()
-	if (setting != "Type" and not type_restrictions.keys().has(type)):
-		return [""]
-	elif (setting == "Type" or not type_restrictions[type].keys().has(setting)):
-		return choices
-	var restricted : Array = []
-	for choice in choices:
-		if (type_restrictions[type][setting].has(choice)):
-			restricted.append(choice)
-	return restricted
+
+# EVENT MOVEMENT FUNCTIONS
 
 func empty_event(id = null):
-	var new_event = {"EvID":id,"Type":"Intble", "Role":"", "Animation":"", "Effects":"", "InCharIDs":"", "OutEventIDs":""} 
+	var new_event = default_event_template.duplicate()
+	new_event["EvID"] = id
 	if (id == null):
 		id = "event_0"
 		edit_event_id(id, new_event)
@@ -256,3 +297,84 @@ func add_event(event=null):
 func remove_event(event):
 	event_ids.erase(event["EvID"])
 	event_settings.erase(event)
+
+
+# VARIATION FINDERS AND FUNCTIONS
+
+func find_variation_by_texture(texture):
+	for variation in variation_settings:
+		if (variation["Texture"] == texture):
+			return variation
+	return null
+
+func find_choices(setting):
+	var choices = setting_choices[setting]
+	if (choices is Dictionary):
+		choices = choices.keys()
+	return choices
+
+func edit_variation(variation, setting, new_value):
+	variation[setting] = new_value
+	return new_value
+
+
+# VARIATION MOVEMENT FUNCTIONS
+
+func new_variation():
+	var new_variation = {"Texture":"Smooth", "Effects":""} 
+	return new_variation
+
+func move_variation(new_index:int, variation):
+	variation_settings.erase(variation)
+	variation_settings.insert(new_index, variation)
+
+func add_variation(variation=null):
+	if (variation == null):
+		variation = new_variation()
+	variation_settings.append(variation)
+
+func remove_variation(variation):
+	variation_settings.erase(variation)
+
+
+# CHOICE AND INTBLE FINDERS
+
+func find_restricted_choices(type, setting):
+	var choices = setting_choices[setting]
+	if (choices is Dictionary):
+		choices = choices.keys()
+	if (setting != "Type" and not type_restrictions.keys().has(type)):
+		return [""]
+	elif (setting == "Type" or not type_restrictions[type].keys().has(setting)):
+		return choices
+	var restricted : Array = []
+	for choice in choices:
+		if (type_restrictions[type][setting].has(choice)):
+			restricted.append(choice)
+	return restricted
+
+func find_restricted_intbles(event):
+	var restricted_intbles = []
+	for intble in intbles:
+		if (intble.type == event["Type"]):
+			if (event["Role"] == "" or intble.role == event["Role"]):
+				if (event["InCharIDs"] == "" or intble.char_id == event["InCharIDs"]):
+					restricted_intbles.append(intble)
+	return restricted_intbles
+
+
+# TEMPLATE CONSTRUCTORS
+
+func construct_button_trigger_pair(triggerer, triggeree):
+	var event_1 = new_event(triggerer.char_id)
+	var event_2 = new_event(triggeree.char_id)
+	event_1.Type = triggerer.type
+	event_2.Type = triggeree.type
+	event_1.InCharIDs = triggerer.char_id
+	event_2.InCharIDs = triggeree.char_id
+	event_1.OutEventIDs = event_2.EvID
+	add_event(event_1)
+	add_event(event_2)
+	move_event(0, event_1)
+	move_event(1, event_2)
+	

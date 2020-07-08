@@ -14,7 +14,7 @@ func _ready():
 	set_rand_target_actor()
 	camera.connect("target_found", self, "update_target_hud")
 	camera.connect("target_lost", self, "update_target_hud")
-	hud.initialize()
+	#hud.initialize()
 	get_tree().call_group("Interactables", "connect_pressed", event_handler, "trigger_press_event")
 
 func _input(event):

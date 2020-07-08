@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Interactables/Actor.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Interactables/Button.tscn" type="PackedScene" id=2]
@@ -97,18 +97,20 @@ tracks/2/keys = {
 [sub_resource type="CapsuleMesh" id=10]
 mid_height = 2.25
 
-[sub_resource type="SphereMesh" id=11]
+[sub_resource type="SpatialMaterial" id=11]
+
+[sub_resource type="SphereMesh" id=12]
 radius = 0.125
 height = 0.25
 
-[sub_resource type="SphereMesh" id=12]
+[sub_resource type="SphereMesh" id=13]
 radius = 0.063
 height = 0.063
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=14]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="CapsuleMesh" id=14]
+[sub_resource type="CapsuleMesh" id=15]
 radius = 0.063
 mid_height = 0.25
 
@@ -138,34 +140,34 @@ anims/Pressed = SubResource( 9 )
 transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, 0, 2.25, 0 )
 layers = 2147483649
 mesh = SubResource( 10 )
-material/0 = null
+material/0 = SubResource( 11 )
 
 [node name="Face" type="Spatial" parent="Avatar/Happy Person"]
 transform = Transform( 1, 1.62921e-07, 1.62921e-07, -1.62921e-07, 1, 0, -1.62921e-07, -2.65431e-14, 1, 0, 0, 0 )
 
 [node name="Eye" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, 0.701924, 0.712251, 0, -0.712251, 0.701924, 0.889137, 0.418345, -1.24562 )
-mesh = SubResource( 11 )
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.889137, 0.418345, -1.24562 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Pupil" type="MeshInstance" parent="Avatar/Happy Person/Face/Eye"]
 transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.07, 0.07, 0 )
-mesh = SubResource( 12 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 14 )
 
 [node name="Eye2" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, -0.701925, -0.712252, 0, 0.712252, -0.701925, 0.888744, -0.418, -1.246 )
-mesh = SubResource( 11 )
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.888744, -0.418, -1.246 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Pupil2" type="MeshInstance" parent="Avatar/Happy Person/Face/Eye2"]
 transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.07, -0.07, 0 )
-mesh = SubResource( 12 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 14 )
 
 [node name="Smile" type="MeshInstance" parent="Avatar/Happy Person/Face"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.987152, 9.2962e-08, -0.570597 )
-mesh = SubResource( 14 )
+mesh = SubResource( 15 )
 material/0 = null
 
 [node name="Smile Pivot 1" type="Spatial" parent="Avatar/Happy Person/Face/Smile"]
@@ -173,7 +175,7 @@ transform = Transform( 1, 0, 0, 0, 0.667534, 0.74458, 0, -0.74458, 0.667534, 0, 
 
 [node name="Smile2" type="MeshInstance" parent="Avatar/Happy Person/Face/Smile/Smile Pivot 1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125 )
-mesh = SubResource( 14 )
+mesh = SubResource( 15 )
 material/0 = null
 
 [node name="Smile Pivot 2" type="Spatial" parent="Avatar/Happy Person/Face/Smile"]
@@ -181,7 +183,7 @@ transform = Transform( 1, 0, 0, 0, -0.744579, 0.667534, 0, -0.667534, -0.744579,
 
 [node name="Smile2" type="MeshInstance" parent="Avatar/Happy Person/Face/Smile/Smile Pivot 2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125 )
-mesh = SubResource( 14 )
+mesh = SubResource( 15 )
 material/0 = null
 
 [node name="Button" parent="Avatar" instance=ExtResource( 2 )]

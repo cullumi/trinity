@@ -1,4 +1,4 @@
-class_name EventEditor
+#class_name EventEditor
 
 extends Control
 
@@ -24,7 +24,7 @@ func update_item_list(res = null):
 func add_item(index, event):
 	var last_index = events.size()-1
 	
-	var item : EventEditorItem = event_editor_item.instance()
+	var item #: EventEditorItem = event_editor_item.instance()
 	item_container.add_child(item)
 	item.update_position(last_index, index)
 	

@@ -19,11 +19,13 @@ onready var op_buttons = op_container.get_children()
 
 onready var edit_panel = get_node("Edit")
 #onready var edit_rules = get_node("Edit/Rules")
-onready var event_editor : EventEditor = get_node("Edit/EventEditor")
+onready var event_editor : ItemWindow = get_node("Edit/EventEditor")
+onready var variation_editor : ItemWindow = get_node("Edit/VariationEditor")
 
 signal swap_roles
 signal swap_ranks
 signal change_events
+signal change_variations
 
 var player_actor
 var target_actor
@@ -31,14 +33,16 @@ var last_ray_event : RayCastEvent
 
 func _ready():
 	edit_panel.visible = false
+	event_editor.visible = false
+	variation_editor.visible = false
 	target_panel.visible = false
 	print("HUD Ready")
 	for button in op_buttons:
 		button.disabled = true
 	op_buttons[0].grab_focus()
 
-func initialize():
-	event_editor.update_item_list(resources)
+#func initialize():
+	#event_editor.update_item_list(resources)
 
 func set_player_actor(actor):
 	player_actor = actor
@@ -103,10 +107,26 @@ func swap_ranks():
 func change_events():
 	emit_signal("change_events")
 	edit_panel.visible = !edit_panel.visible
+	event_editor.visible = !event_editor.visible
+	if (not event_editor.has_been_initialized):
+		event_editor.initialize()
 	if (edit_panel.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	event_editor.update_item_list(resources)
 	op_buttons[3].grab_focus()
 	update_hud(target_actor)
+
+func change_variations():
+	emit_signal("change_variations")
+	edit_panel.visible = !edit_panel.visible
+	variation_editor.visible = !variation_editor.visible
+	if (not variation_editor.has_been_initialized):
+		variation_editor.initialize()
+	if (edit_panel.visible):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	op_buttons[4].grab_focus()
+	update_hud(target_actor)
+	

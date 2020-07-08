@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/UI/EventEditor.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/UI/EventEditorItem.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/UI/OldUI/EventEditorItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UI/OldUI/EventEditor.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
-font_data = ExtResource( 3 )
+font_data = ExtResource( 1 )
 
 [node name="EventEditor" type="Control"]
 anchor_right = 1.0
@@ -15,7 +15,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

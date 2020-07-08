@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/UI/EventEditor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI/ItemWindow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UI/VariationItemEditor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/OldUI/EventEditor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Crosshair.png" type="Texture" id=5]
 
 [node name="HUD" type="Control"]
@@ -187,22 +189,22 @@ __meta__ = {
 }
 
 [node name="OpContainer" type="VBoxContainer" parent="Target/Options"]
-margin_right = 117.0
-margin_bottom = 115.0
+margin_right = 105.0
+margin_bottom = 116.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Press" type="Button" parent="Target/Options/OpContainer"]
-margin_right = 117.0
+margin_right = 105.0
 margin_bottom = 20.0
 focus_next = NodePath("../Swap Roles")
-focus_previous = NodePath("../Change Events")
+focus_previous = NodePath("../Variations")
 action_mode = 0
 text = "Press"
 
 [node name="Swap Roles" type="Button" parent="Target/Options/OpContainer"]
 margin_top = 24.0
-margin_right = 117.0
+margin_right = 105.0
 margin_bottom = 44.0
 focus_next = NodePath("../Swap Ranks")
 focus_previous = NodePath("../Press")
@@ -210,19 +212,27 @@ text = "Swap Roles"
 
 [node name="Swap Ranks" type="Button" parent="Target/Options/OpContainer"]
 margin_top = 48.0
-margin_right = 117.0
+margin_right = 105.0
 margin_bottom = 68.0
-focus_next = NodePath("../Change Events")
+focus_next = NodePath("../Events")
 focus_previous = NodePath("../Swap Roles")
 text = "Swap Ranks"
 
-[node name="Change Events" type="Button" parent="Target/Options/OpContainer"]
+[node name="Events" type="Button" parent="Target/Options/OpContainer"]
 margin_top = 72.0
-margin_right = 117.0
+margin_right = 105.0
 margin_bottom = 92.0
-focus_next = NodePath("../Press")
+focus_next = NodePath("../Variations")
 focus_previous = NodePath("../Swap Ranks")
-text = "Change Events"
+text = "Events"
+
+[node name="Variations" type="Button" parent="Target/Options/OpContainer"]
+margin_top = 96.0
+margin_right = 105.0
+margin_bottom = 116.0
+focus_next = NodePath("../Press")
+focus_previous = NodePath("../Events")
+text = "Variations"
 
 [node name="Rank" type="Label" parent="Target"]
 margin_left = 20.0
@@ -259,20 +269,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VariationEditor" type="Control" parent="Edit"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="OldEventEditor" parent="Edit" instance=ExtResource( 4 )]
+visible = false
 
-[node name="EventEditor" parent="Edit" instance=ExtResource( 4 )]
+[node name="EventEditor" parent="Edit" instance=ExtResource( 2 )]
+
+[node name="VariationEditor" parent="Edit" instance=ExtResource( 2 )]
+item_content = ExtResource( 3 )
+content_source = "Variations"
 [connection signal="pressed" from="Target/Options/OpContainer/Press" to="." method="press"]
 [connection signal="pressed" from="Target/Options/OpContainer/Swap Roles" to="." method="swap_roles"]
 [connection signal="pressed" from="Target/Options/OpContainer/Swap Ranks" to="." method="swap_ranks"]
-[connection signal="pressed" from="Target/Options/OpContainer/Change Events" to="." method="change_events"]
+[connection signal="pressed" from="Target/Options/OpContainer/Events" to="." method="change_events"]
+[connection signal="pressed" from="Target/Options/OpContainer/Variations" to="." method="change_variations"]
 [connection signal="close" from="Edit/EventEditor" to="." method="change_events"]
+[connection signal="close" from="Edit/VariationEditor" to="." method="change_variations"]
