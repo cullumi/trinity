@@ -93,18 +93,51 @@ func move_down():
 func delete():
 	Resources.remove_event(event)
 
-func list_update(filter = null):
-	if (filter == null):
-		populate(ev_oEIDs, Resources.find_restricted_choices(event["Type"], "OutEventIDs"))
-	else:
-		var filtered = false
-		for key in event.keys():
-			if (filter["Keys"][key]):
-				if (event[key] is bool):
-					if (filter["Boolean"] == event[key]):
-						filtered = true
-						break
-				elif (filter["Value"] != "" and not filter["Value"] in event[key]):
-					filtered = true
+func list_update(filters = null):
+	if (filters != null):
+		var final_filtered
+		var fltr_results = []
+		var fltr_andor = []
+		for filter in filters:
+			if (filter.enabled):
+				var key_filtered = key_filtered(event, filter)
+				if (key_filtered and filter.include_derivatives and event["OutEventIDs"] != ""):
+					var ev = Resources.get_event_by_id(event["OutEventIDs"])
+					key_filtered = key_filtered(ev, filter)
+				if (not filter.is_or_filter and key_filtered):
+					final_filtered = true
 					break
-		emit_signal("apply_filter", filtered)
+				else:
+					fltr_results.append(!key_filtered)
+		if (final_filtered == null):
+			final_filtered = !exists(fltr_results)
+		emit_signal("apply_filter", final_filtered)
+	populate(ev_oEIDs, Resources.find_restricted_choices(event["Type"], "OutEventIDs"))
+
+func key_filtered(event, filter:Filter):
+	for key in filter.filtered_keys:
+		if (filter.filtered_keys[key]):
+			if (should_be_filtered_out(event, key, filter)):
+				return true
+	return false
+
+func should_be_filtered_out(event, key, filter):
+	var invalid_bool = (event[key] is bool and filter.boolean_value != event[key])
+	var invalid_string = event[key] is String
+	var invalid_type = false
+	if (filter.inclusive):
+		invalid_string = (invalid_string and not filter.string_value in event[key])
+	else:
+		invalid_string = (invalid_string and not filter.string_value == event[key])
+	if (filter.type_value != "" and filter.type_value != event["Type"]):
+		invalid_type = true
+	if (invalid_bool or invalid_string or invalid_type):
+			return true
+	return false
+
+# Does there exist a true case?
+func exists(arr : Array):
+	for elem in arr:
+		if (elem == true):
+			return true
+	return false

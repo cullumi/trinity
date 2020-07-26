@@ -7,10 +7,9 @@
 [ext_resource path="res://Assets/Crosshair.png" type="Texture" id=5]
 
 [node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 0.5
-margin_top = -1.0
-margin_right = 1024.5
-margin_bottom = 599.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
@@ -273,6 +272,8 @@ __meta__ = {
 visible = false
 
 [node name="EventEditor" parent="Edit" instance=ExtResource( 2 )]
+use_filters = true
+use_advanced_filters = true
 
 [node name="VariationEditor" parent="Edit" instance=ExtResource( 2 )]
 item_content = ExtResource( 3 )

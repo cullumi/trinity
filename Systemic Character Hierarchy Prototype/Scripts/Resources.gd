@@ -382,3 +382,25 @@ func construct_button_trigger_pair(triggerer, triggeree):
 	move_event(0, event_1)
 	move_event(1, event_2)
 	
+
+# FILTER UTILITIES
+
+func construct_event_filters_from_target(intble):
+	var filters : Array = []
+	if (intble.char_id != ""):
+		filters.append(Filter.new(intble.char_id, false, ["InCharIDs"], true, true, false))
+	if (intble.role != ""):
+		filters.append(Filter.new(intble.role, false, ["Role"], true, false, false))
+	filters.append(Filter.new("", false, ["Role", "InCharIDs", "Exclusive"], true, false, false, intble.type))
+	return filters
+
+func construct_variation_filters_from_target(intble):
+	var filters : Array = []
+	filters.append(Filter.new(intble.texture, false, ["Texture"], true, true, false))
+	return filters
+
+# GENERAL UTILITIES
+
+func append_array(array1 : Array, array2 : Array):
+	for elem in array2:
+		array1.append(elem)

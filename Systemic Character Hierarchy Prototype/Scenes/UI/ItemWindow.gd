@@ -5,10 +5,12 @@ extends Control
 export (PackedScene) var item_structure
 export (PackedScene) var item_content
 export (String, "Events", "Variations") var content_source
+export (bool) var use_filters = false
+export (bool) var use_advanced_filters = false
 
 onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
 onready var title_label = $"VBoxContainer/Title Bar/Title"
-onready var filter_selector = $"VBoxContainer/Title Bar/HBoxContainer/Filters"
+onready var filter_selector = $"VBoxContainer/Title Bar/FilterSelector"
 
 signal close
 
@@ -16,24 +18,30 @@ var item_count : int
 var has_been_initialized = false
 
 var last_filter_value
-var filter : Dictionary = {"Value":"", "Boolean":false, "Keys":{}}
+var filters : Array
+#var filter : Dictionary = {"Value":"", "Boolean":false, "Keys":{}}
 
 func initialize():
 	title_label.text = content_source
 	clear_item_list()
+	
 	if (content_source in Resources.settings_arrays.keys()):
 		for index in range(0, Resources.settings_arrays[content_source].size()):
 			add_item(index)
-	if (content_source in Resources.structure_arrays.keys()):
-		for key in Resources.structure_arrays[content_source]:
-			print(key)
-			filter["Keys"][key] = false
-			filter_selector.add_item(key)
+		if (use_filters):
+			if (not use_advanced_filters):
+				filter_selector.initialize(false)
+			for key in Resources.structure_arrays[content_source]:
+				filter_selector.add_key_item(key)
+			filters = [Filter.new("", false, [], false)]
+			filter_selector.display(filters[0])
+	filter_selector.visible = use_filters
+	
 	has_been_initialized = true
 
-func list_update(fltr=null):
+func list_update():
 	for child in item_container.get_children():
-		child.list_update(fltr)
+		child.list_update(filters)
 
 func position_update(last_index, start_index):
 	var idx = start_index
@@ -105,10 +113,40 @@ func move_item_down(item):
 func close():
 	emit_signal("close")
 
-func change_filter(new, key=null):
-	print(new, " / ", key)
-	if (key == null):
-		filter["Value"] = new
-	else:
-		filter["Keys"][key] = new
-	list_update(filter)
+func add_new_filter(str_val="", bool_val=false, fltr_keys=[], is_or=false):
+	var filter : Filter = Filter.new("", false, Resources.structure_arrays[content_source], false)
+#	if (content_source in Resources.structure_arrays.keys()):
+	filters.append(filter)
+	return filters.find(filter)
+
+func filter_changed():
+	list_update()
+
+func change_display(idx):
+	while (idx >= filters.size()):
+		idx -= 1
+	filter_selector.display(filters[idx], idx)
+
+func remove_filter(filter, idx):
+	filters.erase(filter)
+	filter.free()
+	if (filters.size() <= 0):
+		filters.append(Filter.new("", false, [], false))
+	if (idx >= filters.size()):
+		idx = filters.size()-1
+	filter_selector.display(filters[idx], idx)
+
+func add_filter(idx):
+	filters.insert(idx, Filter.new("", false, [], false))
+	filter_selector.display(filters[idx], idx)
+
+func clear_filters(safe_clear=true):
+	for filter in filters:
+		filter.free()
+	filters.clear()
+	if (safe_clear and filters.size() <= 0):
+		filters.append(Filter.new("", false, [], false))
+		filter_selector.display(filters[0], 0)
+
+func display_filter(idx=0):
+	filter_selector.display(filters[0], idx)

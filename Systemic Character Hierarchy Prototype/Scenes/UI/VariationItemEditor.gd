@@ -67,7 +67,6 @@ func change_variation(new_value, setting, signaler):
 func move_up():
 	index -= 1
 	Resources.move_variation(index, variation)
-	
 
 func move_down():
 	index += 1
@@ -76,14 +75,16 @@ func move_down():
 func delete():
 	Resources.remove_variation(variation)
 
-func list_update(filter=null):
-	if (filter != null):
-		var filtered = false
-		if (filter["Value"] != ""):
-			for key in variation.keys():
-				if (filter["Keys"][key]):
-					if (not (filter["Value"] in variation[key])):
-						filtered = true
-						break
-		emit_signal("apply_filter", filtered)
+func list_update(filters=null):
+	if (filters != null):
+		var final_filtered = false
+		for filter in filters:
+			if (filter.enabled):
+				final_filtered = key_filtered(variation, filter)
+		emit_signal("apply_filter", final_filtered)
 			
+func key_filtered(variation, filter):
+	for key in filter.filtered_keys:
+		if (not (filter.string_value in variation[key])):
+			return true
+	return false

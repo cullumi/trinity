@@ -53,8 +53,8 @@ func delete():
 	content.delete()
 	emit_signal("delete", self)
 
-func list_update(filter = null):
-	content.list_update(filter)
+func list_update(filters = null):
+	content.list_update(filters)
 
 func apply_filter(filtered : bool):
 	if (filtered):

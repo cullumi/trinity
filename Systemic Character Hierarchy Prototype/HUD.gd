@@ -110,7 +110,12 @@ func change_events():
 	event_editor.visible = !event_editor.visible
 	if (not event_editor.has_been_initialized):
 		event_editor.initialize()
+	
 	if (edit_panel.visible):
+		event_editor.clear_filters(false)
+		var new_filters : Array = Resources.construct_event_filters_from_target(target_actor)
+		Resources.append_array(event_editor.filters, new_filters)
+		event_editor.display_filter(0)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -124,6 +129,10 @@ func change_variations():
 	if (not variation_editor.has_been_initialized):
 		variation_editor.initialize()
 	if (edit_panel.visible):
+		variation_editor.clear_filters(false)
+		var new_filters : Array = Resources.construct_variation_filters_from_target(target_actor)
+		Resources.append_array(variation_editor.filters, new_filters)
+		variation_editor.display_filter(0)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/UI/ItemWindowItem.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UI/EventItemEditor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/UI/MenuButton.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/UI/FilterSelector.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -37,7 +37,7 @@ __meta__ = {
 }
 
 [node name="Title Bar" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1004.0
+margin_right = 1900.0
 margin_bottom = 37.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,55 +70,34 @@ margin_right = 224.0
 margin_bottom = 37.0
 custom_constants/separation = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Title Bar"]
-margin_left = 228.0
-margin_right = 936.0
-margin_bottom = 37.0
-size_flags_horizontal = 3
-
-[node name="Filter Text" type="LineEdit" parent="VBoxContainer/Title Bar/HBoxContainer"]
-margin_right = 652.0
-margin_bottom = 37.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand_to_text_length = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Filters" type="MenuButton" parent="VBoxContainer/Title Bar/HBoxContainer"]
-margin_left = 656.0
-margin_right = 708.0
-margin_bottom = 37.0
-text = "Filters"
-items = [ "EvID", null, 1, true, false, 0, 0, null, "", false, "Type", null, 1, false, false, 1, 0, null, "", false, "Role", null, 1, false, false, 2, 0, null, "", false, "Animation", null, 1, false, false, 3, 0, null, "", false, "Effects", null, 1, false, false, 4, 0, null, "", false, "InCharIDs", null, 1, false, false, 5, 0, null, "", false, "OutEventIDs", null, 1, false, false, 6, 0, null, "", false, "Exclusive", null, 1, false, false, 7, 0, null, "", false ]
-script = ExtResource( 6 )
+[node name="FilterSelector" parent="VBoxContainer/Title Bar" instance=ExtResource( 6 )]
+visible = false
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/Title Bar"]
 show_behind_parent = true
-margin_left = 940.0
-margin_right = 950.0
+margin_left = 228.0
+margin_right = 238.0
 margin_bottom = 37.0
 custom_constants/separation = 10
 
 [node name="Close" type="Button" parent="VBoxContainer/Title Bar"]
-margin_left = 954.0
-margin_right = 990.0
+margin_left = 242.0
+margin_right = 278.0
 margin_bottom = 37.0
 size_flags_vertical = 3
 text = "  X  "
 
 [node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Title Bar"]
 show_behind_parent = true
-margin_left = 994.0
-margin_right = 1004.0
+margin_left = 282.0
+margin_right = 292.0
 margin_bottom = 37.0
 custom_constants/separation = 10
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 51.0
-margin_right = 1004.0
-margin_bottom = 508.0
+margin_right = 1900.0
+margin_bottom = 988.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
@@ -127,39 +106,37 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
-margin_right = 1004.0
+margin_right = 1900.0
 margin_bottom = 102.0
 size_flags_horizontal = 3
 custom_constants/separation = 10
 
 [node name="EventEditorItem" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
-margin_right = 1004.0
+margin_right = 1900.0
 margin_bottom = 48.0
 
 [node name="ItemWindowItem" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
 margin_top = 58.0
-margin_right = 1004.0
+margin_right = 1900.0
 margin_bottom = 102.0
 
 [node name="New Item ID" type="LineEdit" parent="VBoxContainer"]
-margin_top = 522.0
-margin_right = 1004.0
-margin_bottom = 546.0
+margin_top = 1002.0
+margin_right = 1900.0
+margin_bottom = 1026.0
 
 [node name="Option Bar" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 560.0
-margin_right = 1004.0
-margin_bottom = 580.0
+margin_top = 1040.0
+margin_right = 1900.0
+margin_bottom = 1060.0
 
 [node name="Add New Item" type="Button" parent="VBoxContainer/Option Bar"]
-margin_right = 1004.0
+margin_right = 1900.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "  +  "
-[connection signal="text_changed" from="VBoxContainer/Title Bar/HBoxContainer/Filter Text" to="." method="change_filter"]
-[connection signal="item_selected" from="VBoxContainer/Title Bar/HBoxContainer/Filters" to="." method="change_filter"]
 [connection signal="pressed" from="VBoxContainer/Title Bar/Close" to="." method="close"]
 [connection signal="text_entered" from="VBoxContainer/New Item ID" to="." method="add_new_item"]
 [connection signal="pressed" from="VBoxContainer/Option Bar/Add New Item" to="." method="add_new_item"]
