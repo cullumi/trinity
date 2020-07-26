@@ -1076,6 +1076,7 @@ material/0 = null
 
 [node name="Citizen" parent="Actors" instance=ExtResource( 3 )]
 transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -16.6587, -0.0140724, -15.9524 )
+char_id = "5"
 ranks = {
 "Crime": 2,
 "Law": 2,
@@ -1084,6 +1085,7 @@ ranks = {
 
 [node name="Police Recruit" parent="Actors" instance=ExtResource( 3 )]
 transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17.1149, 0, 15.0545 )
+char_id = "4"
 role = "Police Recruit"
 ranks = {
 "Crime": 0,
@@ -1093,6 +1095,7 @@ ranks = {
 
 [node name="Volunteer" parent="Actors" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1178, 0, 12.9921 )
+char_id = "3"
 role = "Volunteer"
 ranks = {
 "Crime": 0,
@@ -1102,6 +1105,7 @@ ranks = {
 
 [node name="Petty Criminal" parent="Actors" instance=ExtResource( 3 )]
 transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -1.48821, 0, -20.1768 )
+char_id = "2"
 role = "Petty Criminal"
 ranks = {
 "Crime": 4,
@@ -1111,6 +1115,7 @@ ranks = {
 
 [node name="Police Chief" parent="Actors" instance=ExtResource( 3 )]
 transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 17.8893, 0, -8.5515 )
+char_id = "1"
 role = "Police Chief"
 ranks = {
 "Crime": 0,

@@ -19,7 +19,9 @@ var has_been_initialized = false
 
 var last_filter_value
 var filters : Array
-#var filter : Dictionary = {"Value":"", "Boolean":false, "Keys":{}}
+
+
+# INITIALIZATION AND UPDATES
 
 func initialize():
 	title_label.text = content_source
@@ -34,8 +36,10 @@ func initialize():
 			for key in Resources.structure_arrays[content_source]:
 				filter_selector.add_key_item(key)
 			filters = [Filter.new("", false, [], false)]
-			filter_selector.display(filters[0])
-	filter_selector.visible = use_filters
+			filter_selector.display(filters[0], 0)
+		filter_selector.visible = use_filters
+	else:
+		filter_selector.visible = false
 	
 	has_been_initialized = true
 
@@ -48,6 +52,9 @@ func position_update(last_index, start_index):
 	for child in item_container.get_children():
 		child.update_position(last_index, idx)
 		idx += 1
+
+
+# ITEM ADDITION AND CLEARING
 
 # Clears all items.
 func clear_item_list():
@@ -75,6 +82,9 @@ func add_item(index, id = null):
 		list_update()
 	
 	return item
+
+
+# RUNTIME SIGNAL COMMANDS
 
 # Used to add a new item.
 func add_new_item(id = null):
@@ -113,6 +123,9 @@ func move_item_down(item):
 func close():
 	emit_signal("close")
 
+
+# FILTER FUNCTIONS
+
 func add_new_filter(str_val="", bool_val=false, fltr_keys=[], is_or=false):
 	var filter : Filter = Filter.new("", false, Resources.structure_arrays[content_source], false)
 #	if (content_source in Resources.structure_arrays.keys()):
@@ -149,4 +162,4 @@ func clear_filters(safe_clear=true):
 		filter_selector.display(filters[0], 0)
 
 func display_filter(idx=0):
-	filter_selector.display(filters[0], idx)
+	filter_selector.display(filters[idx], idx)

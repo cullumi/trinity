@@ -112,6 +112,7 @@ func change_events():
 		event_editor.initialize()
 	
 	if (edit_panel.visible):
+		# Reset the event editor filters -- TODO: Move to new ItemWindow method
 		event_editor.clear_filters(false)
 		var new_filters : Array = Resources.construct_event_filters_from_target(target_actor)
 		Resources.append_array(event_editor.filters, new_filters)
@@ -129,10 +130,12 @@ func change_variations():
 	if (not variation_editor.has_been_initialized):
 		variation_editor.initialize()
 	if (edit_panel.visible):
+		# Reset the variation editor filters -- TODO: Move to new ItemWindow method
 		variation_editor.clear_filters(false)
 		var new_filters : Array = Resources.construct_variation_filters_from_target(target_actor)
 		Resources.append_array(variation_editor.filters, new_filters)
 		variation_editor.display_filter(0)
+		
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -24,6 +24,7 @@ func add_item(label):
 	else:
 		popup.add_item(label)
 
+# Sets popups corresponding to the keys in the given array as checked in the menu popup.
 func display(keys:Array):
 	if (checkable_items):
 		for idx in range(0, popup.get_item_count()):

@@ -137,6 +137,10 @@ margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "  +  "
+[connection signal="add_filter" from="VBoxContainer/Title Bar/FilterSelector" to="." method="add_filter"]
+[connection signal="change_display" from="VBoxContainer/Title Bar/FilterSelector" to="." method="change_display"]
+[connection signal="filter_changed" from="VBoxContainer/Title Bar/FilterSelector" to="." method="filter_changed"]
+[connection signal="remove_filter" from="VBoxContainer/Title Bar/FilterSelector" to="." method="remove_filter"]
 [connection signal="pressed" from="VBoxContainer/Title Bar/Close" to="." method="close"]
 [connection signal="text_entered" from="VBoxContainer/New Item ID" to="." method="add_new_item"]
 [connection signal="pressed" from="VBoxContainer/Option Bar/Add New Item" to="." method="add_new_item"]

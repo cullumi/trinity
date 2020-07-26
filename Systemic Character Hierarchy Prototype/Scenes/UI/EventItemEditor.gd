@@ -1,6 +1,6 @@
 class_name EventItemEditor
 
-extends Control
+extends ItemEditor
 
 onready var ev_id = $"Top Row/EvID"
 onready var ev_type = $"Top Row/Type"
@@ -26,12 +26,14 @@ func _ready():
 
 func initialize():
 	if (index != null):
+		# Find the event tied to this event editor
 		if (index < events.size() and index >= 0):
 			event = events[index]
 		else:
 			event = Resources.new_event(id)
 			Resources.add_event(event)
 		
+		# Initialization of individual fields and buttons
 		fields.append(ev_id)
 		recursive_append_menu_buttons(self, fields)
 		ev_id.connect("text_entered", self, "change_event", ["EvID",ev_id])
@@ -45,11 +47,12 @@ func initialize():
 		update_contents()
 		has_been_initialized = true
 
-func recursive_append_menu_buttons(node:Node, array:Array):
-	for child in node.get_children():
-		if (child is MenuButton):
-			array.append(child)
-		recursive_append_menu_buttons(child, array)
+## For keeping track of menu buttons in the 'fields' array
+#func recursive_append_menu_buttons(node:Node, array:Array):
+#	for child in node.get_children():
+#		if (child is MenuButton):
+#			array.append(child)
+#		recursive_append_menu_buttons(child, array)
 
 func update_contents():
 	var type = event["Type"]
@@ -63,6 +66,7 @@ func update_contents():
 		var setting = ev_structure[idx]
 		populate(button, Resources.find_restricted_choices(type, setting))
 
+# For populating menu button popups
 func populate(button : MenuButton, choices : Array):
 	var popup = button.get_popup()
 	popup.clear()
@@ -70,6 +74,8 @@ func populate(button : MenuButton, choices : Array):
 	for option in choices:
 		popup.add_item(option)
 
+# Sends values to Resources for any needed adjustments when editing the event.
+# Updates checkbox and checkbutton values to with those adjustments.
 func change_event(value, setting, signaler):
 	if (value == null):
 		value = signaler.text
@@ -93,6 +99,7 @@ func move_down():
 func delete():
 	Resources.remove_event(event)
 
+# Applies filters to this item editor
 func list_update(filters = null):
 	if (filters != null):
 		var final_filtered
@@ -104,6 +111,7 @@ func list_update(filters = null):
 				if (key_filtered and filter.include_derivatives and event["OutEventIDs"] != ""):
 					var ev = Resources.get_event_by_id(event["OutEventIDs"])
 					key_filtered = key_filtered(ev, filter)
+				# Allows for and/or functionality
 				if (not filter.is_or_filter and key_filtered):
 					final_filtered = true
 					break
@@ -114,6 +122,7 @@ func list_update(filters = null):
 		emit_signal("apply_filter", final_filtered)
 	populate(ev_oEIDs, Resources.find_restricted_choices(event["Type"], "OutEventIDs"))
 
+# Determines whether this item editor should be filtered out based on the given filter.
 func key_filtered(event, filter:Filter):
 	for key in filter.filtered_keys:
 		if (filter.filtered_keys[key]):
@@ -121,6 +130,8 @@ func key_filtered(event, filter:Filter):
 				return true
 	return false
 
+# The bool and string comparison step of key filtering.
+# Includes 'inclusive' and 'type_value' implemenations
 func should_be_filtered_out(event, key, filter):
 	var invalid_bool = (event[key] is bool and filter.boolean_value != event[key])
 	var invalid_string = event[key] is String
@@ -132,7 +143,7 @@ func should_be_filtered_out(event, key, filter):
 	if (filter.type_value != "" and filter.type_value != event["Type"]):
 		invalid_type = true
 	if (invalid_bool or invalid_string or invalid_type):
-			return true
+		return true
 	return false
 
 # Does there exist a true case?

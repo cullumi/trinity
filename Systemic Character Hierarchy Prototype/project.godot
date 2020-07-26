@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Interactables/Actor.gd"
 }, {
-"base": "Control",
+"base": "ItemEditor",
 "class": "EventItemEditor",
 "language": "GDScript",
 "path": "res://Scenes/UI/EventItemEditor.gd"
@@ -40,6 +40,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/Interactables/Interactable.gd"
 }, {
 "base": "Control",
+"class": "ItemEditor",
+"language": "GDScript",
+"path": "res://Scenes/UI/ItemEditor.gd"
+}, {
+"base": "Control",
 "class": "ItemWindow",
 "language": "GDScript",
 "path": "res://Scenes/UI/ItemWindow.gd"
@@ -54,7 +59,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/RayCastCollision.gd"
 }, {
-"base": "Control",
+"base": "ItemEditor",
 "class": "VariationItemEditor",
 "language": "GDScript",
 "path": "res://Scenes/UI/VariationItemEditor.gd"
@@ -66,6 +71,7 @@ _global_script_class_icons={
 "GameEvent": "",
 "HUD": "",
 "Interactable": "",
+"ItemEditor": "",
 "ItemWindow": "",
 "ItemWindowItem": "",
 "RayCastEvent": "",
