@@ -13,11 +13,11 @@ __meta__ = {
 }
 
 [node name="Top Row" type="HBoxContainer" parent="."]
-margin_right = 1024.0
+margin_right = 1920.0
 margin_bottom = 20.0
 
 [node name="Tex" type="MenuButton" parent="Top Row"]
-margin_right = 510.0
+margin_right = 958.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Smooth"
@@ -25,8 +25,8 @@ flat = false
 items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Effects" type="MenuButton" parent="Top Row"]
-margin_left = 514.0
-margin_right = 1024.0
+margin_left = 962.0
+margin_right = 1920.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Sphere"

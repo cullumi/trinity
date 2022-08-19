@@ -605,7 +605,6 @@ shape = SubResource( 5 )
 
 [node name="Button Stand" type="MeshInstance" parent="Objects/Things/Button Stand/CollisionShape"]
 mesh = SubResource( 6 )
-material/0 = null
 
 [node name="Button" parent="Objects/Things/Button Stand" instance=ExtResource( 2 )]
 
@@ -1068,7 +1067,6 @@ shape = SubResource( 12 )
 [node name="MeshInstance" type="MeshInstance" parent="RigidBodyCharacter/Avatar"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 mesh = SubResource( 13 )
-material/0 = null
 
 [node name="TargetRay" type="RayCast" parent="RigidBodyCharacter"]
 
@@ -1137,4 +1135,5 @@ ranks = {
 
 [node name="EventHandler" type="Node" parent="."]
 script = ExtResource( 9 )
+
 [connection signal="ray_event" from="Player Camera" to="." method="add_ray_event"]
