@@ -272,12 +272,14 @@ __meta__ = {
 visible = false
 
 [node name="EventEditor" parent="Edit" instance=ExtResource( 2 )]
+content_source = "Events"
 use_filters = true
 use_advanced_filters = true
 
 [node name="VariationEditor" parent="Edit" instance=ExtResource( 2 )]
 item_content = ExtResource( 3 )
 content_source = "Variations"
+
 [connection signal="pressed" from="Target/Options/OpContainer/Press" to="." method="press"]
 [connection signal="pressed" from="Target/Options/OpContainer/Swap Roles" to="." method="swap_roles"]
 [connection signal="pressed" from="Target/Options/OpContainer/Swap Ranks" to="." method="swap_ranks"]

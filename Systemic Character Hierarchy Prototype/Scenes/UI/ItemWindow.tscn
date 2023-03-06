@@ -17,12 +17,8 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 item_structure = ExtResource( 4 )
 item_content = ExtResource( 5 )
-content_source = "Events"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -50,12 +46,13 @@ margin_bottom = 37.0
 custom_constants/separation = 10
 
 [node name="Title" type="Label" parent="VBoxContainer/Title Bar"]
+unique_name_in_owner = true
 margin_left = 14.0
-margin_right = 210.0
+margin_right = 108.0
 margin_bottom = 37.0
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 1 )
-text = "Event Editor"
+text = "Editor"
 align = 1
 valign = 1
 __meta__ = {
@@ -65,8 +62,8 @@ __meta__ = {
 [node name="VSeparator4" type="VSeparator" parent="VBoxContainer/Title Bar"]
 process_priority = 75
 show_behind_parent = true
-margin_left = 214.0
-margin_right = 224.0
+margin_left = 112.0
+margin_right = 122.0
 margin_bottom = 37.0
 custom_constants/separation = 10
 
@@ -75,22 +72,22 @@ visible = false
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/Title Bar"]
 show_behind_parent = true
-margin_left = 228.0
-margin_right = 238.0
+margin_left = 126.0
+margin_right = 136.0
 margin_bottom = 37.0
 custom_constants/separation = 10
 
 [node name="Close" type="Button" parent="VBoxContainer/Title Bar"]
-margin_left = 242.0
-margin_right = 278.0
+margin_left = 140.0
+margin_right = 176.0
 margin_bottom = 37.0
 size_flags_vertical = 3
 text = "  X  "
 
 [node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Title Bar"]
 show_behind_parent = true
-margin_left = 282.0
-margin_right = 292.0
+margin_left = 180.0
+margin_right = 190.0
 margin_bottom = 37.0
 custom_constants/separation = 10
 
@@ -137,6 +134,7 @@ margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "  +  "
+
 [connection signal="add_filter" from="VBoxContainer/Title Bar/FilterSelector" to="." method="add_filter"]
 [connection signal="change_display" from="VBoxContainer/Title Bar/FilterSelector" to="." method="change_display"]
 [connection signal="filter_changed" from="VBoxContainer/Title Bar/FilterSelector" to="." method="filter_changed"]

@@ -1,15 +1,17 @@
+tool
+
 class_name ItemWindow
 
 extends Control
 
 export (PackedScene) var item_structure
 export (PackedScene) var item_content
-export (String, "Events", "Variations") var content_source
+export (String, "Events", "Variations") var content_source setget set_content_source
 export (bool) var use_filters = false
 export (bool) var use_advanced_filters = false
 
 onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
-onready var title_label = $"VBoxContainer/Title Bar/Title"
+onready var title_label = get_node("%Title")
 onready var filter_selector = $"VBoxContainer/Title Bar/FilterSelector"
 
 signal close
@@ -21,10 +23,21 @@ var last_filter_value
 var filters : Array
 
 
+# SETTERS
+
+func set_content_source(_source):
+	if not title_label:
+		title_label = get_node("%Title")
+	title_label.text = _source
+	content_source = _source
+
+
 # INITIALIZATION AND UPDATES
 
 func initialize():
 	title_label.text = content_source
+	
+	if (Engine.editor_hint): return
 	clear_item_list()
 	
 	if (content_source in Resources.settings_arrays.keys()):
