@@ -141,7 +141,10 @@ func close():
 # FILTER FUNCTIONS
 
 func construct_filters(_inter:Interactable=null) -> Array:
-	return []
+	match content_source:
+		"Events": return Resources.construct_event_filters_from_target(_inter)
+		"Variations": return Resources.construct_variation_filters_from_target(_inter)
+		_: return [Filter.new()]
 
 func reset_filters(inter:Interactable=null):
 	clear_filters(false)

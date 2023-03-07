@@ -1,11 +1,14 @@
-[gd_scene load_steps=39 format=3 uid="uid://b84slrjrth378"]
+[gd_scene load_steps=48 format=3 uid="uid://b84slrjrth378"]
 
 [ext_resource type="Script" path="res://World.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cd2n1dcwa05ln" path="res://Scenes/Interactables/Button.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c5djp6k53qcu2" path="res://Scenes/Interactables/Actor.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dnyutley17hul" path="res://HUD.tscn" id="4"]
+[ext_resource type="Resource" uid="uid://divn78ubk8iuj" path="res://Assets/Entities/the_ground.tres" id="4_y5ky6"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Interactable.gd" id="5"]
+[ext_resource type="Script" path="res://Scripts/Entity.gd" id="5_gk8ga"]
 [ext_resource type="PackedScene" uid="uid://dj72gaomusywb" path="res://Scenes/NewCam/NewCam.tscn" id="7"]
+[ext_resource type="Resource" uid="uid://cfbsdk44qh2xf" path="res://Assets/Entities/button.tres" id="7_kfij8"]
 [ext_resource type="Script" path="res://Scripts/EventHandler.gd" id="9"]
 [ext_resource type="Script" path="res://Scripts/Interactables/RigidActor.gd" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/Prefabs/Wood Structures/Small House.tscn" id="11"]
@@ -14,16 +17,21 @@
 [ext_resource type="PackedScene" uid="uid://d0h1p1nige7j" path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fenceCurved.glb" id="14"]
 [ext_resource type="PackedScene" uid="uid://dtqsic1iyxdkw" path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fenceGate.glb" id="15"]
 [ext_resource type="PackedScene" path="res://Scenes/Prefabs/Town Objects/Fence.tscn" id="16"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/Town Objects/Fountain.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://xijdjefyoiw0" path="res://Scenes/Prefabs/Town Objects/Fountain.tscn" id="17"]
 [ext_resource type="PackedScene" uid="uid://cjcmedi410e2w" path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/cart.glb" id="18"]
 [ext_resource type="PackedScene" uid="uid://irrf7rra7jn0" path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/cartHigh.glb" id="19"]
 [ext_resource type="PackedScene" path="res://Scenes/Prefabs/Town Objects/Lantern.tscn" id="20"]
 [ext_resource type="PackedScene" path="res://Scenes/Prefabs/Town Objects/FenceBroken.tscn" id="21"]
 [ext_resource type="PackedScene" path="res://Scenes/Prefabs/Town Objects/FenceCurved.tscn" id="22"]
+[ext_resource type="Resource" uid="uid://b160a2oig75sl" path="res://Assets/Entities/citizen.tres" id="23_5arqo"]
 [ext_resource type="PackedScene" path="res://Scenes/Prefabs/Nature/Tree.tscn" id="24"]
+[ext_resource type="Resource" uid="uid://2n2ylgcofr3s" path="res://Assets/Entities/mayor.tres" id="24_abrrm"]
 [ext_resource type="Script" path="res://InputHandler.gd" id="24_h1ofx"]
+[ext_resource type="Resource" uid="uid://d36tkxkmttg6l" path="res://Assets/Entities/police_chief.tres" id="24_kju1u"]
 [ext_resource type="Material" path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/wood.material" id="25"]
+[ext_resource type="Resource" uid="uid://dpr48vk0jqinp" path="res://Assets/Entities/volunteer.tres" id="25_bfec2"]
 [ext_resource type="Material" path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/woodDark.material" id="26"]
+[ext_resource type="Resource" uid="uid://b8l0fq018y7ig" path="res://Assets/Entities/petty_criminal.tres" id="26_dpuxe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7xhk"]
 sky_top_color = Color(0.309804, 0.560784, 0.909804, 1)
@@ -48,6 +56,19 @@ points = PackedVector3Array(100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, -1
 [sub_resource type="PlaneMesh" id="4"]
 lightmap_size_hint = Vector2i(32, 32)
 size = Vector2(300, 300)
+
+[sub_resource type="Resource" id="Resource_jvaep"]
+script = ExtResource("5_gk8ga")
+type = "Intble"
+texture = "Smooth"
+char_name = "Button"
+char_id = ""
+role = "Button"
+ranks = {
+"Crime": 0,
+"Law": 0,
+"Politics": 0
+}
 
 [sub_resource type="ConcavePolygonShape3D" id="5"]
 data = PackedVector3Array(-0.25, 1, 0.25, 0.25, 1, 0.25, -0.25, -1, 0.25, 0.25, 1, 0.25, 0.25, -1, 0.25, -0.25, -1, 0.25, 0.25, 1, -0.25, -0.25, 1, -0.25, 0.25, -1, -0.25, -0.25, 1, -0.25, -0.25, -1, -0.25, 0.25, -1, -0.25, 0.25, 1, 0.25, 0.25, 1, -0.25, 0.25, -1, 0.25, 0.25, 1, -0.25, 0.25, -1, -0.25, 0.25, -1, 0.25, -0.25, 1, -0.25, -0.25, 1, 0.25, -0.25, -1, -0.25, -0.25, 1, 0.25, -0.25, -1, 0.25, -0.25, -1, -0.25, 0.25, 1, 0.25, -0.25, 1, 0.25, 0.25, 1, -0.25, -0.25, 1, 0.25, -0.25, 1, -0.25, 0.25, 1, -0.25, -0.25, -1, 0.25, 0.25, -1, 0.25, -0.25, -1, -0.25, 0.25, -1, 0.25, 0.25, -1, -0.25, -0.25, -1, -0.25)
@@ -97,8 +118,7 @@ hud = NodePath("../HUD")
 
 [node name="The Ground" type="StaticBody3D" parent="Objects/Environment"]
 script = ExtResource("5")
-texture = "Dusty"
-role = "The Ground"
+entity = ExtResource("4_y5ky6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Environment/The Ground"]
 shape = SubResource("3")
@@ -528,8 +548,7 @@ transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 25, 0, 1)
 [node name="Button Stand" type="StaticBody3D" parent="Objects/Things"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982558, 0)
 script = ExtResource("5")
-char_name = "Button Stand"
-role = "Button Stand"
+entity = SubResource("Resource_jvaep")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Things/Button Stand"]
 shape = SubResource("5")
@@ -538,6 +557,7 @@ shape = SubResource("5")
 mesh = SubResource("6")
 
 [node name="Button" parent="Objects/Things/Button Stand" instance=ExtResource("2")]
+entity = ExtResource("7_kfij8")
 
 [node name="cart" parent="Objects/Things" instance=ExtResource("18")]
 transform = Transform3D(4.94975, 0, 4.94975, 0, 7, 0, -4.94975, 0, 4.94975, -33, 0, 55.5)
@@ -908,8 +928,6 @@ transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 33.5, 0, 0.5)
 visible = false
 mesh = SubResource("7")
 script = ExtResource("5")
-texture = "Dusty"
-role = "City Wall"
 
 [node name="Inside Wall Subtraction" type="CSGMesh3D" parent="Objects/Structures/City Infrastructure/City Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.32662, 0)
@@ -925,8 +943,6 @@ use_collision = true
 mesh = SubResource("9")
 material = ExtResource("26")
 script = ExtResource("5")
-texture = "Dusty"
-role = "The Grand Stage"
 
 [node name="Ramp" type="CSGMesh3D" parent="Objects/Structures/City Infrastructure/GrandStage"]
 transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0.000301361, -2.60329, 12.6971)
@@ -934,8 +950,6 @@ use_collision = true
 mesh = SubResource("10")
 material = ExtResource("25")
 script = ExtResource("5")
-texture = "Dusty"
-role = "The Grand Stage Ramp"
 
 [node name="Ramp Negative" type="CSGMesh3D" parent="Objects/Structures/City Infrastructure/GrandStage/Ramp"]
 transform = Transform3D(0.819152, -0.573577, 0, 0.573577, 0.819152, 0, 0, 7.10543e-15, 1, -7.17636, 4.83152, 3.8147e-06)
@@ -967,21 +981,27 @@ unique_name_in_owner = true
 
 [node name="Citizen" parent="Actors" instance=ExtResource("3")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -16.6587, -0.0140724, -15.9524)
+entity = ExtResource("23_5arqo")
 
 [node name="Police Recruit" parent="Actors" instance=ExtResource("3")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -17.1149, 0, 15.0545)
+entity = ExtResource("24_kju1u")
 
 [node name="Volunteer" parent="Actors" instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1178, 0, 12.9921)
+entity = ExtResource("25_bfec2")
 
 [node name="Petty Criminal" parent="Actors" instance=ExtResource("3")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -1.48821, 0, -20.1768)
+entity = ExtResource("26_dpuxe")
 
 [node name="Police Chief" parent="Actors" instance=ExtResource("3")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 17.8893, 0, -8.5515)
+entity = ExtResource("24_kju1u")
 
 [node name="Mayor" parent="Actors" instance=ExtResource("3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.9659, 2.5, 3.4883)
+entity = ExtResource("24_abrrm")
 
 [node name="HUD" parent="." instance=ExtResource("4")]
 unique_name_in_owner = true

@@ -44,8 +44,9 @@ func inter_convert(inter):
 func set_target(inter):
 	inter = inter_convert(inter)
 	target = inter
+	interact.active = target != null
 	if target:
-		interact.active = target != null
+		print("Target: ", target)
 		interact.interactable = target
 
 func set_player(inter):

@@ -96,6 +96,3 @@ func key_filtered(_variation, filter):
 		if (not (filter.string_value in _variation[key])):
 			return true
 	return false
-
-func construct_filters(inter:Interactable=null):
-	return [] if not inter else Resources.construct_variation_filters_from_target(inter)

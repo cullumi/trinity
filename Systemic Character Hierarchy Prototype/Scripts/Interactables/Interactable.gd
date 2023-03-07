@@ -2,23 +2,46 @@ class_name Interactable
 
 extends Node
 
+@export var entity:Entity :
+	set(e): entity = e; entity.interactor = self
+
 # Functionality
-@export_enum("Intble", "Button", "Actor") var type:String = "Intble"
-@export_enum("Smooth", "Dusty", "Splashy") var texture:String = "Smooth"
+@onready var type:String :
+	set(t): set_on("type", t)
+	get: return get_on("type")
+@onready var texture:String :
+	set(t): set_on("texture", t)
+	get: return get_on("texture")
 
 # Identification
-@export var char_name:String = "Button"
-@export var char_id:String = ""
+@onready var char_name:String :
+	set(cn): set_on("char_name", cn)
+	get: return get_on("char_name")
+@onready var char_id:String :
+	set(ci): set_on("char_id", ci)
+	get: return get_on("char_id")
 
 # Hierarchy
-@export var role:String = "Button"
-@export var ranks:Dictionary = {"Law":0, "Politics":0, "Crime":0}
+@onready var role:String :
+	set(r): set_on("role", r)
+	get: return get_on("role")
+@onready var ranks:Dictionary :
+	set(r): set_on("ranks", r)
+	get: return get_on("ranks", true)
 
 @export var source_node:Node = self # The core node of this interactable
 @onready var animation_player:AnimationPlayer = source_node.find_child("AnimationPlayer")
 @onready var particle_location:Node3D = source_node.find_child("ParticleLocation")
 
 signal pressed
+
+func set_on(property:String, value):
+	if entity: entity[property] = value
+
+func get_on(property:String, dict:bool=false):
+	if entity: return entity[property]
+	elif dict: return {}
+	else: return ""
 
 func _ready():
 	add_to_group("Interactables")

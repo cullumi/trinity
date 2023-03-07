@@ -129,8 +129,6 @@ func key_filtered(_event, filter:Filter) -> bool:
 				return true
 	return false
 
-func construct_filters(inter:Interactable=null):
-	return [] if not inter else Resources.construct_event_filters_from_target(inter)
 
 # The bool and string comparison step of key filtering.
 # Includes 'inclusive' and 'type_value' implemenations

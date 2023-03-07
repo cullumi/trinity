@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=2 format=3 uid="uid://divn78ubk8iuj"]
+
+[ext_resource type="Script" path="res://Scripts/Entity.gd" id="1_onh8k"]
+
+[resource]
+script = ExtResource("1_onh8k")
+type = "Button"
+texture = "Smooth"
+char_name = "Button"
+char_id = "button"
+role = "Button"
+ranks = {
+"Crime": 10,
+"Law": 0,
+"Politics": 0
+}

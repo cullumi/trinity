@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=2 format=3 uid="uid://d36tkxkmttg6l"]
+
+[ext_resource type="Script" path="res://Scripts/Entity.gd" id="1_d6to4"]
+
+[resource]
+script = ExtResource("1_d6to4")
+type = "Actor"
+texture = "Smooth"
+char_name = "John"
+char_id = "john"
+role = "Police Chief"
+ranks = {
+"Crime": 2,
+"Law": 10,
+"Politics": 8
+}

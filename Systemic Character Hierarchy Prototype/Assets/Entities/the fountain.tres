@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=2 format=3 uid="uid://bkx7sasdpji1p"]
+
+[ext_resource type="Script" path="res://Scripts/Entity.gd" id="1_52lse"]
+
+[resource]
+script = ExtResource("1_52lse")
+type = "Intble"
+texture = "Splashy"
+char_name = "The Fountain"
+char_id = "fountain"
+role = "The Fountain"
+ranks = {
+"Crime": 10,
+"Law": 10,
+"Politics": 10
+}

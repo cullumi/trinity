@@ -8,7 +8,9 @@ signal target_lost
 
 # Functionality
 @export var prepare_back_button_event:bool = true
-@onready var interaction:Interactable = %Interactable
+@export var entity:Entity :
+	set(e): entity = e; if interactor: interactor.entity = e;
+@onready var interactor:Interactable = %Interactable
 @onready var back_button:Interactable = %BackButton
 
 # Player Control
@@ -39,6 +41,7 @@ var current_grav_velocity = 0
 var avatar_bodies : Array = []
 
 func _ready():
+	interactor.entity = entity
 	randomize_appearance()
 	prepare_events()
 	for node in avatar.get_children():
@@ -47,8 +50,8 @@ func _ready():
 
 func prepare_events():
 	if (prepare_back_button_event):
-		back_button.char_id = "btn-" + interaction.char_id
-		Resources.construct_button_trigger_pair(back_button, interaction)
+		back_button.char_id = "btn-" + interactor.char_id
+		Resources.construct_button_trigger_pair(back_button, interactor)
 
 func randomize_appearance():
 	randomize()
