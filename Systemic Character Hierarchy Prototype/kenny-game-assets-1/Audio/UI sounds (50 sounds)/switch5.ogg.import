@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/switch5.ogg-b63e2347788156bb20e4092aebd67048.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b05j7xe45471q"
+path="res://.godot/imported/switch5.ogg-b63e2347788156bb20e4092aebd67048.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/UI sounds (50 sounds)/switch5.ogg"
-dest_files=[ "res://.import/switch5.ogg-b63e2347788156bb20e4092aebd67048.oggstr" ]
+dest_files=["res://.godot/imported/switch5.ogg-b63e2347788156bb20e4092aebd67048.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

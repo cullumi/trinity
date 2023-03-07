@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/footstep04.ogg-af84fa7714366997bb5cab686ad42bee.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cqx6b2hxt14e0"
+path="res://.godot/imported/footstep04.ogg-af84fa7714366997bb5cab686ad42bee.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/footstep04.ogg"
-dest_files=[ "res://.import/footstep04.ogg-af84fa7714366997bb5cab686ad42bee.oggstr" ]
+dest_files=["res://.godot/imported/footstep04.ogg-af84fa7714366997bb5cab686ad42bee.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

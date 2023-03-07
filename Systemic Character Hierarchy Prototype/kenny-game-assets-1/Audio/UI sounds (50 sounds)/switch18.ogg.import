@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/switch18.ogg-a8550bb19accf2940336a59014bf12b1.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cpv72y8urdo0p"
+path="res://.godot/imported/switch18.ogg-a8550bb19accf2940336a59014bf12b1.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/UI sounds (50 sounds)/switch18.ogg"
-dest_files=[ "res://.import/switch18.ogg-a8550bb19accf2940336a59014bf12b1.oggstr" ]
+dest_files=["res://.godot/imported/switch18.ogg-a8550bb19accf2940336a59014bf12b1.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -6,15 +6,15 @@
 
 
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CapsuleShape3D" id=1]
 radius = 0.1
 height = 1.5
 
-[node name="StaticLantern" type="StaticBody"]
+[node name="StaticLantern" type="StaticBody3D"]
 script = ExtResource( 1 )
 char_name = "Lantern"
 role = "Lantern"
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.75, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.75, 0 )
 shape = SubResource( 1 )

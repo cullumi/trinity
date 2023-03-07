@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/jingles_PIZZA03.ogg-b7a7e076b01e04cb85472cfb4021afed.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://daxy7tnqs77ak"
+path="res://.godot/imported/jingles_PIZZA03.ogg-b7a7e076b01e04cb85472cfb4021afed.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_PIZZA/jingles_PIZZA03.ogg"
-dest_files=[ "res://.import/jingles_PIZZA03.ogg-b7a7e076b01e04cb85472cfb4021afed.oggstr" ]
+dest_files=["res://.godot/imported/jingles_PIZZA03.ogg-b7a7e076b01e04cb85472cfb4021afed.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

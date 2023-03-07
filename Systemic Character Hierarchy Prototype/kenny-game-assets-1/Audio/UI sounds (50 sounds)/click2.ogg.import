@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/click2.ogg-7d2813d1032911e2b55b3d05731e40ab.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dhy2ut14rgh35"
+path="res://.godot/imported/click2.ogg-7d2813d1032911e2b55b3d05731e40ab.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/UI sounds (50 sounds)/click2.ogg"
-dest_files=[ "res://.import/click2.ogg-7d2813d1032911e2b55b3d05731e40ab.oggstr" ]
+dest_files=["res://.godot/imported/click2.ogg-7d2813d1032911e2b55b3d05731e40ab.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

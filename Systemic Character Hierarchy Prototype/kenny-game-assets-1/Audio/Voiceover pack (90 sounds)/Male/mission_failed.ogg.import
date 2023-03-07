@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/mission_failed.ogg-aff95732d4d83761a922ca1ff55af75d.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b4w3q5px87p6s"
+path="res://.godot/imported/mission_failed.ogg-aff95732d4d83761a922ca1ff55af75d.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/mission_failed.ogg"
-dest_files=[ "res://.import/mission_failed.ogg-aff95732d4d83761a922ca1ff55af75d.oggstr" ]
+dest_files=["res://.godot/imported/mission_failed.ogg-aff95732d4d83761a922ca1ff55af75d.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/war_sniper.ogg-95456066303816a6940f11e3d370d092.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cw5n1ur2k3aoy"
+path="res://.godot/imported/war_sniper.ogg-95456066303816a6940f11e3d370d092.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/war_sniper.ogg"
-dest_files=[ "res://.import/war_sniper.ogg-95456066303816a6940f11e3d370d092.oggstr" ]
+dest_files=["res://.godot/imported/war_sniper.ogg-95456066303816a6940f11e3d370d092.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -4,48 +4,50 @@ extends Control
 
 var resources : Resources
 
-onready var name_label = get_node("Name/NameLabel")
-onready var id_label = get_node("Name/IDLabel")
-onready var role_label = get_node("Role/RoleLabel")
-onready var rank_label = get_node("Role/RankLabel")
+@onready var crosshair:Control = %Crosshair
 
-onready var velocity_label = get_node("Player Velocity/Label")
+@onready var title:NamePlate = %NamePlate
+@onready var mini_map:MiniMapPanel = %MiniMapPanel
+@onready var interact:InteractPanel = %InteractPanel
+@onready var edit:EditWindow = %Edit
 
-onready var target_panel = get_node("Target")
-onready var target_role = get_node("Target/Role")
-onready var target_rank = get_node("Target/Rank")
-onready var op_container = get_node("Target/Options/OpContainer")
-onready var op_buttons = op_container.get_children()
+signal roles_swapped
+signal ranks_swapped
+signal rules_changed
+signal events_changed
+signal variations_changed
 
-onready var edit_panel = get_node("Edit")
-#onready var edit_rules = get_node("Edit/Rules")
-onready var event_editor : ItemWindow = get_node("Edit/EventEditor")
-onready var variation_editor : ItemWindow = get_node("Edit/VariationEditor")
-
-signal swap_roles
-signal swap_ranks
-signal change_events
-signal change_variations
+var editor_signals:Array[Signal] = [
+	rules_changed, events_changed, variations_changed
+]
 
 var player_actor
-var target_actor
+var player
+var target:Interactable : set=set_target
 var last_ray_event : RayCastEvent
+var velocity:Vector3 :
+	set(val): mini_map.velocity = val; velocity = val;
+var edit_active:bool = false : set=set_edit_active
 
 func _ready():
-	edit_panel.visible = false
-	event_editor.visible = false
-	variation_editor.visible = false
-	target_panel.visible = false
-	print("HUD Ready")
-	for button in op_buttons:
-		button.disabled = true
-	op_buttons[0].grab_focus()
+	edit_active = false
 
 #func initialize():
 	#event_editor.update_item_list(resources)
 
+func set_edit_active(_show:bool):
+	edit.active = _show
+	crosshair.visible = not _show
+
+func set_target(inter):
+	if inter is Actor:
+		target = inter.interaction
+	if inter is Interactable:
+		target = inter
+
 func set_player_actor(actor):
 	player_actor = actor
+	player = actor.interaction
 	update_player_hud()
 
 func update_hud(target_object=null):
@@ -53,92 +55,57 @@ func update_hud(target_object=null):
 	update_target_hud(target_object)
 
 func update_player_hud():
-	name_label.text = player_actor.char_name
-	id_label.text = "[ " + player_actor.char_id + " ]"
-	role_label.text = player_actor.role
-	var ranks = player_actor.ranks
-	rank_label.text = "\n%d   |   %d   |    %d   " % [ranks["Crime"], ranks["Law"], ranks["Politics"]]
-
-func set_velocity_label(velocity):
-	velocity_label.text = "(%8d %8d %8d        )" % [velocity.x, abs(velocity.y), velocity.z]
+	title.interactable = player
+	mini_map.interactable = player
 
 func set_ray_event(ray_event):
 	last_ray_event = ray_event
 
 # Updated when the player looks at an object, or when that object is changed in some way.
 func update_target_hud(target_object =null):
-	if target_object != null:
-		var target_changed = false
-		if (target_actor != target_object):
-			target_changed = true
-			target_actor = target_object
-		if (target_changed):
-			target_panel.visible = true
-			for button in op_buttons:
-				button.disabled = false
-			op_buttons[0].grab_focus()
-		target_role.text = target_actor.role
-		var ranks = target_actor.ranks
-		target_rank.text = "%d / %d / %d" % [ranks["Crime"], ranks["Law"], ranks["Politics"]]
-	else:
-		target_actor = null
-		target_panel.visible = false
-		for button in op_buttons:
-			button.disabled = true
+	target = null if not target_object else target_object
+	interact.active = target != null
+	interact.interactable = target
 
-#Signal Methods
-func press():
+
+# Interactions
+
+func _on_press():
 	var game_event = GameEvent.new()
 	game_event.presser = player_actor
 	if (last_ray_event != null):
 		game_event.press_normal = last_ray_event.collision_normal
 		game_event.press_point = last_ray_event.collision_point
 		last_ray_event.free()
-	target_actor.press(game_event)
+	target.press(game_event)
 
-func swap_roles():
-	emit_signal("swap_roles", target_actor)
-	update_hud(target_actor)
+func _swap_roles():
+	roles_swapped.emit(target)
+	update_hud(target)
 
-func swap_ranks():
-	emit_signal("swap_ranks", target_actor)
-	update_hud(target_actor)
+func _swap_ranks():
+	ranks_swapped.emit(target)
+	update_hud(target)
 
-func change_events():
-	emit_signal("change_events")
-	edit_panel.visible = !edit_panel.visible
-	event_editor.visible = !event_editor.visible
-	if (not event_editor.has_been_initialized):
-		event_editor.initialize()
-	
-	if (edit_panel.visible):
-		# Reset the event editor filters -- TODO: Move to new ItemWindow method
-		event_editor.clear_filters(false)
-		var new_filters : Array = Resources.construct_event_filters_from_target(target_actor)
-		Resources.append_array(event_editor.filters, new_filters)
-		event_editor.display_filter(0)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	op_buttons[3].grab_focus()
-	update_hud(target_actor)
+var OPT_SUB:Dictionary = {
+	interact.OPT.RULES:edit.SUB.RULES,
+	interact.OPT.EVENTS:edit.SUB.EVENTS,
+	interact.OPT.VARIATIONS:edit.SUB.VARIATIONS
+}
+func _open_editor(idx:int):
+	edit.select_window(OPT_SUB[idx])
+	crosshair.visible = false
+	interact.active = false
 
-func change_variations():
-	emit_signal("change_variations")
-	edit_panel.visible = !edit_panel.visible
-	variation_editor.visible = !variation_editor.visible
-	if (not variation_editor.has_been_initialized):
-		variation_editor.initialize()
-	if (edit_panel.visible):
-		# Reset the variation editor filters -- TODO: Move to new ItemWindow method
-		variation_editor.clear_filters(false)
-		var new_filters : Array = Resources.construct_variation_filters_from_target(target_actor)
-		Resources.append_array(variation_editor.filters, new_filters)
-		variation_editor.display_filter(0)
-		
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	op_buttons[4].grab_focus()
-	update_hud(target_actor)
-	
+
+# Editing
+
+var SUB_OPT:Dictionary = {
+	edit.SUB.RULES:interact.OPT.RULES,
+	edit.SUB.EVENTS:interact.OPT.EVENTS,
+	edit.SUB.VARIATIONS:interact.OPT.VARIATIONS,
+}
+func _on_editor_closed(idx:int):
+	interact.set_focused(SUB_OPT[idx])
+	update_hud(target)
+	crosshair.visible = true

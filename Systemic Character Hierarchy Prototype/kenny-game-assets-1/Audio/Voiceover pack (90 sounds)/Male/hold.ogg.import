@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/hold.ogg-c5fa1066e797add8e70d560b06f95ceb.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cwrq7vpksxiub"
+path="res://.godot/imported/hold.ogg-c5fa1066e797add8e70d560b06f95ceb.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/hold.ogg"
-dest_files=[ "res://.import/hold.ogg-c5fa1066e797add8e70d560b06f95ceb.oggstr" ]
+dest_files=["res://.godot/imported/hold.ogg-c5fa1066e797add8e70d560b06f95ceb.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

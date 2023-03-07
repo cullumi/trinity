@@ -7,7 +7,7 @@
 radius = 0.125
 height = 0.25
 
-[node name="Sphere Poof" type="Spatial"]
+[node name="Sphere Poof" type="Node3D"]
 script = ExtResource( 2 )
 particle_systems = [ NodePath("Sphere Poof") ]
 

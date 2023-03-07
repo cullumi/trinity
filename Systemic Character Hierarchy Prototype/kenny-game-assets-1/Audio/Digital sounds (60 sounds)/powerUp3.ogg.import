@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/powerUp3.ogg-9116fb915be05e95e0cd6f669a9de3b9.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://poxlmcj2bw15"
+path="res://.godot/imported/powerUp3.ogg-9116fb915be05e95e0cd6f669a9de3b9.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/powerUp3.ogg"
-dest_files=[ "res://.import/powerUp3.ogg-9116fb915be05e95e0cd6f669a9de3b9.oggstr" ]
+dest_files=["res://.godot/imported/powerUp3.ogg-9116fb915be05e95e0cd6f669a9de3b9.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

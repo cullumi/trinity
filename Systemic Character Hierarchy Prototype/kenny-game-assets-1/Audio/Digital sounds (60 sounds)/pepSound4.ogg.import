@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/pepSound4.ogg-952e959841a4a19585e38d917c65e65d.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmxhc4j3sjnbh"
+path="res://.godot/imported/pepSound4.ogg-952e959841a4a19585e38d917c65e65d.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/pepSound4.ogg"
-dest_files=[ "res://.import/pepSound4.ogg-952e959841a4a19585e38d917c65e65d.oggstr" ]
+dest_files=["res://.godot/imported/pepSound4.ogg-952e959841a4a19585e38d917c65e65d.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

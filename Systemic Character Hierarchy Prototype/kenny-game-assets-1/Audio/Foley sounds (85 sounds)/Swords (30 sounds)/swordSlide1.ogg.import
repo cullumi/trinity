@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/swordSlide1.ogg-4ccb87d4c62145a3977aa20656c56aa5.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://caa7k15me38wy"
+path="res://.godot/imported/swordSlide1.ogg-4ccb87d4c62145a3977aa20656c56aa5.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Foley sounds (85 sounds)/Swords (30 sounds)/swordSlide1.ogg"
-dest_files=[ "res://.import/swordSlide1.ogg-4ccb87d4c62145a3977aa20656c56aa5.oggstr" ]
+dest_files=["res://.godot/imported/swordSlide1.ogg-4ccb87d4c62145a3977aa20656c56aa5.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/jingles_NES14.ogg-c15ed315b74eee3e87137132e2264fcb.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://j2mvsrputs52"
+path="res://.godot/imported/jingles_NES14.ogg-c15ed315b74eee3e87137132e2264fcb.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_NES/jingles_NES14.ogg"
-dest_files=[ "res://.import/jingles_NES14.ogg-c15ed315b74eee3e87137132e2264fcb.oggstr" ]
+dest_files=["res://.godot/imported/jingles_NES14.ogg-c15ed315b74eee3e87137132e2264fcb.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

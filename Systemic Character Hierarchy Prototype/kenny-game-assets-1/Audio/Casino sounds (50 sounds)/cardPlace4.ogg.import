@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/cardPlace4.ogg-8df95d6bc27491e6bb16ebd638e572af.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cl8mt6bhqkjsp"
+path="res://.godot/imported/cardPlace4.ogg-8df95d6bc27491e6bb16ebd638e572af.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Casino sounds (50 sounds)/cardPlace4.ogg"
-dest_files=[ "res://.import/cardPlace4.ogg-8df95d6bc27491e6bb16ebd638e572af.oggstr" ]
+dest_files=["res://.godot/imported/cardPlace4.ogg-8df95d6bc27491e6bb16ebd638e572af.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

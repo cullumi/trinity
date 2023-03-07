@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/chipsHandle3.ogg-3219c7a404be2bc51f18162b88f3f386.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://uscvavwii75d"
+path="res://.godot/imported/chipsHandle3.ogg-3219c7a404be2bc51f18162b88f3f386.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Casino sounds (50 sounds)/chipsHandle3.ogg"
-dest_files=[ "res://.import/chipsHandle3.ogg-3219c7a404be2bc51f18162b88f3f386.oggstr" ]
+dest_files=["res://.godot/imported/chipsHandle3.ogg-3219c7a404be2bc51f18162b88f3f386.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/spaceTrash5.ogg-f413bfd1caac79c47c6b1c0585564a10.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bapp3f8cbcqpa"
+path="res://.godot/imported/spaceTrash5.ogg-f413bfd1caac79c47c6b1c0585564a10.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/spaceTrash5.ogg"
-dest_files=[ "res://.import/spaceTrash5.ogg-f413bfd1caac79c47c6b1c0585564a10.oggstr" ]
+dest_files=["res://.godot/imported/spaceTrash5.ogg-f413bfd1caac79c47c6b1c0585564a10.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

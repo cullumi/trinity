@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/jingles_STEEL00.ogg-1aff221bbc8090f644f1d3ca037e5203.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bkc4tb42nodt4"
+path="res://.godot/imported/jingles_STEEL00.ogg-1aff221bbc8090f644f1d3ca037e5203.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_STEEL/jingles_STEEL00.ogg"
-dest_files=[ "res://.import/jingles_STEEL00.ogg-1aff221bbc8090f644f1d3ca037e5203.oggstr" ]
+dest_files=["res://.godot/imported/jingles_STEEL00.ogg-1aff221bbc8090f644f1d3ca037e5203.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/beltHandle2.ogg-dfeaa5aea0b77bbf9fdc957e1d9aa9a7.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cgop3g51810gw"
+path="res://.godot/imported/beltHandle2.ogg-dfeaa5aea0b77bbf9fdc957e1d9aa9a7.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/beltHandle2.ogg"
-dest_files=[ "res://.import/beltHandle2.ogg-dfeaa5aea0b77bbf9fdc957e1d9aa9a7.oggstr" ]
+dest_files=["res://.godot/imported/beltHandle2.ogg-dfeaa5aea0b77bbf9fdc957e1d9aa9a7.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

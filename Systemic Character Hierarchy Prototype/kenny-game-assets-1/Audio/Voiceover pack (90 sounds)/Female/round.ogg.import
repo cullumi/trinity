@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/round.ogg-9e5509b963469e3aa5e117be9ba54952.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bypym5iu7i7i"
+path="res://.godot/imported/round.ogg-9e5509b963469e3aa5e117be9ba54952.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Female/round.ogg"
-dest_files=[ "res://.import/round.ogg-9e5509b963469e3aa5e117be9ba54952.oggstr" ]
+dest_files=["res://.godot/imported/round.ogg-9e5509b963469e3aa5e117be9ba54952.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

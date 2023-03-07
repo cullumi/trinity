@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/laser4.ogg-d8afb05bec58b7d489af433a79456b2e.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cj7q7e8gfbnql"
+path="res://.godot/imported/laser4.ogg-d8afb05bec58b7d489af433a79456b2e.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/laser4.ogg"
-dest_files=[ "res://.import/laser4.ogg-d8afb05bec58b7d489af433a79456b2e.oggstr" ]
+dest_files=["res://.godot/imported/laser4.ogg-d8afb05bec58b7d489af433a79456b2e.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

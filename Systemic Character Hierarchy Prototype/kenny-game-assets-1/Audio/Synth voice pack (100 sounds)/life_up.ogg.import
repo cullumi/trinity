@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/life_up.ogg-695461f32dc66b467bea04c05106a732.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cj2pwq6sth30g"
+path="res://.godot/imported/life_up.ogg-695461f32dc66b467bea04c05106a732.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/life_up.ogg"
-dest_files=[ "res://.import/life_up.ogg-695461f32dc66b467bea04c05106a732.oggstr" ]
+dest_files=["res://.godot/imported/life_up.ogg-695461f32dc66b467bea04c05106a732.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

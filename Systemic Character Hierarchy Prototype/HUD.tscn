@@ -1,289 +1,86 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://dxvn5gi6ww6kn"]
 
-[ext_resource path="res://HUD.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/UI/ItemWindow.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/UI/VariationItemEditor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/UI/OldUI/EventEditor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Crosshair.png" type="Texture" id=5]
+[ext_resource type="Script" path="res://HUD.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bdgu5muwrbw0h" path="res://Scenes/UI/mini_map_panel.tscn" id="3_25kru"]
+[ext_resource type="PackedScene" uid="uid://cuy413g1v4frs" path="res://Scenes/UI/name_plate.tscn" id="3_awey1"]
+[ext_resource type="PackedScene" uid="uid://dp44rdls60a61" path="res://Scenes/UI/interact_panel.tscn" id="4_g2jam"]
+[ext_resource type="Texture2D" uid="uid://cjafmjfy7u75g" path="res://Assets/Crosshair.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://1ri3ntk4quuc" path="res://Scenes/UI/edit_window.tscn" id="5_1h7oi"]
 
 [node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.5
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Crosshair" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+offset_left = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 0.25, 0.25 )
-rect_pivot_offset = Vector2( 64, 64 )
-texture = ExtResource( 5 )
+script = ExtResource("1")
+
+[node name="Crosshair" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.491664
+anchor_top = 0.715741
+anchor_right = 0.508336
+anchor_bottom = 0.74537
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 47.9999
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("5")
 stretch_mode = 4
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+metadata/_edit_use_anchors_ = true
 
-[node name="Name" type="Panel" parent="."]
-margin_left = 760.0
-margin_top = 17.0
-margin_right = 1003.0
-margin_bottom = 57.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="NamePlate" parent="." instance=ExtResource("3_awey1")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.043
+anchor_right = 0.5
+anchor_bottom = 0.043
+offset_left = -64.0
+offset_top = 4.56
+offset_right = 64.0
+offset_bottom = 50.56
 
-[node name="IDLabel" type="Label" parent="Name"]
-margin_left = 19.0
-margin_top = 15.0
-margin_right = 59.0
-margin_bottom = 29.0
-text = "Name:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MiniMapPanel" parent="." instance=ExtResource("3_25kru")]
+unique_name_in_owner = true
+layout_mode = 1
 
-[node name="NameLabel" type="Label" parent="Name"]
-margin_left = 80.0
-margin_top = 14.0
-margin_right = 222.0
-margin_bottom = 28.0
-text = "Citizen"
-align = 2
+[node name="InteractPanel" parent="." instance=ExtResource("4_g2jam")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_top = 0.73
+anchor_bottom = 0.73
+offset_left = 17.75
+offset_top = -301.4
+offset_right = 207.75
+offset_bottom = -18.4
 
-[node name="Role" type="Panel" parent="."]
-margin_left = 23.0
-margin_top = 17.0
-margin_right = 266.0
-margin_bottom = 78.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="Edit" parent="." instance=ExtResource("5_1h7oi")]
+unique_name_in_owner = true
+visible = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.375358
+anchor_top = 0.162037
+anchor_right = 0.884345
+anchor_bottom = 0.898148
+offset_left = 0.0
+offset_top = 1.52588e-05
+offset_right = 0.0
+offset_bottom = 6.10352e-05
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="RoleLabel" type="Label" parent="Role"]
-margin_left = 19.0
-margin_top = 15.0
-margin_right = 63.0
-margin_bottom = 29.0
-text = "*Role*"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Ranks" type="Label" parent="Role"]
-margin_left = 19.0
-margin_top = 36.0
-margin_right = 63.0
-margin_bottom = 50.0
-text = "(C/L/P)"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RankLabel" type="Label" parent="Role"]
-margin_left = 79.7806
-margin_top = 18.5255
-margin_right = 221.781
-margin_bottom = 49.5255
-text = "
-%d  |   %d   |    %d"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-margin_left = 25.0
-margin_top = 88.0
-margin_right = 266.0
-margin_bottom = 237.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-stretch = true
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 241, 149 )
-handle_input_locally = false
-msaa = 1
-render_target_clear_mode = 1
-render_target_update_mode = 3
-
-[node name="Camera2" type="Camera" parent="ViewportContainer/Viewport"]
-transform = Transform( 0.849904, 0.312841, -0.42402, 0, 0.804689, 0.593697, 0.526937, -0.504585, 0.683908, -15.1667, 21.2541, 30.6634 )
-current = true
-
-[node name="Player Velocity" type="Panel" parent="."]
-margin_left = 27.0
-margin_top = 248.0
-margin_right = 266.0
-margin_bottom = 288.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="Label" type="Label" parent="Player Velocity"]
-margin_left = 12.0
-margin_top = 8.0
-margin_right = 229.0
-margin_bottom = 33.0
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Target" type="Panel" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -175.0
-margin_top = 205.0
-margin_right = -26.0
-margin_bottom = 432.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Role" type="Label" parent="Target"]
-margin_left = 19.0
-margin_top = 18.0
-margin_right = 131.0
-margin_bottom = 42.0
-size_flags_horizontal = 0
-text = "Citizen"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Options" type="ScrollContainer" parent="Target"]
-anchor_right = 1.0
-margin_left = 16.0
-margin_top = 60.0
-margin_right = -16.0
-margin_bottom = 175.0
-follow_focus = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="OpContainer" type="VBoxContainer" parent="Target/Options"]
-margin_right = 105.0
-margin_bottom = 116.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Press" type="Button" parent="Target/Options/OpContainer"]
-margin_right = 105.0
-margin_bottom = 20.0
-focus_next = NodePath("../Swap Roles")
-focus_previous = NodePath("../Variations")
-action_mode = 0
-text = "Press"
-
-[node name="Swap Roles" type="Button" parent="Target/Options/OpContainer"]
-margin_top = 24.0
-margin_right = 105.0
-margin_bottom = 44.0
-focus_next = NodePath("../Swap Ranks")
-focus_previous = NodePath("../Press")
-text = "Swap Roles"
-
-[node name="Swap Ranks" type="Button" parent="Target/Options/OpContainer"]
-margin_top = 48.0
-margin_right = 105.0
-margin_bottom = 68.0
-focus_next = NodePath("../Events")
-focus_previous = NodePath("../Swap Roles")
-text = "Swap Ranks"
-
-[node name="Events" type="Button" parent="Target/Options/OpContainer"]
-margin_top = 72.0
-margin_right = 105.0
-margin_bottom = 92.0
-focus_next = NodePath("../Variations")
-focus_previous = NodePath("../Swap Ranks")
-text = "Events"
-
-[node name="Variations" type="Button" parent="Target/Options/OpContainer"]
-margin_top = 96.0
-margin_right = 105.0
-margin_bottom = 116.0
-focus_next = NodePath("../Press")
-focus_previous = NodePath("../Events")
-text = "Variations"
-
-[node name="Rank" type="Label" parent="Target"]
-margin_left = 20.0
-margin_top = 187.0
-margin_right = 130.0
-margin_bottom = 211.0
-text = "0 / 0 / 0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Edit" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 278.5
-margin_top = 89.0
-margin_right = -187.0
-margin_bottom = -87.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="RuleSelector" type="Control" parent="Edit"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="OldEventEditor" parent="Edit" instance=ExtResource( 4 )]
-visible = false
-
-[node name="EventEditor" parent="Edit" instance=ExtResource( 2 )]
-content_source = "Events"
-use_filters = true
-use_advanced_filters = true
-
-[node name="VariationEditor" parent="Edit" instance=ExtResource( 2 )]
-item_content = ExtResource( 3 )
-content_source = "Variations"
-
-[connection signal="pressed" from="Target/Options/OpContainer/Press" to="." method="press"]
-[connection signal="pressed" from="Target/Options/OpContainer/Swap Roles" to="." method="swap_roles"]
-[connection signal="pressed" from="Target/Options/OpContainer/Swap Ranks" to="." method="swap_ranks"]
-[connection signal="pressed" from="Target/Options/OpContainer/Events" to="." method="change_events"]
-[connection signal="pressed" from="Target/Options/OpContainer/Variations" to="." method="change_variations"]
-[connection signal="close" from="Edit/EventEditor" to="." method="change_events"]
-[connection signal="close" from="Edit/VariationEditor" to="." method="change_variations"]
+[connection signal="opened_editor" from="InteractPanel" to="." method="_open_editor"]
+[connection signal="pressed" from="InteractPanel" to="." method="_on_press"]
+[connection signal="swapped_ranks" from="InteractPanel" to="." method="_swap_ranks"]
+[connection signal="swapped_roles" from="InteractPanel" to="." method="_swap_roles"]

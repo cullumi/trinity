@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/clothBelt2.ogg-80943060863be51f2fbe1c7fe8adde3e.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cnslp37dypyqb"
+path="res://.godot/imported/clothBelt2.ogg-80943060863be51f2fbe1c7fe8adde3e.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/clothBelt2.ogg"
-dest_files=[ "res://.import/clothBelt2.ogg-80943060863be51f2fbe1c7fe8adde3e.oggstr" ]
+dest_files=["res://.godot/imported/clothBelt2.ogg-80943060863be51f2fbe1c7fe8adde3e.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

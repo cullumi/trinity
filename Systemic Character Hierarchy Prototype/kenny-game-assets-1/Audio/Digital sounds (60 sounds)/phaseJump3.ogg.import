@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/phaseJump3.ogg-d6a46b94a2968fb4fb984726d7dc4d45.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bb2axhq7j6ayb"
+path="res://.godot/imported/phaseJump3.ogg-d6a46b94a2968fb4fb984726d7dc4d45.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/phaseJump3.ogg"
-dest_files=[ "res://.import/phaseJump3.ogg-d6a46b94a2968fb4fb984726d7dc4d45.oggstr" ]
+dest_files=["res://.godot/imported/phaseJump3.ogg-d6a46b94a2968fb4fb984726d7dc4d45.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,19 +2,19 @@ class_name ItemWindowItem
 
 extends Control
 
-export (PackedScene) var content_template
+@export var content_template:PackedScene
 
-onready var content_pos #= $ContentPos
-onready var up = $SideBar/UpDelete/MoveUp
-onready var down = $SideBar/MoveDown
-onready var del = $SideBar/UpDelete/Delete
+@onready var content_pos #= $ContentPos
+@onready var up = $SideBar/UpDelete/MoveUp
+@onready var down = $SideBar/MoveDown
+@onready var del = $SideBar/UpDelete/Delete
 
 var index
 var content
 
-signal move_up
-signal move_down
-signal delete
+signal moved_up
+signal moved_down
+signal deleted
 
 func _ready():
 	if (content_template != null):
@@ -23,11 +23,11 @@ func _ready():
 func add_content(template : PackedScene, id = null):#node : Node = null):
 	if (content_pos == null):
 		content_pos = get_node("ContentPos")
-	content = template.instance()
+	content = template.instantiate()
 	content.index = index
 	content.id = id
 	content_pos.add_child(content)
-	content.connect("apply_filter", self, "apply_filter")
+	content.connect("apply_filter",Callable(self,"apply_filter"))
 
 func update_position(last_index, new_index = null):
 	if (new_index != null):
@@ -43,15 +43,15 @@ func update_position(last_index, new_index = null):
 
 func move_up():
 	content.move_up()
-	emit_signal("move_up", self)
+	moved_up.emit(self)
 
 func move_down():
 	content.move_down()
-	emit_signal("move_down", self)
+	moved_down.emit(self)
 
 func delete():
 	content.delete()
-	emit_signal("delete", self)
+	deleted.emit(self)
 
 func list_update(filters = null):
 	content.list_update(filters)

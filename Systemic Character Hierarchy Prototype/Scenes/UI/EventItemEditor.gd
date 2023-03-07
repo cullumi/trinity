@@ -2,15 +2,15 @@ class_name EventItemEditor
 
 extends ItemEditor
 
-onready var ev_id = $"Top Row/EvID"
-onready var ev_type = $"Top Row/Type"
-onready var ev_role = $"Top Row/Role"
-onready var ev_anim = $"Top Row/Animation"
-onready var ev_fx = $"Top Row/Effects"
-onready var ev_iCIDs = $"Bottom Row/InCharIDs"
-onready var ev_oEIDs = $"Bottom Row/OutEventIDs"
-onready var ev_excl = $"Bottom Row/Exclusive?"
-onready var events = Resources.event_settings
+@onready var ev_id:LineEdit = $"Top Row/EvID"
+@onready var ev_type:MenuButton = $"Top Row/Type"
+@onready var ev_role:MenuButton = $"Top Row/Role"
+@onready var ev_anim:MenuButton = $"Top Row/Animation"
+@onready var ev_fx:MenuButton = $"Top Row/Effects"
+@onready var ev_iCIDs:MenuButton = $"Bottom Row/InCharIDs"
+@onready var ev_oEIDs:MenuButton = $"Bottom Row/OutEventIDs"
+@onready var ev_excl:Button = $"Bottom Row/Exclusive?"
+@onready var events = Resources.event_settings
 
 signal apply_filter
 
@@ -36,13 +36,13 @@ func initialize():
 		# Initialization of individual fields and buttons
 		fields.append(ev_id)
 		recursive_append_menu_buttons(self, fields)
-		ev_id.connect("text_entered", self, "change_event", ["EvID",ev_id])
-		ev_id.connect("focus_exited", self, "change_event", [null,"EvID",ev_id])
+		ev_id.text_submitted.connect(change_event.bind("EvID", ev_id))
+		ev_id.focus_exited.connect(change_event.bind(null, "EvID", ev_id))
 		for idx in range(1, ev_structure.size()-1):
-			var popup = fields[idx].get_popup()
+			var popup:PopupMenu = fields[idx].get_popup()
 			var signal_info = [ev_structure[idx], fields[idx]]
-			popup.connect("index_pressed", self, "change_event", signal_info)
-		ev_excl.connect("toggled", self, "change_event", ["Exclusive", ev_excl])
+			popup.index_pressed.connect(change_event.bind(signal_info))
+		ev_excl.toggled.connect(change_event.bind("Exclusive", ev_excl))
 	
 		update_contents()
 		has_been_initialized = true
@@ -59,7 +59,7 @@ func update_contents():
 	
 	for idx in range(0, ev_structure.size()-1):
 		fields[idx].text = event[ev_structure[idx]]
-	ev_excl.pressed = bool(event["Exclusive"])
+	ev_excl.button_pressed = bool(event["Exclusive"])
 
 	for idx in range(1, ev_structure.size()-1):
 		var button = fields[idx]
@@ -68,9 +68,8 @@ func update_contents():
 
 # For populating menu button popups
 func populate(button : MenuButton, choices : Array):
-	var popup = button.get_popup()
+	var popup:PopupMenu = button.get_popup()
 	popup.clear()
-	popup.raise()
 	for option in choices:
 		popup.add_item(option)
 
@@ -85,7 +84,7 @@ func change_event(value, setting, signaler):
 	if ((not signaler is CheckBox) and (not signaler is CheckButton)):
 		signaler.text = adjusted_value
 	elif (adjusted_value != value):
-		signaler.pressed = adjusted_value
+		signaler.button_pressed = adjusted_value
 	update_contents()
 
 func move_up():
@@ -107,40 +106,40 @@ func list_update(filters = null):
 		var fltr_andor = []
 		for filter in filters:
 			if (filter.enabled):
-				var key_filtered = key_filtered(event, filter)
-				if (key_filtered and filter.include_derivatives and event["OutEventIDs"] != ""):
+				var filtered = key_filtered(event, filter)
+				if (filtered and filter.include_derivatives and event["OutEventIDs"] != ""):
 					var ev = Resources.get_event_by_id(event["OutEventIDs"])
-					key_filtered = key_filtered(ev, filter)
+					filtered = key_filtered(ev, filter)
 				# Allows for and/or functionality
 				if (not filter.is_or_filter and key_filtered):
 					final_filtered = true
 					break
 				else:
-					fltr_results.append(!key_filtered)
+					fltr_results.append(!filtered)
 		if (final_filtered == null):
 			final_filtered = !exists(fltr_results)
-		emit_signal("apply_filter", final_filtered)
+		apply_filter.emit(final_filtered)
 	populate(ev_oEIDs, Resources.find_restricted_choices(event["Type"], "OutEventIDs"))
 
 # Determines whether this item editor should be filtered out based on the given filter.
-func key_filtered(event, filter:Filter):
+func key_filtered(_event, filter:Filter) -> bool:
 	for key in filter.filtered_keys:
 		if (filter.filtered_keys[key]):
-			if (should_be_filtered_out(event, key, filter)):
+			if (should_be_filtered_out(_event, key, filter)):
 				return true
 	return false
 
 # The bool and string comparison step of key filtering.
 # Includes 'inclusive' and 'type_value' implemenations
-func should_be_filtered_out(event, key, filter):
-	var invalid_bool = (event[key] is bool and filter.boolean_value != event[key])
-	var invalid_string = event[key] is String
+func should_be_filtered_out(_event, key, filter):
+	var invalid_bool = (_event[key] is bool and filter.boolean_value != _event[key])
+	var invalid_string = _event[key] is String
 	var invalid_type = false
 	if (filter.inclusive):
-		invalid_string = (invalid_string and not filter.string_value in event[key])
+		invalid_string = (invalid_string and not filter.string_value in _event[key])
 	else:
-		invalid_string = (invalid_string and not filter.string_value == event[key])
-	if (filter.type_value != "" and filter.type_value != event["Type"]):
+		invalid_string = (invalid_string and not filter.string_value == _event[key])
+	if (filter.type_value != "" and filter.type_value != _event["Type"]):
 		invalid_type = true
 	if (invalid_bool or invalid_string or invalid_type):
 		return true

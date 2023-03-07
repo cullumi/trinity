@@ -2,16 +2,16 @@
 
 extends Control
 
-export (PackedScene) var event_editor_item
+@export var event_editor_item:PackedScene
 
-onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
+@onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
 
-signal close
+signal closed
 
 var events : Array
 
 # Fully re-loads the item list.
-func update_item_list(res = null):
+func update_item_list():  #res = null):
 	for child in item_container.get_children():
 		child.queue_free()
 		events = Resources.event_settings
@@ -24,14 +24,14 @@ func update_item_list(res = null):
 func add_item(index, event):
 	var last_index = events.size()-1
 	
-	var item #: EventEditorItem = event_editor_item.instance()
+	var item#:EventItemEditor = event_editor_item.instantiate()
 	item_container.add_child(item)
 	item.update_position(last_index, index)
 	
-	item.connect("move_up", self, "move_item_up")
-	item.connect("move_down", self, "move_item_down")
-	item.connect("delete", self, "delete_item")
-	item.connect("id_entered", self, "change_event_id", [event, item.ev_name])
+	item.connect("move_up",Callable(self,"move_item_up"))
+	item.connect("move_down",Callable(self,"move_item_down"))
+	item.connect("delete",Callable(self,"delete_item"))
+	item.connect("id_entered",Callable(self,"change_event_id").bind(event, item.ev_name))
 	
 	update_item(item, event)
 
@@ -55,9 +55,9 @@ func update_item(item, event):
 # Clears and Repopulates the given popup.
 func populate_menu_button(item, button, type, event_id, setting, choices = null):
 	var popup = button.get_popup()
-	if (popup.is_connected("index_pressed", self, "change_item")):
-		popup.disconnect("index_pressed", self, "change_item")
-	popup.connect("index_pressed", self, "change_item", [item, button, event_id, setting])
+	if (popup.is_connected("index_pressed",Callable(self,"change_item"))):
+		popup.disconnect("index_pressed",Callable(self,"change_item"))
+	popup.connect("index_pressed",Callable(self,"change_item").bind(item, button, event_id, setting))
 	popup.clear()
 	popup.raise()
 	if (choices == null):
@@ -107,7 +107,7 @@ func move_item_down(item):
 # Used for deleting items at runtime.
 func delete_item(item):
 	var index = item.index
-	events.remove(index)
+	events.remove_at(index)
 	item.queue_free()
 	
 	var last_index = events.size()-1
@@ -125,4 +125,4 @@ func add_new_item(id = null):
 
 # Close the edit window.
 func close():
-	emit_signal("close")
+	closed.emit()

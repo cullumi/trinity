@@ -1,20 +1,19 @@
-tool
+@tool
 
 class_name ItemWindow
 
 extends Control
 
-export (PackedScene) var item_structure
-export (PackedScene) var item_content
-export (String, "Events", "Variations") var content_source setget set_content_source
-export (bool) var use_filters = false
-export (bool) var use_advanced_filters = false
+@export var item_structure:PackedScene
+@export var item_content:PackedScene
+@export_enum ("Editor", "Events", "Variations") var content_source:String = "Editor" : set = set_content_source
+@export var use_filters:bool = false
+@export var use_advanced_filters:bool = false
 
-onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
-onready var title_label = get_node("%Title")
-onready var filter_selector = $"VBoxContainer/Title Bar/FilterSelector"
-
-signal close
+@onready var item_container:BoxContainer = %Items
+@onready var title_label:Label = %Title
+@onready var filter_selector:BoxContainer = %FilterSelector
+signal closed
 
 var item_count : int
 var has_been_initialized = false
@@ -26,9 +25,11 @@ var filters : Array
 # SETTERS
 
 func set_content_source(_source):
-	if not title_label:
-		title_label = get_node("%Title")
-	title_label.text = _source
+	if Engine.is_editor_hint():
+		if title_label == null and is_inside_tree():
+			title_label = get_node("%Title")
+		if title_label:
+			title_label.text = _source
 	content_source = _source
 
 
@@ -37,7 +38,7 @@ func set_content_source(_source):
 func initialize():
 	title_label.text = content_source
 	
-	if (Engine.editor_hint): return
+	if Engine.is_editor_hint(): return
 	clear_item_list()
 	
 	if (content_source in Resources.settings_arrays.keys()):
@@ -80,15 +81,16 @@ func clear_item_list():
 func add_item(index, id = null):
 	item_count += 1
 	var last_index = item_count-1
-	var item = item_structure.instance()
+	var item:ItemWindowItem = item_structure.instantiate()
 	item_container.add_child(item)
 	item.update_position(last_index, index)
-	if (item_content != null):
+	if (item_content):
+		print("New Item")
 		item.add_content(item_content, id)
 	
-	item.connect("move_up", self, "move_item_up")
-	item.connect("move_down", self, "move_item_down")
-	item.connect("delete", self, "delete_item")
+	item.moved_up.connect(move_item_up)
+	item.moved_down.connect(move_item_down)
+	item.deleted.connect(delete_item)
 	
 	if (item_count > 1):
 		item_container.get_child(last_index-1).update_position(last_index)
@@ -106,7 +108,6 @@ func add_new_item(id = null):
 
 # Used for deleting items at runtime.
 func delete_item(item):
-	var index = item.index
 	item_container.remove_child(item)
 	item.queue_free()
 	item_count -= 1
@@ -120,27 +121,33 @@ func move_item_up(item):
 	var last_index = item_count-1
 	item_container.get_child(index).update_position(last_index, index-1)
 	item_container.get_child(index-1).update_position(last_index, index)
-	item_container.move_child(item, item.get_position_in_parent()-1)
+	item_container.move_child(item, item.get_index()-1)
 	list_update()
 
 # Shifts the corresponding item down one.
 func move_item_down(item):
 	var index = item.index
 	var last_index = item_count-1
-	item_container.move_child(item, item.get_position_in_parent()+1)
+	item_container.move_child(item, item.get_index()+1)
 	item_container.get_child(index).update_position(last_index, index)
 	item.update_position(last_index, index+1)
 	list_update()
 
 # Close the edit window.
 func close():
-	emit_signal("close")
+	closed.emit()
 
 
 # FILTER FUNCTIONS
 
-func add_new_filter(str_val="", bool_val=false, fltr_keys=[], is_or=false):
-	var filter : Filter = Filter.new("", false, Resources.structure_arrays[content_source], false)
+func reset_filters(new_filters:Array=[]):
+	clear_filters(false)
+	Resources.append_array(filters, new_filters)
+	display_filter(0)
+
+func add_new_filter(str_val="", bool_val=false, fltr_keys=null, is_or=false):
+	fltr_keys = fltr_keys if fltr_keys != null else Resources.structure_arrays[content_source]
+	var filter : Filter = Filter.new(str_val, bool_val, fltr_keys, is_or)
 #	if (content_source in Resources.structure_arrays.keys()):
 	filters.append(filter)
 	return filters.find(filter)

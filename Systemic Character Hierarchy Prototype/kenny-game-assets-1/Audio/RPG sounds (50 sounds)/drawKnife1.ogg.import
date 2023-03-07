@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/drawKnife1.ogg-393d75ee4fa0e1e7c392ebe54ca3f128.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b0xg5rq75rm5c"
+path="res://.godot/imported/drawKnife1.ogg-393d75ee4fa0e1e7c392ebe54ca3f128.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/drawKnife1.ogg"
-dest_files=[ "res://.import/drawKnife1.ogg-393d75ee4fa0e1e7c392ebe54ca3f128.oggstr" ]
+dest_files=["res://.godot/imported/drawKnife1.ogg-393d75ee4fa0e1e7c392ebe54ca3f128.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

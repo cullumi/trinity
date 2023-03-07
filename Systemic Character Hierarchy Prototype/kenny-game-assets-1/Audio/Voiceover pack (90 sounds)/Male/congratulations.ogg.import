@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/congratulations.ogg-912e7783a33d84b7e2a5032d9ce79668.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8yr243fmspr2"
+path="res://.godot/imported/congratulations.ogg-912e7783a33d84b7e2a5032d9ce79668.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/congratulations.ogg"
-dest_files=[ "res://.import/congratulations.ogg-912e7783a33d84b7e2a5032d9ce79668.oggstr" ]
+dest_files=["res://.godot/imported/congratulations.ogg-912e7783a33d84b7e2a5032d9ce79668.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/you_lose.ogg-ee72162370cda3183b2f1836c360daab.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d213o6qh830p1"
+path="res://.godot/imported/you_lose.ogg-ee72162370cda3183b2f1836c360daab.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Female/you_lose.ogg"
-dest_files=[ "res://.import/you_lose.ogg-ee72162370cda3183b2f1836c360daab.oggstr" ]
+dest_files=["res://.godot/imported/you_lose.ogg-ee72162370cda3183b2f1836c360daab.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

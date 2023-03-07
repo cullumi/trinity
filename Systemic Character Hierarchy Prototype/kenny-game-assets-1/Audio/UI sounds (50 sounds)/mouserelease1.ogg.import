@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/mouserelease1.ogg-055b81cbed48ce0c5d6ee36e112a44d9.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2rwaveb0qeex"
+path="res://.godot/imported/mouserelease1.ogg-055b81cbed48ce0c5d6ee36e112a44d9.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/UI sounds (50 sounds)/mouserelease1.ogg"
-dest_files=[ "res://.import/mouserelease1.ogg-055b81cbed48ce0c5d6ee36e112a44d9.oggstr" ]
+dest_files=["res://.godot/imported/mouserelease1.ogg-055b81cbed48ce0c5d6ee36e112a44d9.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

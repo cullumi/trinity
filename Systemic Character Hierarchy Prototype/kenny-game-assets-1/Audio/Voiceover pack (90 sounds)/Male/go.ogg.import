@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/go.ogg-50bb9c16d9ba2775b7a6fe830bfddd61.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://3tuplt7w4o44"
+path="res://.godot/imported/go.ogg-50bb9c16d9ba2775b7a6fe830bfddd61.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/go.ogg"
-dest_files=[ "res://.import/go.ogg-50bb9c16d9ba2775b7a6fe830bfddd61.oggstr" ]
+dest_files=["res://.godot/imported/go.ogg-50bb9c16d9ba2775b7a6fe830bfddd61.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

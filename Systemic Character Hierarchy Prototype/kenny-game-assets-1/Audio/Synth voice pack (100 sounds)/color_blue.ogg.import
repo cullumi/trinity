@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/color_blue.ogg-e75f9fc7a8d7a21cd3ca3b9ec503af50.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bsjm7f33lubm5"
+path="res://.godot/imported/color_blue.ogg-e75f9fc7a8d7a21cd3ca3b9ec503af50.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/color_blue.ogg"
-dest_files=[ "res://.import/color_blue.ogg-e75f9fc7a8d7a21cd3ca3b9ec503af50.oggstr" ]
+dest_files=["res://.godot/imported/color_blue.ogg-e75f9fc7a8d7a21cd3ca3b9ec503af50.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

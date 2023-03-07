@@ -33,7 +33,7 @@ var event_structure : Array = [
 	"Exclusive"]
 
 var variation_structure : Array = [
-	"Texture",
+	"Texture2D",
 	"Effects"]
 
 # Defines any restrictions given an interactable type. (Intended for object specifics, such as animations)
@@ -45,7 +45,7 @@ var type_restrictions : Dictionary = {
 # Defines valid choices given setting names. 
 var setting_choices : Dictionary = {
 	"Type":["Intble","Button","Actor"],
-	"Texture":["Smooth","Dusty","Splashy"],
+	"Texture2D":["Smooth","Dusty","Splashy"],
 	"Role":["","Button","Mayor"],
 	"Animation":["","Press Button","Pressed"],
 	"Exclusive":[false, true]}
@@ -57,8 +57,8 @@ var event_settings : Array = [
 	{"EvID":"person","Type":"Actor", "Role":"", "Animation":"Pressed", "Effects":"Sphere Poof.tscn", "InCharIDs":"", "OutEventIDs":"", "Exclusive":false}]
 
 var variation_settings : Array = [
-	{"Texture":"Dusty", "Effects":"Small Sphere Poof.tscn"},
-	{"Texture":"Splashy", "Effects":"Small Water Poof.tscn"}]
+	{"Texture2D":"Dusty", "Effects":"Small Sphere Poof.tscn"},
+	{"Texture2D":"Splashy", "Effects":"Small Water Poof.tscn"}]
 
 # Defines Settings Arrays
 var settings_arrays : Dictionary = {
@@ -130,9 +130,8 @@ func update_char_id_choices():
 
 func load_particle_events():
 	var file_dict = Dictionary()
-	var dir : Directory = Directory.new()
-	dir.open("res://Scenes/Particle Systems/Particle Events")
-	dir.list_dir_begin()
+	var dir:DirAccess = DirAccess.open("res://Scenes/Particle Systems/Particle Events")
+	dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	while true:
 		var file = dir.get_next()
 		if file == "":
@@ -240,19 +239,19 @@ func edit_event_id(new_id, event):
 				continue
 			var ev_id : String = ev["EvID"]
 			if (num == -1 and ev_id == new_id):
-				if (ev_id.right(ev_id.length()-1).is_valid_integer()):
+				if (ev_id.right(ev_id.length()-1).is_valid_int()):
 					print(new_id.left(new_id.length()-1))
 					id = new_id.left(new_id.length()-1)
 				num = num+1
 				done = false
 				break
-			elif (ev_id == (id + String(num))):
+			elif (ev_id == (id + str(num))):
 				num = num+1
 				done = false
 				break
 	
 	if (num != -1):
-		id = (id + String(num))
+		id = (id + str(num))
 	if (event in event_settings):
 		var index = event_ids.find(old_id)
 		event_ids.erase(old_id)
@@ -272,15 +271,15 @@ func apply_restrictions_to_event(event):
 # EVENT MOVEMENT FUNCTIONS
 
 func empty_event(id = null):
-	var new_event = default_event_template.duplicate()
-	new_event["EvID"] = id
+	var event = default_event_template.duplicate()
+	event["EvID"] = id
 	if (id == null):
 		id = "event_0"
-		edit_event_id(id, new_event)
-		return new_event
+		edit_event_id(id, event)
+		return event
 	else:
-		edit_event_id(id, new_event)
-		return new_event
+		edit_event_id(id, event)
+		return event
 
 func new_event(id = null):
 	return empty_event(id)
@@ -307,7 +306,7 @@ func remove_event(event):
 
 func find_variation_by_texture(texture):
 	for variation in variation_settings:
-		if (variation["Texture"] == texture):
+		if (variation["Texture2D"] == texture):
 			return variation
 	return null
 
@@ -325,8 +324,8 @@ func edit_variation(variation, setting, new_value):
 # VARIATION MOVEMENT FUNCTIONS
 
 func new_variation():
-	var new_variation = {"Texture":"Smooth", "Effects":""} 
-	return new_variation
+	var variation = {"Texture2D":"Smooth", "Effects":""} 
+	return variation
 
 func move_variation(new_index:int, variation):
 	variation_settings.erase(variation)
@@ -396,7 +395,7 @@ func construct_event_filters_from_target(intble):
 
 func construct_variation_filters_from_target(intble):
 	var filters : Array = []
-	filters.append(Filter.new(intble.texture, false, ["Texture"], true, true, false))
+	filters.append(Filter.new(intble.texture, false, ["Texture2D"], true, true, false))
 	return filters
 
 # GENERAL UTILITIES

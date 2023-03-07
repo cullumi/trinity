@@ -2,21 +2,21 @@
 
 [ext_resource path="res://Scripts/Interactables/Interactable.gd" type="Script" id=1]
 
-[sub_resource type="CylinderShape" id=1]
+[sub_resource type="CylinderShape3D" id=1]
 height = 0.56
 
-[sub_resource type="CylinderShape" id=2]
+[sub_resource type="CylinderShape3D" id=2]
 radius = 0.39
 height = 0.96
 
-[node name="StaticFountain" type="StaticBody"]
+[node name="StaticFountain" type="StaticBody3D"]
 script = ExtResource( 1 )
 texture = "Splashy"
 char_name = "Fountain"
 role = "Fountain"
 
-[node name="Base Collider" type="CollisionShape" parent="."]
+[node name="Base Collider" type="CollisionShape3D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Center Collider" type="CollisionShape" parent="."]
+[node name="Center Collider" type="CollisionShape3D" parent="."]
 shape = SubResource( 2 )

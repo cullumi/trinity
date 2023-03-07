@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/pickup3.ogg-ab4ab34f1bd133f76829ca0df3e68960.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://yfqaypfcsu5k"
+path="res://.godot/imported/pickup3.ogg-ab4ab34f1bd133f76829ca0df3e68960.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/pickup3.ogg"
-dest_files=[ "res://.import/pickup3.ogg-ab4ab34f1bd133f76829ca0df3e68960.oggstr" ]
+dest_files=["res://.godot/imported/pickup3.ogg-ab4ab34f1bd133f76829ca0df3e68960.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

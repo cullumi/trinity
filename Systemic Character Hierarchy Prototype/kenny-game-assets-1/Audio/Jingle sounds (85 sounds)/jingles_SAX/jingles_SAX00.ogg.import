@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/jingles_SAX00.ogg-c57226b5541b9bb87db0bbf29d3dc532.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bwd4ijaetyt3"
+path="res://.godot/imported/jingles_SAX00.ogg-c57226b5541b9bb87db0bbf29d3dc532.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_SAX/jingles_SAX00.ogg"
-dest_files=[ "res://.import/jingles_SAX00.ogg-c57226b5541b9bb87db0bbf29d3dc532.oggstr" ]
+dest_files=["res://.godot/imported/jingles_SAX00.ogg-c57226b5541b9bb87db0bbf29d3dc532.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

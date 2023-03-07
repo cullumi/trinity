@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/4.ogg-99e1ad7aefc95694d3bd4d6d289c745d.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dba72rd4tr6h6"
+path="res://.godot/imported/4.ogg-99e1ad7aefc95694d3bd4d6d289c745d.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Female/4.ogg"
-dest_files=[ "res://.import/4.ogg-99e1ad7aefc95694d3bd4d6d289c745d.oggstr" ]
+dest_files=["res://.godot/imported/4.ogg-99e1ad7aefc95694d3bd4d6d289c745d.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

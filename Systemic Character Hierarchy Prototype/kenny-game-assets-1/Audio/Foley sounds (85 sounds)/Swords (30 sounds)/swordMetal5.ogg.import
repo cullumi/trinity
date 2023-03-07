@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/swordMetal5.ogg-49a9ccc4c9ec54a2a76bb7278247b19e.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://do37xssxicrul"
+path="res://.godot/imported/swordMetal5.ogg-49a9ccc4c9ec54a2a76bb7278247b19e.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Foley sounds (85 sounds)/Swords (30 sounds)/swordMetal5.ogg"
-dest_files=[ "res://.import/swordMetal5.ogg-49a9ccc4c9ec54a2a76bb7278247b19e.oggstr" ]
+dest_files=["res://.godot/imported/swordMetal5.ogg-49a9ccc4c9ec54a2a76bb7278247b19e.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

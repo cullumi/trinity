@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/dieGrab2.ogg-b2d90f4748b8d0c48c05e3b9e0cee976.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://08ei1r85u4eu"
+path="res://.godot/imported/dieGrab2.ogg-b2d90f4748b8d0c48c05e3b9e0cee976.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Casino sounds (50 sounds)/dieGrab2.ogg"
-dest_files=[ "res://.import/dieGrab2.ogg-b2d90f4748b8d0c48c05e3b9e0cee976.oggstr" ]
+dest_files=["res://.godot/imported/dieGrab2.ogg-b2d90f4748b8d0c48c05e3b9e0cee976.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

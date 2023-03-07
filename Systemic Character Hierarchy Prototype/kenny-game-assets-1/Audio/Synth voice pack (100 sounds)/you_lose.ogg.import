@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/you_lose.ogg-828f59aa892beae53e83e5649954092b.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cyvymva2rkony"
+path="res://.godot/imported/you_lose.ogg-828f59aa892beae53e83e5649954092b.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/you_lose.ogg"
-dest_files=[ "res://.import/you_lose.ogg-828f59aa892beae53e83e5649954092b.oggstr" ]
+dest_files=["res://.godot/imported/you_lose.ogg-828f59aa892beae53e83e5649954092b.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

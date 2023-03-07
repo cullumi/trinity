@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/planet_sun.ogg-2623612b41d2e16d03231d8cc3882637.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d3nqvbx34q0d6"
+path="res://.godot/imported/planet_sun.ogg-2623612b41d2e16d03231d8cc3882637.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/planet_sun.ogg"
-dest_files=[ "res://.import/planet_sun.ogg-2623612b41d2e16d03231d8cc3882637.oggstr" ]
+dest_files=["res://.godot/imported/planet_sun.ogg-2623612b41d2e16d03231d8cc3882637.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

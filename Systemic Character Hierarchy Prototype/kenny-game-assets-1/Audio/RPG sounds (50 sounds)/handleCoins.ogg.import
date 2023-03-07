@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/handleCoins.ogg-26d478edcbd8fdf165ab39ce6dfeffca.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwpt58b2rtlq7"
+path="res://.godot/imported/handleCoins.ogg-26d478edcbd8fdf165ab39ce6dfeffca.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/handleCoins.ogg"
-dest_files=[ "res://.import/handleCoins.ogg-26d478edcbd8fdf165ab39ce6dfeffca.oggstr" ]
+dest_files=["res://.godot/imported/handleCoins.ogg-26d478edcbd8fdf165ab39ce6dfeffca.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -3,7 +3,7 @@
 [ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/lantern.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Prefabs/Physics Object Shapes/StaticLantern.tscn" type="PackedScene" id=2]
 
-[node name="Lantern" type="Spatial"]
+[node name="Lantern" type="Node3D"]
 
 [node name="lantern" parent="." instance=ExtResource( 1 )]
 

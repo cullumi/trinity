@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp44rdls60a61"]
+
+[ext_resource type="Script" path="res://Scenes/UI/interact_panel.gd" id="1_ccv0x"]
+
+[node name="InteractPanel" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.733
+anchor_right = 0.5
+anchor_bottom = 0.733
+offset_left = 23.75
+offset_top = -306.64
+offset_right = 213.75
+offset_bottom = -23.64
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccv0x")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TargetRole" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Citizen"
+horizontal_alignment = 1
+
+[node name="Options" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TargetOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Options/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Press" type="Button" parent="MarginContainer/VBoxContainer/Options/MarginContainer/TargetOptions"]
+layout_mode = 2
+focus_next = NodePath("../Swap Roles")
+focus_previous = NodePath("../Variations")
+action_mode = 0
+text = "Press"
+
+[node name="Swap Roles" type="Button" parent="MarginContainer/VBoxContainer/Options/MarginContainer/TargetOptions"]
+layout_mode = 2
+focus_next = NodePath("../Swap Ranks")
+focus_previous = NodePath("../Press")
+text = "Swap Roles"
+
+[node name="Swap Ranks" type="Button" parent="MarginContainer/VBoxContainer/Options/MarginContainer/TargetOptions"]
+layout_mode = 2
+focus_next = NodePath("../Events")
+focus_previous = NodePath("../Swap Roles")
+text = "Swap Ranks"
+
+[node name="Events" type="Button" parent="MarginContainer/VBoxContainer/Options/MarginContainer/TargetOptions"]
+layout_mode = 2
+focus_next = NodePath("../Variations")
+focus_previous = NodePath("../Swap Ranks")
+text = "Events"
+
+[node name="Variations" type="Button" parent="MarginContainer/VBoxContainer/Options/MarginContainer/TargetOptions"]
+layout_mode = 2
+focus_next = NodePath("../Press")
+focus_previous = NodePath("../Events")
+text = "Variations"
+
+[node name="TargetRank" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 / 0 / 0"
+horizontal_alignment = 1

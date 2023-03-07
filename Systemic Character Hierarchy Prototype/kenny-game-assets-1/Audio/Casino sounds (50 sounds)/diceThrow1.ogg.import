@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/diceThrow1.ogg-07b4dfd0861c3e65e588a8fef952f318.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bd7x801mdcfuq"
+path="res://.godot/imported/diceThrow1.ogg-07b4dfd0861c3e65e588a8fef952f318.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Casino sounds (50 sounds)/diceThrow1.ogg"
-dest_files=[ "res://.import/diceThrow1.ogg-07b4dfd0861c3e65e588a8fef952f318.oggstr" ]
+dest_files=["res://.godot/imported/diceThrow1.ogg-07b4dfd0861c3e65e588a8fef952f318.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

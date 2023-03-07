@@ -3,7 +3,7 @@
 [ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fenceCurved.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Prefabs/Physics Object Shapes/StaticFenceCurved.tscn" type="PackedScene" id=2]
 
-[node name="FenceCurved" type="Spatial"]
+[node name="FenceCurved" type="Node3D"]
 
 [node name="fenceCurved" parent="." instance=ExtResource( 1 )]
 

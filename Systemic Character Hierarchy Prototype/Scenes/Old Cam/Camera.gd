@@ -1,16 +1,16 @@
-extends Camera
+extends Camera3D
 
 # Object Targeting
 signal target_found
 signal target_lost
 
-export (NodePath) var hud
-export (bool) var start_in_first_person = true
-export (bool) var first_person = false
-export (bool) var over_shoulder = true
-export (bool) var use_left_shoulder = true
-export (float) var upper_view_limit = 15
-export (float) var lower_view_limit = 3
+@export (NodePath) var hud
+@export (bool) var start_in_first_person = true
+@export (bool) var first_person = false
+@export (bool) var over_shoulder = true
+@export (bool) var use_left_shoulder = true
+@export (float) var upper_view_limit = 15
+@export (float) var lower_view_limit = 3
 
 # Target Actors
 var target_actor = null
@@ -26,7 +26,7 @@ var cam_center_offset
 var cam_left_offset
 var cam_right_offset
 var target_ray
-onready var cam_ray = get_node("RayCast")
+@onready var cam_ray = get_node("RayCast3D")
 
 # Assigned Variables
 var target_object = null
@@ -52,14 +52,14 @@ func _input(event):
 	if event.is_action_pressed("select"):
 		var select = InputEventAction.new()
 		select.action = "ui_accept"
-		select.pressed = true
+		select.button_pressed = true
 		Input.parse_input_event(select)
 	elif event.is_action_released("select"):
 		var select = InputEventAction.new()
 		select.action = "ui_accept"
-		select.pressed = false
+		select.button_pressed = false
 		Input.parse_input_event(select)
-	# Scroll Wheel --> UI Focus vs Camera Zoom
+	# Scroll Wheel --> UI Focus vs Camera3D Zoom
 	elif event.is_action_pressed("zoom_mode"):
 		zoom_mode_active = true
 	elif event.is_action_released("zoom_mode"):
@@ -71,9 +71,9 @@ func _input(event):
 		else:
 			var next = InputEventAction.new()
 			next.action = "ui_focus_next"
-			next.pressed = true
+			next.button_pressed = true
 			Input.parse_input_event(next)
-			next.pressed = false
+			next.button_pressed = false
 			Input.parse_input_event(next)
 	elif event.is_action_pressed("scroll_up"):
 		if zoom_mode_active:
@@ -82,24 +82,24 @@ func _input(event):
 		else:
 			var prev = InputEventAction.new()
 			prev.action = "ui_focus_prev"
-			prev.pressed = true
+			prev.button_pressed = true
 			Input.parse_input_event(prev)
-			prev.pressed = false
+			prev.button_pressed = false
 			Input.parse_input_event(prev)
-	# Mouse Movements --> First vs Third Person Camera
+	# Mouse Movements --> First vs Third Person Camera3D
 	elif event is InputEventMouseMotion:
-		cam_pivot.rotate_y(deg2rad(event.relative.x * mouse_sensitivity * -1))
+		cam_pivot.rotate_y(deg_to_rad(event.relative.x * mouse_sensitivity * -1))
 		
 		if (first_person):
-			cam_fp_pos.rotate_x (deg2rad(event.relative.y * mouse_sensitivity * -1))
+			cam_fp_pos.rotate_x (deg_to_rad(event.relative.y * mouse_sensitivity * -1))
 			cam_fp_pos.rotation_degrees.x = clamp(cam_fp_pos.rotation_degrees.x, -75, 75)
-			target_ray.cast_to = target_ray.to_local(cam_fp_target.global_transform.origin)
+			target_ray.target_position = target_ray.to_local(cam_fp_target.global_transform.origin)
 		else:
 			cam_aim_target.translate(Vector3(0, event.relative.y * 0.1 * mouse_sensitivity * -1, 0))
 			var low_target_height = target_height-lower_view_limit
 			var high_target_height = target_height+upper_view_limit
-			cam_aim_target.translation.y = clamp(cam_aim_target.translation.y, low_target_height, high_target_height)
-			target_ray.cast_to = target_ray.to_local(cam_aim_target.global_transform.origin)
+			cam_aim_target.position.y = clamp(cam_aim_target.position.y, low_target_height, high_target_height)
+			target_ray.target_position = target_ray.to_local(cam_aim_target.global_transform.origin)
 	# View Swapping
 	elif event.is_action_pressed("swap_view"):
 		if (first_person):
@@ -132,7 +132,7 @@ func _process(_delta):
 		get_node(hud).set_velocity_label(target_actor.velocity)
 		
 		if (first_person):
-			# Simple First Person Camera Positioning
+			# Simple First Person Camera3D Positioning
 			if (player_avatar.visible):
 				player_avatar.visible = false
 			global_transform = cam_fp_pos.get_global_transform()
@@ -140,7 +140,7 @@ func _process(_delta):
 			if (!player_avatar.visible):
 				player_avatar.visible = true
 			
-			# Camera Pivot and Offset
+			# Camera3D Pivot and Offset
 			var pivot_pos = cam_pivot.get_global_transform().origin
 			var offset = Vector3()
 			if (over_shoulder):
@@ -151,16 +151,16 @@ func _process(_delta):
 			else:
 				offset = cam_center_offset.get_global_transform().origin - pivot_pos
 			
-			# Final Camera Position Based on Zoom Level
+			# Final Camera3D Position Based on Zoom Level
 			var low_pos = cam_point_low.get_global_transform().origin + offset
 			var high_pos = cam_point_high.get_global_transform().origin + offset
-			translation.x = lerp(low_pos.x, high_pos.x, zoom_level)
-			translation.y = lerp(low_pos.y, high_pos.y, zoom_level)
-			translation.z = lerp(low_pos.z, high_pos.z, zoom_level)
+			position.x = lerp(low_pos.x, high_pos.x, zoom_level)
+			position.y = lerp(low_pos.y, high_pos.y, zoom_level)
+			position.z = lerp(low_pos.z, high_pos.z, zoom_level)
 			
-			# Camera Direction and Crosshair Raycast
+			# Camera3D Direction and Crosshair Raycast
 			look_at(cam_aim_target.get_global_transform().origin, Vector3(0, 1, 0))
-			cam_ray.cast_to = cam_ray.to_local(cam_aim_target.global_transform.origin)
+			cam_ray.target_position = cam_ray.to_local(cam_aim_target.global_transform.origin)
 
 # Turn the camera pivot based on mouse input and apply a velocity vector to the player actor.
 func _physics_process(_delta):
@@ -207,7 +207,7 @@ func set_target_actor(actor):
 	cam_pivot = actor.cam_pivot
 	cam_aim_pivot = actor.cam_aim_pivot
 	cam_aim_target = actor.cam_aim_target
-	target_height = cam_aim_target.translation.y
+	target_height = cam_aim_target.position.y
 	cam_point_low = actor.cam_point_low
 	cam_point_high = actor.cam_point_high
 	cam_center_offset = actor.cam_center_offset

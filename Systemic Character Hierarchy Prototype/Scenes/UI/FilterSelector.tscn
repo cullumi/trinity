@@ -1,109 +1,69 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://b5g0eymhsupyx"]
 
-[ext_resource path="res://Scenes/UI/FilterSelector.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/UI/MenuButton.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://Scenes/UI/FilterSelector.gd" id="1"]
+[ext_resource type="Script" path="res://Scenes/UI/MenuButton.gd" id="2"]
 
 [node name="FilterSelector" type="HBoxContainer"]
-margin_left = 228.0
-margin_right = 1192.0
-margin_bottom = 52.0
+offset_left = 228.0
+offset_right = 1192.0
+offset_bottom = 52.0
 size_flags_horizontal = 3
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
 [node name="RemoveButton" type="Button" parent="."]
-margin_right = 19.0
-margin_bottom = 52.0
+layout_mode = 2
 text = "x"
 
 [node name="AddButton" type="Button" parent="."]
-margin_left = 23.0
-margin_right = 43.0
-margin_bottom = 52.0
+layout_mode = 2
 text = "+"
 
 [node name="OrEnabled" type="VBoxContainer" parent="."]
-margin_left = 47.0
-margin_right = 97.0
-margin_bottom = 52.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="OrCheckBox" type="CheckBox" parent="OrEnabled"]
-margin_right = 50.0
-margin_bottom = 24.0
+layout_mode = 2
 text = "or?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="EnabledCheckBox" type="CheckBox" parent="OrEnabled"]
-margin_top = 28.0
-margin_right = 50.0
-margin_bottom = 52.0
+layout_mode = 2
 text = "on?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Text ChkBxs" type="VBoxContainer" parent="."]
-margin_left = 101.0
-margin_right = 830.0
-margin_bottom = 52.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TextField" type="LineEdit" parent="Text ChkBxs"]
-margin_right = 729.0
-margin_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-expand_to_text_length = true
 placeholder_text = "String Value"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+expand_to_text_length = true
 
 [node name="ChkBxs" type="HBoxContainer" parent="Text ChkBxs"]
-margin_top = 28.0
-margin_right = 729.0
-margin_bottom = 52.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="boolCheckBox" type="CheckBox" parent="Text ChkBxs/ChkBxs"]
-margin_right = 96.0
-margin_bottom = 24.0
+layout_mode = 2
 text = "Bool Value"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="inclusive" type="CheckBox" parent="Text ChkBxs/ChkBxs"]
-margin_left = 100.0
-margin_right = 185.0
-margin_bottom = 24.0
+layout_mode = 2
 text = "inclusive"
 
 [node name="derivatives" type="CheckBox" parent="Text ChkBxs/ChkBxs"]
-margin_left = 189.0
-margin_right = 287.0
-margin_bottom = 24.0
+layout_mode = 2
 text = "derivatives"
 
 [node name="PopupMenu" type="MenuButton" parent="."]
-margin_left = 834.0
-margin_right = 886.0
-margin_bottom = 52.0
+layout_mode = 2
 text = "Filters"
-items = [ "EvID", null, 1, true, false, 0, 0, null, "", false, "Type", null, 1, false, false, 1, 0, null, "", false, "Role", null, 1, false, false, 2, 0, null, "", false, "Animation", null, 1, false, false, 3, 0, null, "", false, "Effects", null, 1, false, false, 4, 0, null, "", false, "InCharIDs", null, 1, false, false, 5, 0, null, "", false, "OutEventIDs", null, 1, false, false, 6, 0, null, "", false, "Exclusive", null, 1, false, false, 7, 0, null, "", false ]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="SpinBox" type="SpinBox" parent="."]
-margin_left = 890.0
-margin_right = 964.0
-margin_bottom = 52.0
+layout_mode = 2
+
 [connection signal="pressed" from="RemoveButton" to="." method="_on_RemoveButton_pressed"]
 [connection signal="pressed" from="AddButton" to="." method="_on_AddButton_pressed"]
 [connection signal="toggled" from="OrEnabled/OrCheckBox" to="." method="_on_OrCheckBox_toggled"]

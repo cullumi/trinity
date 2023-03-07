@@ -18,13 +18,13 @@
 
 
 
-[node name="Small House" type="Spatial"]
-transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )
+[node name="Small House" type="Node3D"]
+transform = Transform3D( 7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0 )
 script = ExtResource( 9 )
 char_name = "Small House"
 role = "Structure"
 
-[node name="House Body" type="Spatial" parent="."]
+[node name="House Body" type="Node3D" parent="."]
 
 [node name="wallWoodDoor" parent="House Body" instance=ExtResource( 6 )]
 
@@ -34,83 +34,83 @@ char_name = "Wood Wall"
 role = "Wood Wall"
 
 [node name="wallWood" parent="House Body" instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform3D( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="Wall" parent="House Body/wallWood" instance=ExtResource( 10 )]
 char_name = "Wood Wall"
 role = "Wood Wall"
 
 [node name="wallWood2" parent="House Body" instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1 )
+transform = Transform3D( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1 )
 
 [node name="Wall" parent="House Body/wallWood2" instance=ExtResource( 10 )]
 char_name = "Wood Wall"
 role = "Wood Wall"
 
 [node name="wallWood3" parent="House Body" instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 1 )
+transform = Transform3D( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 1 )
 
 [node name="Wall" parent="House Body/wallWood3" instance=ExtResource( 10 )]
 char_name = "Wood Wall"
 role = "Wood Wall"
 
 [node name="wallWoodWindowGlass" parent="House Body" instance=ExtResource( 8 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0 )
+transform = Transform3D( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0 )
 
 [node name="Wall" parent="House Body/wallWoodWindowGlass" instance=ExtResource( 10 )]
 char_name = "Wood Wall"
 role = "Wood Wall"
 
 [node name="wallWoodWindowGlass2" parent="House Body" instance=ExtResource( 8 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1, 0, 0 )
+transform = Transform3D( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1, 0, 0 )
 
 [node name="Wall" parent="House Body/wallWoodWindowGlass2" instance=ExtResource( 10 )]
 char_name = "Wood Wall"
 role = "Wood Wall"
 
 [node name="wallWoodWindowShutters" parent="House Body" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 1 )
+transform = Transform3D( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 1 )
 
 [node name="Wall" parent="House Body/wallWoodWindowShutters" instance=ExtResource( 10 )]
 char_name = "Wood Wall"
 role = "Wood Wall"
 
 [node name="wallWoodWindowGlass3" parent="House Body" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 
 [node name="Wall" parent="House Body/wallWoodWindowGlass3" instance=ExtResource( 10 )]
 char_name = "Wood Wall"
 role = "Wood Wall"
 
-[node name="Roof" type="Spatial" parent="."]
+[node name="Roof" type="Node3D" parent="."]
 
 [node name="roofRight1" parent="Roof" instance=ExtResource( 2 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 1, 1 )
+transform = Transform3D( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 1, 1 )
 
 [node name="StaticRoof" parent="Roof/roofRight1" instance=ExtResource( 12 )]
 
 [node name="roofLeft1" parent="Roof" instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0 )
+transform = Transform3D( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0 )
 
 [node name="StaticRoof" parent="Roof/roofLeft1" instance=ExtResource( 12 )]
 
 [node name="roofLeft2" parent="Roof" instance=ExtResource( 2 )]
-transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1, 1, 0 )
+transform = Transform3D( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1, 1, 0 )
 
 [node name="StaticRoof" parent="Roof/roofLeft2" instance=ExtResource( 12 )]
 
 [node name="roofRight2" parent="Roof" instance=ExtResource( 4 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1, 1, 1 )
+transform = Transform3D( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1, 1, 1 )
 
 [node name="StaticRoof" parent="Roof/roofRight2" instance=ExtResource( 12 )]
 
 [node name="roofWindow" parent="Roof" instance=ExtResource( 5 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.847247, 1, 1 )
+transform = Transform3D( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.847247, 1, 1 )
 
 [node name="chimneyTop" parent="." instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.96046e-08, 1, 0 )
+transform = Transform3D( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.96046e-08, 1, 0 )
 
 [node name="StaticChimneyTop" parent="chimneyTop" instance=ExtResource( 13 )]
 
 [node name="bannerGreen" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142857, 0.571429, 0.5 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142857, 0.571429, 0.5 )

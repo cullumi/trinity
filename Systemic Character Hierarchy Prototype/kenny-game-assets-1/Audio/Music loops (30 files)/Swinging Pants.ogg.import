@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Swinging Pants.ogg-656d966ca1027b3bad9c26e0bf105152.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dt31ijc1eb6f0"
+path="res://.godot/imported/Swinging Pants.ogg-656d966ca1027b3bad9c26e0bf105152.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Swinging Pants.ogg"
-dest_files=[ "res://.import/Swinging Pants.ogg-656d966ca1027b3bad9c26e0bf105152.oggstr" ]
+dest_files=["res://.godot/imported/Swinging Pants.ogg-656d966ca1027b3bad9c26e0bf105152.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/creak2.ogg-09d54c6e00a9ff9609c20339be4f1dac.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c3xcefvc4gvhw"
+path="res://.godot/imported/creak2.ogg-09d54c6e00a9ff9609c20339be4f1dac.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/creak2.ogg"
-dest_files=[ "res://.import/creak2.ogg-09d54c6e00a9ff9609c20339be4f1dac.oggstr" ]
+dest_files=["res://.godot/imported/creak2.ogg-09d54c6e00a9ff9609c20339be4f1dac.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

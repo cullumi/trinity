@@ -1,6 +1,6 @@
-extends Spatial
+extends Node3D
 
-export (Array, NodePath) var particle_systems
+@export (Array, NodePath) var particle_systems
 
 func _ready():
 	for system in particle_systems:

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/failure.ogg-f51316c1819150d32c4356e6924be410.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dj224eypv016n"
+path="res://.godot/imported/failure.ogg-f51316c1819150d32c4356e6924be410.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/failure.ogg"
-dest_files=[ "res://.import/failure.ogg-f51316c1819150d32c4356e6924be410.oggstr" ]
+dest_files=["res://.godot/imported/failure.ogg-f51316c1819150d32c4356e6924be410.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

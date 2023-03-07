@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/time_over.ogg-b62f3b6f00a30af9e1c4a2d54773fe17.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bne1k0v32pkau"
+path="res://.godot/imported/time_over.ogg-b62f3b6f00a30af9e1c4a2d54773fe17.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/time_over.ogg"
-dest_files=[ "res://.import/time_over.ogg-b62f3b6f00a30af9e1c4a2d54773fe17.oggstr" ]
+dest_files=["res://.godot/imported/time_over.ogg-b62f3b6f00a30af9e1c4a2d54773fe17.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

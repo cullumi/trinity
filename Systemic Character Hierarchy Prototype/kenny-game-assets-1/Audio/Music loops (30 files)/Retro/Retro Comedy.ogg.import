@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Retro Comedy.ogg-184c4c5788b9f217397f6aec02644a8a.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://y3j8b3f3ioph"
+path="res://.godot/imported/Retro Comedy.ogg-184c4c5788b9f217397f6aec02644a8a.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Retro/Retro Comedy.ogg"
-dest_files=[ "res://.import/Retro Comedy.ogg-184c4c5788b9f217397f6aec02644a8a.oggstr" ]
+dest_files=["res://.godot/imported/Retro Comedy.ogg-184c4c5788b9f217397f6aec02644a8a.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

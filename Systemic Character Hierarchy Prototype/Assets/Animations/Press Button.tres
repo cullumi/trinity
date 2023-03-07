@@ -3,14 +3,14 @@
 [resource]
 resource_name = "Press Button"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CollisionShape:translation")
+tracks/0/path = NodePath("CollisionShape3D:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 0.15, 0.15, 0.15 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 0.15, 0.15, 0.15 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, -0.102094, 0 ), Vector3( 0, 0, 0 ) ]
 }

@@ -11,7 +11,7 @@ var include_derivatives : bool
 var inclusive : bool
 var enabled : bool
 
-func _init(str_val="", bool_val=false, fltr_keys=[], is_or=false, inc_derivs=false, inc=true, type_val="", enbld=true):
+func _init(str_val="",bool_val=false,fltr_keys=[],is_or=false,inc_derivs=false,inc=true,type_val="",enbld=true):
 	string_value = str_val
 	boolean_value = bool_val
 	filtered_keys = {}

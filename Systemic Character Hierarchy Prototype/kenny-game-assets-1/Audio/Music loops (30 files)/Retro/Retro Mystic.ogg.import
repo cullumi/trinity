@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Retro Mystic.ogg-f14ae1cd985c473c791c352da3684f71.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://p8v5g11thccr"
+path="res://.godot/imported/Retro Mystic.ogg-f14ae1cd985c473c791c352da3684f71.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Retro/Retro Mystic.ogg"
-dest_files=[ "res://.import/Retro Mystic.ogg-f14ae1cd985c473c791c352da3684f71.oggstr" ]
+dest_files=["res://.godot/imported/Retro Mystic.ogg-f14ae1cd985c473c791c352da3684f71.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

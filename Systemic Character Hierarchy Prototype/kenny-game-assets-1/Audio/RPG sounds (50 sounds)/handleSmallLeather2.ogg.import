@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/handleSmallLeather2.ogg-0a2b3a0fdea24e00edc4c91dd2f27a77.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmb8pl3ev8ytl"
+path="res://.godot/imported/handleSmallLeather2.ogg-0a2b3a0fdea24e00edc4c91dd2f27a77.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/handleSmallLeather2.ogg"
-dest_files=[ "res://.import/handleSmallLeather2.ogg-0a2b3a0fdea24e00edc4c91dd2f27a77.oggstr" ]
+dest_files=["res://.godot/imported/handleSmallLeather2.ogg-0a2b3a0fdea24e00edc4c91dd2f27a77.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Beat ident.ogg-db5628f13ad9690bc6475352bff45fbb.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdmkxpohtt4p5"
+path="res://.godot/imported/Beat ident.ogg-db5628f13ad9690bc6475352bff45fbb.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Idents/Beat ident.ogg"
-dest_files=[ "res://.import/Beat ident.ogg-db5628f13ad9690bc6475352bff45fbb.oggstr" ]
+dest_files=["res://.godot/imported/Beat ident.ogg-db5628f13ad9690bc6475352bff45fbb.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

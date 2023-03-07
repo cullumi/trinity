@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/dieShuffle3.ogg-ebe547536d8d4a11536bbd139b3bfa27.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7s4ujuvq4kmd"
+path="res://.godot/imported/dieShuffle3.ogg-ebe547536d8d4a11536bbd139b3bfa27.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Casino sounds (50 sounds)/dieShuffle3.ogg"
-dest_files=[ "res://.import/dieShuffle3.ogg-ebe547536d8d4a11536bbd139b3bfa27.oggstr" ]
+dest_files=["res://.godot/imported/dieShuffle3.ogg-ebe547536d8d4a11536bbd139b3bfa27.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

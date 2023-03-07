@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/lose5.ogg-52658a63d5b140232d0c3d7f63d4382f.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dnlsap2gvwe7u"
+path="res://.godot/imported/lose5.ogg-52658a63d5b140232d0c3d7f63d4382f.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/lose5.ogg"
-dest_files=[ "res://.import/lose5.ogg-52658a63d5b140232d0c3d7f63d4382f.oggstr" ]
+dest_files=["res://.godot/imported/lose5.ogg-52658a63d5b140232d0c3d7f63d4382f.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

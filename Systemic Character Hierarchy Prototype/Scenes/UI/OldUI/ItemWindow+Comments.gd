@@ -2,12 +2,12 @@
 
 extends Control
 
-export (PackedScene) var item_template
+@export var item_template:PackedScene
 
-onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
+@onready var item_container = $VBoxContainer/ScrollContainer/VBoxContainer
 #onready var test_menu_button = $MenuButton
 
-signal close
+signal closed
 
 #var resources : Resources
 #var events : Array
@@ -38,18 +38,18 @@ func clear_item_list():
 # Used whenever an item is added to the events list.
 func add_item(index, signal_info : Array = []):#, event):
 	var last_index = item_count-1#events.size()-1
-	print(String(index) + "  /  " + String(last_index))
-	var item = item_template.instance()
+	print(str(index) + "  /  " + str(last_index))
+	var item = item_template.instantiate()
 	item_container.add_child(item)
 	item.update_position(last_index, index)
 	
-	item.connect("move_up", self, "move_item_up")
-	item.connect("move_down", self, "move_item_down")
-	item.connect("delete", self, "delete_item")
+	item.moved_up.connect(move_item_up)
+	item.moved_down.connect(move_item_down)
+	item.deleted.connect(delete_item)
 #	if (signal_info.size() != 0):
-#	item.connect("id_entered", self, "change_event_id", signal_info)#[event, item.ev_name])
+#	item.connect("id_entered",Callable(self,"change_event_id").bind(signal_info))#[event, item.ev_name])
 #	else:
-#		item.connect("id_entered", self, "change_event_id")
+#		item.connect("id_entered",Callable(self,"change_event_id"))
 	
 	return item
 #	update_item(item, event)
@@ -75,9 +75,9 @@ func add_item(index, signal_info : Array = []):#, event):
 # Clears and Repopulates the given popup.
 #func populate_menu_button(button, choices = null, signal_info : Array = []):#item, button, type, event_id, setting):
 #	var popup = button.get_popup()
-#	if (popup.is_connected("index_pressed", self, "change_item")):
-#		popup.disconnect("index_pressed", self, "change_item")
-#	popup.connect("index_pressed", self, "change_item", signal_info)
+#	if (popup.is_connected("index_pressed",Callable(self,"change_item"))):
+#		popup.disconnect("index_pressed",Callable(self,"change_item"))
+#	popup.connect("index_pressed",Callable(self,"change_item").bind(signal_info))
 #	popup.clear()
 #	popup.raise()
 ##	if (choices == null):
@@ -150,4 +150,4 @@ func add_new_item(id = null):
 
 # Close the edit window.
 func close():
-	emit_signal("close")
+	closed.emit()

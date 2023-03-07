@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/phaserDown1.ogg-b4d75eb0c3c2d9c28d2bce27017faabf.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3yodv5m50mos"
+path="res://.godot/imported/phaserDown1.ogg-b4d75eb0c3c2d9c28d2bce27017faabf.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Digital sounds (60 sounds)/phaserDown1.ogg"
-dest_files=[ "res://.import/phaserDown1.ogg-b4d75eb0c3c2d9c28d2bce27017faabf.oggstr" ]
+dest_files=["res://.godot/imported/phaserDown1.ogg-b4d75eb0c3c2d9c28d2bce27017faabf.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

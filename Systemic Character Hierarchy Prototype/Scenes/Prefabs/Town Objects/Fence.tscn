@@ -3,7 +3,7 @@
 [ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fence.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Prefabs/Physics Object Shapes/StaticFence.tscn" type="PackedScene" id=2]
 
-[node name="Fence" type="Spatial"]
+[node name="Fence" type="Node3D"]
 
 [node name="fence" parent="." instance=ExtResource( 1 )]
 

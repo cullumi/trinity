@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/knifeSlice.ogg-ad5c8e46cd5b87b5a85902096bba481a.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://x6hoi265r2ao"
+path="res://.godot/imported/knifeSlice.ogg-ad5c8e46cd5b87b5a85902096bba481a.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/knifeSlice.ogg"
-dest_files=[ "res://.import/knifeSlice.ogg-ad5c8e46cd5b87b5a85902096bba481a.oggstr" ]
+dest_files=["res://.godot/imported/knifeSlice.ogg-ad5c8e46cd5b87b5a85902096bba481a.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

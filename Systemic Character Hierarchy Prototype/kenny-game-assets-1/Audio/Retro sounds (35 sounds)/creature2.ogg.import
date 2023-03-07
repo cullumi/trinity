@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/creature2.ogg-75b27b998f7f9e2471397a034b34de8a.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c6gx8yp4p4au2"
+path="res://.godot/imported/creature2.ogg-75b27b998f7f9e2471397a034b34de8a.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/creature2.ogg"
-dest_files=[ "res://.import/creature2.ogg-75b27b998f7f9e2471397a034b34de8a.oggstr" ]
+dest_files=["res://.godot/imported/creature2.ogg-75b27b998f7f9e2471397a034b34de8a.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

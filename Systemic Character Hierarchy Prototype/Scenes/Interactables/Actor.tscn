@@ -1,197 +1,202 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=3 uid="uid://c5djp6k53qcu2"]
 
-[ext_resource path="res://Scripts/Interactables/Actor.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Interactables/Button.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://Scripts/Interactables/OnlyActor.gd" id="1_vn5dw"]
+[ext_resource type="PackedScene" uid="uid://cd2n1dcwa05ln" path="res://Scenes/Interactables/Button.tscn" id="2"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Interactable.gd" id="2_gp67c"]
+[ext_resource type="Material" uid="uid://uq0xvbdhxmpo" path="res://Assets/Materials/ActorColor.tres" id="3_3t42k"]
+[ext_resource type="Material" uid="uid://3h0of07in3ky" path="res://Assets/Materials/PupilColor.tres" id="4_gd1vk"]
 
-[sub_resource type="CapsuleShape" id=1]
-height = 2.0
+[sub_resource type="CapsuleShape3D" id="1"]
+height = 3.25
 
-[sub_resource type="AnimationNodeAnimation" id=2]
-animation = "Idle"
+[sub_resource type="AnimationNodeAnimation" id="2"]
+animation = &"Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "Pressed"
+[sub_resource type="AnimationNodeAnimation" id="3"]
+animation = &"Pressed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=4]
+[sub_resource type="AnimationNodeStateMachineTransition" id="4"]
 switch_mode = 2
-auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+[sub_resource type="AnimationNodeStateMachineTransition" id="5"]
 
-[sub_resource type="AnimationNodeStateMachine" id=6]
-states/Idle/node = SubResource( 2 )
-states/Idle/position = Vector2( 99, 53 )
-states/Pressed/node = SubResource( 3 )
-states/Pressed/position = Vector2( 277, 53 )
-transitions = [ "Pressed", "Idle", SubResource( 4 ), "Idle", "Pressed", SubResource( 5 ) ]
-start_node = "Idle"
+[sub_resource type="AnimationNodeStateMachine" id="6"]
+states/Idle/node = SubResource("2")
+states/Idle/position = Vector2(99, 53)
+states/Pressed/node = SubResource("3")
+states/Pressed/position = Vector2(277, 53)
+transitions = ["Pressed", "Idle", SubResource("4"), "Idle", "Pressed", SubResource("5")]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="7"]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id="8"]
 length = 4.0
-loop = true
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Avatar/Happy Person/Face/Eye:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector3( -180, 0, 0 ), Vector3( -180, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [Vector3(-180, 0, 0), Vector3(-180, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Avatar/Happy Person/Face/Eye2:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1, 2, 3, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 180, 0, 0 ), Vector3( 180, 0, 0 ) ]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(180, 0, 0), Vector3(180, 0, 0)]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id="9"]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Avatar/Happy Person/Face/Smile:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar/Happy Person/Face/Smile:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector3( 0.987152, 9.2962e-08, -0.570597 ), Vector3( 0.987152, 1.26744e-07, -0.777949 ), Vector3( 0.987152, 1.26744e-07, -0.777949 ), Vector3( 0.987152, 9.2962e-08, -0.570597 ) ]
+"values": [Vector3(0.987152, 9.2962e-08, -0.570597), Vector3(0.987152, 1.26744e-07, -0.777949), Vector3(0.987152, 1.26744e-07, -0.777949), Vector3(0.987152, 9.2962e-08, -0.570597)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Avatar/Happy Person/Face/Smile/Smile Pivot 1:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector3( -48.123, 0, 0 ), Vector3( 48.123, 0, 0 ), Vector3( 48.123, 0, 0 ), Vector3( -48.123, 0, 0 ) ]
+"values": [Vector3(-48.123, 0, 0), Vector3(48.123, 0, 0), Vector3(48.123, 0, 0), Vector3(-48.123, 0, 0)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Avatar/Happy Person/Face/Smile/Smile Pivot 2:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector3( -138.123, 0, 0 ), Vector3( -234.369, 0, 0 ), Vector3( -234.369, 0, 0 ), Vector3( -138.123, 0, 0 ) ]
+"values": [Vector3(-138.123, 0, 0), Vector3(-234.369, 0, 0), Vector3(-234.369, 0, 0), Vector3(-138.123, 0, 0)]
 }
 
-[sub_resource type="CapsuleMesh" id=10]
-mid_height = 2.25
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m5g8"]
+_data = {
+"Idle": SubResource("8"),
+"Pressed": SubResource("9")
+}
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="CapsuleMesh" id="10"]
+height = 3.25
 
-[sub_resource type="SphereMesh" id=12]
+[sub_resource type="SphereMesh" id="12"]
 radius = 0.125
 height = 0.25
 
-[sub_resource type="SphereMesh" id=13]
+[sub_resource type="SphereMesh" id="13"]
 radius = 0.063
 height = 0.063
 
-[sub_resource type="SpatialMaterial" id=14]
-albedo_color = Color( 0, 0, 0, 1 )
+[sub_resource type="CapsuleMesh" id="15"]
+radius = 0.064
+height = 0.378
 
-[sub_resource type="CapsuleMesh" id=15]
-radius = 0.063
-mid_height = 0.25
+[node name="Actor" type="CharacterBody3D"]
+script = ExtResource("1_vn5dw")
 
-[node name="Actor" type="KinematicBody"]
-script = ExtResource( 1 )
+[node name="Interactable" type="Node" parent="." node_paths=PackedStringArray("source_node")]
+unique_name_in_owner = true
+script = ExtResource("2_gp67c")
+type = "Actor"
+char_name = "Character"
+source_node = NodePath("..")
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.07325, 0 )
-shape = SubResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("1")
 
-[node name="ParticleLocation" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.027, 0 )
+[node name="ParticleLocation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.027, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 6 )
+tree_root = SubResource("6")
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 7 )
+parameters/playback = SubResource("7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 8 )
-anims/Pressed = SubResource( 9 )
+libraries = {
+"": SubResource("AnimationLibrary_6m5g8")
+}
 
-[node name="Avatar" type="Spatial" parent="."]
+[node name="Avatar" type="Node3D" parent="."]
+unique_name_in_owner = true
 
-[node name="Happy Person" type="MeshInstance" parent="Avatar"]
-transform = Transform( 0, 1, 0, 0, 0, -1, -1, 0, 0, 0, 2.25, 0 )
+[node name="Happy Person" type="MeshInstance3D" parent="Avatar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 layers = 2147483649
-mesh = SubResource( 10 )
-material/0 = SubResource( 11 )
+material_override = ExtResource("3_3t42k")
+mesh = SubResource("10")
 
-[node name="Face" type="Spatial" parent="Avatar/Happy Person"]
-transform = Transform( 1, 1.62921e-07, 1.62921e-07, -1.62921e-07, 1, 0, -1.62921e-07, -2.65431e-14, 1, 0, 0, 0 )
+[node name="Face" type="Node3D" parent="Avatar/Happy Person"]
+transform = Transform3D(-1.62921e-07, 1, 0, 1.62921e-07, 2.65431e-14, -1, -1, -1.62921e-07, -1.62921e-07, 0, 0.949792, 0)
 
-[node name="Eye" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.889137, 0.418345, -1.24562 )
-mesh = SubResource( 12 )
-material/0 = null
+[node name="Eye" type="MeshInstance3D" parent="Avatar/Happy Person/Face"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.443994, 0.218308, -0.295828)
+mesh = SubResource("12")
 
-[node name="Pupil" type="MeshInstance" parent="Avatar/Happy Person/Face/Eye"]
-transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.07, 0.07, 0 )
-mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
+[node name="Pupil" type="MeshInstance3D" parent="Avatar/Happy Person/Face/Eye"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.07, 0.07, 0)
+material_override = ExtResource("4_gd1vk")
+mesh = SubResource("13")
 
-[node name="Eye2" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.888744, -0.418, -1.246 )
-mesh = SubResource( 12 )
-material/0 = null
+[node name="Eye2" type="MeshInstance3D" parent="Avatar/Happy Person/Face"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444, -0.216, -0.296208)
+mesh = SubResource("12")
 
-[node name="Pupil2" type="MeshInstance" parent="Avatar/Happy Person/Face/Eye2"]
-transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.07, -0.07, 0 )
-mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
+[node name="Pupil2" type="MeshInstance3D" parent="Avatar/Happy Person/Face/Eye2"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.07, -0.07, 0)
+material_override = ExtResource("4_gd1vk")
+mesh = SubResource("13")
 
-[node name="Smile" type="MeshInstance" parent="Avatar/Happy Person/Face"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.987152, 9.2962e-08, -0.570597 )
-mesh = SubResource( 15 )
-material/0 = null
+[node name="Smile" type="MeshInstance3D" parent="Avatar/Happy Person/Face"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485019, -2.34669e-09, 0.323904)
+mesh = SubResource("15")
 
-[node name="Smile Pivot 1" type="Spatial" parent="Avatar/Happy Person/Face/Smile"]
-transform = Transform( 1, 0, 0, 0, 0.667534, 0.74458, 0, -0.74458, 0.667534, 0, 0, -0.125 )
+[node name="Smile Pivot 1" type="Node3D" parent="Avatar/Happy Person/Face/Smile"]
+transform = Transform3D(1, 0, 0, 0, 0.748956, 0.66262, 0, -0.66262, 0.748956, 8.9407e-08, 0.305803, 0.00745392)
 
-[node name="Smile2" type="MeshInstance" parent="Avatar/Happy Person/Face/Smile/Smile Pivot 1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125 )
-mesh = SubResource( 15 )
-material/0 = null
+[node name="Smile2" type="MeshInstance3D" parent="Avatar/Happy Person/Face/Smile/Smile Pivot 1"]
+transform = Transform3D(1, 1.42109e-14, 1.42109e-14, 0, 1, -1.69407e-21, 0, 0, 1, 0, 0, -0.125)
+mesh = SubResource("15")
 
-[node name="Smile Pivot 2" type="Spatial" parent="Avatar/Happy Person/Face/Smile"]
-transform = Transform( 1, 0, 0, 0, -0.744579, 0.667534, 0, -0.667534, -0.744579, 0, 0, 0.125 )
+[node name="Smile Pivot 2" type="Node3D" parent="Avatar/Happy Person/Face/Smile"]
+transform = Transform3D(1, 0, 0, 0, 0.748956, -0.66262, 0, 0.66262, 0.748956, 1.49012e-07, -0.311213, 0.0145993)
 
-[node name="Smile2" type="MeshInstance" parent="Avatar/Happy Person/Face/Smile/Smile Pivot 2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125 )
-mesh = SubResource( 15 )
-material/0 = null
+[node name="Smile2" type="MeshInstance3D" parent="Avatar/Happy Person/Face/Smile/Smile Pivot 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
+mesh = SubResource("15")
 
-[node name="Button" parent="Avatar" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.01974, 0.986379 )
+[node name="BackButton" parent="Avatar" instance=ExtResource("2")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.00083077, 3.02178, 0.525866)
 collision_layer = 2
 collision_mask = 2
 
-[node name="TargetRay" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07325, 0 )
-enabled = true
-cast_to = Vector3( 0, 0, 7 )
+[node name="TargetRay" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07325, 0)
+target_position = Vector3(0, 0, 7)

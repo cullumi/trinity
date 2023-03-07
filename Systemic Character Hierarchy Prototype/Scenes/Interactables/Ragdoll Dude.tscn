@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Assets/Models/model.obj" type="ArrayMesh" id=1]
 
-[node name="Ragdoll Dude" type="Spatial"]
+[node name="Ragdoll Dude" type="Node3D"]
 
-[node name="Simple Mannequin" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.566464, 0 )
+[node name="Simple Mannequin" type="MeshInstance3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.566464, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null

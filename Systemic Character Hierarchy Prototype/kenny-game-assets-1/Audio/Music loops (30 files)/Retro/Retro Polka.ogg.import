@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Retro Polka.ogg-e84ec30ebcdbbcdaa3c4224989b223c1.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5vms0xtwq7xj"
+path="res://.godot/imported/Retro Polka.ogg-e84ec30ebcdbbcdaa3c4224989b223c1.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Retro/Retro Polka.ogg"
-dest_files=[ "res://.import/Retro Polka.ogg-e84ec30ebcdbbcdaa3c4224989b223c1.oggstr" ]
+dest_files=["res://.godot/imported/Retro Polka.ogg-e84ec30ebcdbbcdaa3c4224989b223c1.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

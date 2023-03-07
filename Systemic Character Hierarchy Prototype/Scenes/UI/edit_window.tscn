@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://1ri3ntk4quuc"]
+
+[ext_resource type="PackedScene" path="res://Scenes/UI/OldUI/EventEditor.tscn" id="1_kqp1c"]
+[ext_resource type="Script" path="res://Scenes/UI/edit_window.gd" id="1_oshu2"]
+[ext_resource type="PackedScene" uid="uid://bcwugoxu8b1nu" path="res://Scenes/UI/ItemWindow.tscn" id="2_8oviu"]
+[ext_resource type="PackedScene" uid="uid://bv4pnllttbffl" path="res://Scenes/UI/VariationItemEditor.tscn" id="3_xn1td"]
+
+[node name="Edit" type="PanelContainer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -379.25
+offset_top = -375.0
+offset_right = 597.75
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oshu2")
+metadata/_edit_group_ = true
+
+[node name="M" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Rules" type="Control" parent="M"]
+layout_mode = 2
+
+[node name="OldEventEditor" parent="M" instance=ExtResource("1_kqp1c")]
+visible = false
+layout_mode = 2
+
+[node name="Events" parent="M" instance=ExtResource("2_8oviu")]
+layout_mode = 2
+use_filters = true
+use_advanced_filters = true
+
+[node name="Variations" parent="M" instance=ExtResource("2_8oviu")]
+layout_mode = 2
+item_content = ExtResource("3_xn1td")
+content_source = "Variations"
+
+[connection signal="closed" from="M/Events" to="." method="deselect_window"]
+[connection signal="closed" from="M/Variations" to="." method="deselect_window"]

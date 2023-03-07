@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/hitHelmet5.ogg-9e8e8b126b65b99202678a425df6dac5.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c645dfokl0lvh"
+path="res://.godot/imported/hitHelmet5.ogg-9e8e8b126b65b99202678a425df6dac5.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Foley sounds (85 sounds)/Swords (30 sounds)/hitHelmet5.ogg"
-dest_files=[ "res://.import/hitHelmet5.ogg-9e8e8b126b65b99202678a425df6dac5.oggstr" ]
+dest_files=["res://.godot/imported/hitHelmet5.ogg-9e8e8b126b65b99202678a425df6dac5.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/doorClose_1.ogg-d6348fdf76dc305c21467be553a007b5.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b1cs1toryuaf8"
+path="res://.godot/imported/doorClose_1.ogg-d6348fdf76dc305c21467be553a007b5.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/doorClose_1.ogg"
-dest_files=[ "res://.import/doorClose_1.ogg-d6348fdf76dc305c21467be553a007b5.oggstr" ]
+dest_files=["res://.godot/imported/doorClose_1.ogg-d6348fdf76dc305c21467be553a007b5.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

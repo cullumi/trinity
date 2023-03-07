@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Wacky Waiting.ogg-4fdc04cfa0b534020ea7ea5d1c671f50.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://byi4b22cpmeac"
+path="res://.godot/imported/Wacky Waiting.ogg-4fdc04cfa0b534020ea7ea5d1c671f50.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Wacky Waiting.ogg"
-dest_files=[ "res://.import/Wacky Waiting.ogg-4fdc04cfa0b534020ea7ea5d1c671f50.oggstr" ]
+dest_files=["res://.godot/imported/Wacky Waiting.ogg-4fdc04cfa0b534020ea7ea5d1c671f50.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

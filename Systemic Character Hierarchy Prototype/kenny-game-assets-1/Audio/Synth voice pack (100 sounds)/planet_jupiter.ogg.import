@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/planet_jupiter.ogg-8f426e30a02cfd0189aa7090ba69ae63.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c16hm4kp0ei1m"
+path="res://.godot/imported/planet_jupiter.ogg-8f426e30a02cfd0189aa7090ba69ae63.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/planet_jupiter.ogg"
-dest_files=[ "res://.import/planet_jupiter.ogg-8f426e30a02cfd0189aa7090ba69ae63.oggstr" ]
+dest_files=["res://.godot/imported/planet_jupiter.ogg-8f426e30a02cfd0189aa7090ba69ae63.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

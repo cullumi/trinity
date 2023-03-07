@@ -2,12 +2,12 @@
 
 [ext_resource path="res://Scripts/Interactables/Interactable.gd" type="Script" id=1]
 
-[sub_resource type="ConvexPolygonShape" id=1]
-points = PoolVector3Array( 0.6, 0, -0.5, 0.6, 0, 0.5, -0.5, 0.55, -0.5, -0.5, 0.55, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5 )
+[sub_resource type="ConvexPolygonShape3D" id=1]
+points = PackedVector3Array( 0.6, 0, -0.5, 0.6, 0, 0.5, -0.5, 0.55, -0.5, -0.5, 0.55, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5 )
 
-[node name="StaticRoof" type="StaticBody"]
+[node name="StaticRoof" type="StaticBody3D"]
 script = ExtResource( 1 )
 texture = "Dusty"
 
-[node name="Roof Collider" type="CollisionShape" parent="."]
+[node name="Roof Collider" type="CollisionShape3D" parent="."]
 shape = SubResource( 1 )

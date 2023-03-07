@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/bookOpen.ogg-b665792c73ad2cd66bb3cce828eef73f.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://34wfa6m8tals"
+path="res://.godot/imported/bookOpen.ogg-b665792c73ad2cd66bb3cce828eef73f.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/bookOpen.ogg"
-dest_files=[ "res://.import/bookOpen.ogg-b665792c73ad2cd66bb3cce828eef73f.oggstr" ]
+dest_files=["res://.godot/imported/bookOpen.ogg-b665792c73ad2cd66bb3cce828eef73f.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

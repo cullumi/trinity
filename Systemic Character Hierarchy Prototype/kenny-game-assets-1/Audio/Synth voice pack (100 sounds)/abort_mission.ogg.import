@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/abort_mission.ogg-2051774169a2af87cf7e00a95250d16f.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://6hldskw64c3v"
+path="res://.godot/imported/abort_mission.ogg-2051774169a2af87cf7e00a95250d16f.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/abort_mission.ogg"
-dest_files=[ "res://.import/abort_mission.ogg-2051774169a2af87cf7e00a95250d16f.oggstr" ]
+dest_files=["res://.godot/imported/abort_mission.ogg-2051774169a2af87cf7e00a95250d16f.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

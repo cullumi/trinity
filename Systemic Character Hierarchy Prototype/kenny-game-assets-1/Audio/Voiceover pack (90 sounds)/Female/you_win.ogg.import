@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/you_win.ogg-55c296890e5273fd39697bb58a5a65c5.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://buvlvhhm8lr31"
+path="res://.godot/imported/you_win.ogg-55c296890e5273fd39697bb58a5a65c5.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Female/you_win.ogg"
-dest_files=[ "res://.import/you_win.ogg-55c296890e5273fd39697bb58a5a65c5.oggstr" ]
+dest_files=["res://.godot/imported/you_win.ogg-55c296890e5273fd39697bb58a5a65c5.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

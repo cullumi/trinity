@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/war_call_for_backup.ogg-e8b53cba48ed788c727b0516780e1eb1.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dke4d7qkbab2e"
+path="res://.godot/imported/war_call_for_backup.ogg-e8b53cba48ed788c727b0516780e1eb1.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Male/war_call_for_backup.ogg"
-dest_files=[ "res://.import/war_call_for_backup.ogg-e8b53cba48ed788c727b0516780e1eb1.oggstr" ]
+dest_files=["res://.godot/imported/war_call_for_backup.ogg-e8b53cba48ed788c727b0516780e1eb1.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

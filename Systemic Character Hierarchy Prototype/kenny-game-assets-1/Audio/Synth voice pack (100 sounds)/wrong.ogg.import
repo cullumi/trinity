@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/wrong.ogg-2feaa0e4453a7595c72c3506db47b8ce.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1bjul8j6614t"
+path="res://.godot/imported/wrong.ogg-2feaa0e4453a7595c72c3506db47b8ce.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/wrong.ogg"
-dest_files=[ "res://.import/wrong.ogg-2feaa0e4453a7595c72c3506db47b8ce.oggstr" ]
+dest_files=["res://.godot/imported/wrong.ogg-2feaa0e4453a7595c72c3506db47b8ce.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

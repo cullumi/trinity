@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/rumble2.ogg-0a75674e31d1274b52a161c4f7d8808d.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3mj20it0os8p"
+path="res://.godot/imported/rumble2.ogg-0a75674e31d1274b52a161c4f7d8808d.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Retro sounds (35 sounds)/rumble2.ogg"
-dest_files=[ "res://.import/rumble2.ogg-0a75674e31d1274b52a161c4f7d8808d.oggstr" ]
+dest_files=["res://.godot/imported/rumble2.ogg-0a75674e31d1274b52a161c4f7d8808d.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

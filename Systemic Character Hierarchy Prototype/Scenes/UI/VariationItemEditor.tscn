@@ -1,34 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bv4pnllttbffl"]
 
-[ext_resource path="res://Scenes/UI/VariationItemEditor.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Scenes/UI/VariationItemEditor.gd" id="1"]
 
 [node name="VariationItemEditor" type="VBoxContainer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
 [node name="Top Row" type="HBoxContainer" parent="."]
-margin_right = 1920.0
-margin_bottom = 20.0
+layout_mode = 2
 
 [node name="Tex" type="MenuButton" parent="Top Row"]
-margin_right = 958.0
-margin_bottom = 20.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Smooth"
 flat = false
-items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Effects" type="MenuButton" parent="Top Row"]
-margin_left = 962.0
-margin_right = 1920.0
-margin_bottom = 20.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Sphere"
 flat = false
-items = [ "Crime", null, 0, false, false, 0, 0, null, "", false, "Law", null, 0, false, false, 1, 0, null, "", false, "Politics", null, 0, false, false, 2, 0, null, "", false, "Neutral", null, 0, false, false, 3, 0, null, "", false ]

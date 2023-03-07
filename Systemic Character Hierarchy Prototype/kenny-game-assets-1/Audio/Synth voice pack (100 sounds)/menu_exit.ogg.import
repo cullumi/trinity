@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/menu_exit.ogg-00c606abc1100b21abbf145151ceb3f4.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://blun3b7sshwen"
+path="res://.godot/imported/menu_exit.ogg-00c606abc1100b21abbf145151ceb3f4.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/menu_exit.ogg"
-dest_files=[ "res://.import/menu_exit.ogg-00c606abc1100b21abbf145151ceb3f4.oggstr" ]
+dest_files=["res://.godot/imported/menu_exit.ogg-00c606abc1100b21abbf145151ceb3f4.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

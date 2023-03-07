@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/jingles_HIT06.ogg-d8530f5366453c62b31bdfd2dc4b5988.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://g5ux2q4nu6k1"
+path="res://.godot/imported/jingles_HIT06.ogg-d8530f5366453c62b31bdfd2dc4b5988.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Jingle sounds (85 sounds)/jingles_HIT/jingles_HIT06.ogg"
-dest_files=[ "res://.import/jingles_HIT06.ogg-d8530f5366453c62b31bdfd2dc4b5988.oggstr" ]
+dest_files=["res://.godot/imported/jingles_HIT06.ogg-d8530f5366453c62b31bdfd2dc4b5988.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

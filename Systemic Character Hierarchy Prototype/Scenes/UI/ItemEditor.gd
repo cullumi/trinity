@@ -13,7 +13,6 @@ func recursive_append_menu_buttons(node:Node, array:Array):
 func populate(button : MenuButton, choices : Array):
 	var popup = button.get_popup()
 	popup.clear()
-	popup.raise()
 	for option in choices:
 		popup.add_item(option)
 

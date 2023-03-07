@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/bookFlip2.ogg-5faf6687d56bae3cc79d839655d3a0ff.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bvjt5mrtin8bf"
+path="res://.godot/imported/bookFlip2.ogg-5faf6687d56bae3cc79d839655d3a0ff.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/RPG sounds (50 sounds)/bookFlip2.ogg"
-dest_files=[ "res://.import/bookFlip2.ogg-5faf6687d56bae3cc79d839655d3a0ff.oggstr" ]
+dest_files=["res://.godot/imported/bookFlip2.ogg-5faf6687d56bae3cc79d839655d3a0ff.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

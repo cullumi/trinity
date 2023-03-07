@@ -2,9 +2,9 @@ class_name VariationItemEditor
 
 extends ItemEditor
 
-onready var vari_tex = $"Top Row/Tex"
-onready var vari_fx = $"Top Row/Effects"
-onready var variations = Resources.variation_settings
+@onready var vari_tex = $"Top Row/Tex"
+@onready var vari_fx = $"Top Row/Effects"
+@onready var variations = Resources.variation_settings
 
 signal apply_filter
 
@@ -31,7 +31,7 @@ func initialize():
 		for idx in range(0, vari_structure.size()):
 			var popup = fields[idx].get_popup()
 			var signal_info = [vari_structure[idx], fields[idx]]
-			popup.connect("index_pressed", self, "change_variation", signal_info)
+			popup.index_pressed.connect(change_variation.bind(signal_info))
 	
 		update_contents()
 
@@ -88,11 +88,11 @@ func list_update(filters=null):
 		for filter in filters:
 			if (filter.enabled):
 				final_filtered = key_filtered(variation, filter)
-		emit_signal("apply_filter", final_filtered)
+		apply_filter.emit(final_filtered)
 
 # Determines whether this item editor should be filtered out based on the given filter.
-func key_filtered(variation, filter):
+func key_filtered(_variation, filter):
 	for key in filter.filtered_keys:
-		if (not (filter.string_value in variation[key])):
+		if (not (filter.string_value in _variation[key])):
 			return true
 	return false

@@ -1,6 +1,6 @@
-class_name Actor
+class_name OldActor
 
-extends KinematicBody
+extends CharacterBody3D
 
 # Signals
 signal target_found
@@ -8,30 +8,30 @@ signal target_lost
 signal pressed
 
 # Functionality
-export (String, "Actor") var type = "Actor"
-export (String, "Smooth", "Dusty", "Splashy") var texture = "Smooth"
-export (bool) var prepare_back_button_event = true
-onready var back_button = $Avatar/Button
+@export_enum("Actor") var type:String = "Actor"
+@export_enum("Smooth", "Dusty", "Splashy") var texture:String = "Smooth"
+@export var prepare_back_button_event:bool = true
+@onready var back_button:Interactable = $Avatar/Button
 
 # Identification
-export (String) var char_name = "Bob"
-export (String) var char_id = ""
+@export var char_name:String = "Bob"
+@export var char_id:String = ""
 
 # Hierarchy
-export (String) var role = "Citizen"
-export var ranks = {"Law":0, "Politics":0, "Crime":0}
+@export var role:String = "Citizen"
+@export var ranks:Dictionary = {"Law":0, "Politics":0, "Crime":0}
 
 # Player Control
-export var is_controlled = false
-onready var target_ray = get_node("TargetRay")
-onready var avatar = get_node("Avatar")
-onready var collider = $CollisionShape
+@export var is_controlled = false
+@onready var target_ray = get_node("TargetRay")
+@onready var avatar = get_node("Avatar")
+@onready var collider = $CollisionShape3D
 
 # Appearance
-onready var body_mesh = $"Avatar/Happy Person"
-onready var smile_center = $"Avatar/Happy Person/Face/Smile"
-onready var smile_left = $"Avatar/Happy Person/Face/Smile/Smile Pivot 1/Smile2"
-onready var smile_right = $"Avatar/Happy Person/Face/Smile/Smile Pivot 2/Smile2"
+@onready var body_mesh = $"Avatar/Happy Person"
+@onready var smile_center = $"Avatar/Happy Person/Face/Smile"
+@onready var smile_left = $"Avatar/Happy Person/Face/Smile/Smile Pivot 1/Smile2"
+@onready var smile_right = $"Avatar/Happy Person/Face/Smile/Smile Pivot 2/Smile2"
 
 # Physics
 var rotation_follow_velocity = true
@@ -41,7 +41,6 @@ var move_acceleration = 9.8*2
 var move_deceleration = 9.8*4
 var max_speed = 100
 var is_moving = false
-var velocity = Vector3(0, 0, 0)
 var UP = Vector3(0, 1, 0)
 var cam_offset = Vector3(1,0,0)
 var gravity_multiplier = 10
@@ -50,15 +49,15 @@ var current_grav_velocity = 0
 var avatar_bodies : Array = []
 
 # For Press Events
-onready var animation_player:AnimationPlayer = find_node("AnimationPlayer")
-onready var particle_location:Spatial = find_node("ParticleLocation")
+@onready var animation_player:AnimationPlayer = find_child("AnimationPlayer")
+@onready var particle_location:Node3D = find_child("ParticleLocation")
 
 func _ready():
 	randomize_appearance()
 	add_to_group("Interactables")
 	prepare_events()
 	for node in avatar.get_children():
-		if node is PhysicsBody:
+		if node is PhysicsBody3D:
 			avatar_bodies.append(node)
 
 func prepare_events():
@@ -70,13 +69,13 @@ func prepare_events():
 
 func randomize_appearance():
 	randomize()
-	var unique_mat = body_mesh.get_surface_material(0).duplicate()
-	var color : Color = Color(rand_range(0, 1), rand_range(0, 1), rand_range(0, 1))
+	var unique_mat = body_mesh.get_surface_override_material(0).duplicate()
+	var color : Color = Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1))
 	unique_mat.albedo_color = color
-	body_mesh.set_surface_material(0, unique_mat)
-	smile_center.set_surface_material(0, unique_mat)
-	smile_left.set_surface_material(0, unique_mat)
-	smile_right.set_surface_material(0, unique_mat)
+	body_mesh.set_surface_override_material(0, unique_mat)
+	smile_center.set_surface_override_material(0, unique_mat)
+	smile_left.set_surface_override_material(0, unique_mat)
+	smile_right.set_surface_override_material(0, unique_mat)
 
 # Handles Velocity Limits and Cancelers as well as Raycast Positioning.
 func _physics_process(delta):
@@ -128,9 +127,11 @@ func _physics_process(delta):
 		# Final Movement / Raycasting
 		if (velocity.x != 0 and velocity.z != 0 and rotation_follow_velocity):
 			var look_dir = Vector3(velocity.x, 0, velocity.z)
-			avatar.look_at(translation+look_dir, Vector3.UP)
+			avatar.look_at(position+look_dir, Vector3.UP)
 		# warning-ignore:return_value_discarded
-		move_and_slide(velocity, UP)
+		set_velocity(velocity)
+		set_up_direction(UP)
+		move_and_slide()
 
 # Returns the object the character is currently looking at.
 func get_target_object():
@@ -148,11 +149,11 @@ func press(game_event):
 		return
 	else:
 		populate_game_event(game_event)
-		emit_signal("pressed", game_event)
+		pressed.connect(game_event)
 		
-func connect_pressed(event_handler, signal_method):
+func connect_pressed(callable:Callable):
 	# warning-ignore:return_value_discarded
-	connect("pressed", event_handler, signal_method)
+	pressed.connect(callable)
 
 func populate_game_event(game_event):
 	game_event.pressee = self
@@ -160,15 +161,15 @@ func populate_game_event(game_event):
 	game_event.effect_location = particle_location
 
 # Render Layer 0 --> Non-Player / Render Layer 1 --> All Objects
-func make_visible(is_visible):
+func _make_visible(is_visible):
 	var avatar_vis_insts : Array = []
 	recursive_vis_inst(avatar, avatar_vis_insts)
 	for vis_inst in avatar_vis_insts:
-		vis_inst.set_layer_mask_bit(0, is_visible)
-		vis_inst.set_layer_mask_bit(1, true)
+		vis_inst.set_layer_mask_value(0, is_visible)
+		vis_inst.set_layer_mask_value(1, true)
 
 func recursive_vis_inst(node, array):
 	for child in node.get_children():
-		if child is VisualInstance:
+		if child is VisualInstance3D:
 			array.append(child)
 		recursive_vis_inst(child, array)

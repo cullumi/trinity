@@ -3,35 +3,38 @@ class_name Interactable
 extends Node
 
 # Functionality
-export (String, "Intble", "Button") var type = "Intble"
-export (String, "Smooth", "Dusty", "Splashy") var texture = "Smooth"
+@export_enum("Intble", "Button", "Actor") var type:String = "Intble"
+@export_enum("Smooth", "Dusty", "Splashy") var texture:String = "Smooth"
 
 # Identification
-export (String) var char_name = "Button"
-export (String) var char_id = ""
+@export var char_name:String = "Button"
+@export var char_id:String = ""
 
 # Hierarchy
-export (String) var role = "Button"
-export var ranks = {"Law":0, "Politics":0, "Crime":0}
+@export var role:String = "Button"
+@export var ranks:Dictionary = {"Law":0, "Politics":0, "Crime":0}
 
-onready var animation_player:AnimationPlayer = find_node("AnimationPlayer")
-onready var particle_location:Spatial = find_node("ParticleLocation")
+@export var source_node:Node = self # The core node of this interactable
+@onready var animation_player:AnimationPlayer = source_node.find_child("AnimationPlayer")
+@onready var particle_location:Node3D = source_node.find_child("ParticleLocation")
 
 signal pressed
 
 func _ready():
 	add_to_group("Interactables")
+	if (char_id == ""):
+		char_id = char_name
 
 func press(game_event):
 	if (animation_player != null and animation_player.is_playing()):
 		return
 	else:
 		populate_game_event(game_event)
-		emit_signal("pressed", game_event)
+		pressed.emit(game_event)
 
-func connect_pressed(event_handler, signal_method):
+func connect_pressed(callable:Callable):
 	# warning-ignore:return_value_discarded
-	connect("pressed", event_handler, signal_method)
+	pressed.connect(callable)
 
 func populate_game_event(game_event):
 	game_event.pressee = self

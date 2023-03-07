@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/planet_pluto.ogg-0794aa48c974b0910b4c805a49fd5fdc.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://byrpsn4hb654h"
+path="res://.godot/imported/planet_pluto.ogg-0794aa48c974b0910b4c805a49fd5fdc.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Synth voice pack (100 sounds)/planet_pluto.ogg"
-dest_files=[ "res://.import/planet_pluto.ogg-0794aa48c974b0910b4c805a49fd5fdc.oggstr" ]
+dest_files=["res://.godot/imported/planet_pluto.ogg-0794aa48c974b0910b4c805a49fd5fdc.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

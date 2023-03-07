@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Flowing Rocks.ogg-c67e6630b9fd928da4b1627a0a895fcc.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cchdh5o5p0etp"
+path="res://.godot/imported/Flowing Rocks.ogg-c67e6630b9fd928da4b1627a0a895fcc.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Flowing Rocks.ogg"
-dest_files=[ "res://.import/Flowing Rocks.ogg-c67e6630b9fd928da4b1627a0a895fcc.oggstr" ]
+dest_files=["res://.godot/imported/Flowing Rocks.ogg-c67e6630b9fd928da4b1627a0a895fcc.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

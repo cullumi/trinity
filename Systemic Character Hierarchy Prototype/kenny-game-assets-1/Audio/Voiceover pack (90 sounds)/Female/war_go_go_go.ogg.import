@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/war_go_go_go.ogg-69aea4b20bb0539b02d132e9fec2015c.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cn58ouo23vsk4"
+path="res://.godot/imported/war_go_go_go.ogg-69aea4b20bb0539b02d132e9fec2015c.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Voiceover pack (90 sounds)/Female/war_go_go_go.ogg"
-dest_files=[ "res://.import/war_go_go_go.ogg-69aea4b20bb0539b02d132e9fec2015c.oggstr" ]
+dest_files=["res://.godot/imported/war_go_go_go.ogg-69aea4b20bb0539b02d132e9fec2015c.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,9 +1,9 @@
 extends Node
 
-onready var actors = get_node("Actors").get_children()
-onready var camera = get_node("Player Camera")
-onready var hud = get_node("HUD")
-onready var event_handler = get_node("EventHandler")
+@onready var actors = %Actors.get_children()
+@onready var camera:PlayerCamera = %PlayerCamera
+@onready var hud = %HUD
+@onready var event_handler = %EventHandler
 var player_actor
 
 var last_ray_event = null
@@ -12,16 +12,16 @@ func _ready():
 	Resources.update_world()
 	print("World Ready")
 	set_rand_target_actor()
-	camera.connect("target_found", self, "update_target_hud")
-	camera.connect("target_lost", self, "update_target_hud")
+	camera.target_found.connect(update_target_hud)
+	camera.target_lost.connect(update_target_hud)
 	#hud.initialize()
 	get_tree().call_group("Interactables", "connect_pressed", event_handler, "trigger_press_event")
 
-func _input(event):
-	if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
-		if event.is_action_pressed("reroll"):
+func _unhandled_input(event):
+	if event.is_action_pressed("reroll"):
+		if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
 			set_rand_target_actor()
-	if event.is_action_pressed("quit"):
+	elif event.is_action_pressed("quit"):
 		get_tree().quit()
 
 func set_rand_target_actor():
@@ -32,7 +32,7 @@ func set_rand_target_actor():
 		
 	randomize()
 	# warning-ignore:return_value_discarded
-	rand_seed(randi())
+#	rand_from_seed(randi())
 	var rand_index = randi()%actors.size()
 	if actors[rand_index] == player_actor:
 		if rand_index != 0:

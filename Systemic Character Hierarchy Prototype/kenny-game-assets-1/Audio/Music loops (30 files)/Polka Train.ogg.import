@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Polka Train.ogg-2c3c82e8093b85ddf28bf5d09371a021.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bdjfktrddc7i2"
+path="res://.godot/imported/Polka Train.ogg-2c3c82e8093b85ddf28bf5d09371a021.oggvorbisstr"
 
 [deps]
 
 source_file="res://kenny-game-assets-1/Audio/Music loops (30 files)/Polka Train.ogg"
-dest_files=[ "res://.import/Polka Train.ogg-2c3c82e8093b85ddf28bf5d09371a021.oggstr" ]
+dest_files=["res://.godot/imported/Polka Train.ogg-2c3c82e8093b85ddf28bf5d09371a021.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
