@@ -21,8 +21,7 @@ var editor_signals:Array[Signal] = [
 	rules_changed, events_changed, variations_changed
 ]
 
-var player_actor
-var player
+var player:Interactable : set=set_player
 var target:Interactable : set=set_target
 var last_ray_event : RayCastEvent
 var velocity:Vector3 :
@@ -39,40 +38,31 @@ func set_edit_active(_show:bool):
 	edit.active = _show
 	crosshair.visible = not _show
 
+func inter_convert(inter):
+	return inter if not inter is Actor else inter.interaction
+
 func set_target(inter):
-	if inter is Actor:
-		target = inter.interaction
-	if inter is Interactable:
-		target = inter
+	inter = inter_convert(inter)
+	target = inter
+	if target:
+		interact.active = target != null
+		interact.interactable = target
 
-func set_player_actor(actor):
-	player_actor = actor
-	player = actor.interaction
-	update_player_hud()
-
-func update_hud(target_object=null):
-	update_player_hud()
-	update_target_hud(target_object)
-
-func update_player_hud():
-	title.interactable = player
-	mini_map.interactable = player
+func set_player(inter):
+	inter = inter_convert(inter)
+	player = inter
+	if player:
+		title.interactable = player
+		mini_map.interactable = player
 
 func set_ray_event(ray_event):
 	last_ray_event = ray_event
-
-# Updated when the player looks at an object, or when that object is changed in some way.
-func update_target_hud(target_object =null):
-	target = null if not target_object else target_object
-	interact.active = target != null
-	interact.interactable = target
-
 
 # Interactions
 
 func _on_press():
 	var game_event = GameEvent.new()
-	game_event.presser = player_actor
+	game_event.presser = player
 	if (last_ray_event != null):
 		game_event.press_normal = last_ray_event.collision_normal
 		game_event.press_point = last_ray_event.collision_point
@@ -81,11 +71,11 @@ func _on_press():
 
 func _swap_roles():
 	roles_swapped.emit(target)
-	update_hud(target)
+	target = target
 
 func _swap_ranks():
 	ranks_swapped.emit(target)
-	update_hud(target)
+	target = target
 
 var OPT_SUB:Dictionary = {
 	interact.OPT.RULES:edit.SUB.RULES,
@@ -93,7 +83,7 @@ var OPT_SUB:Dictionary = {
 	interact.OPT.VARIATIONS:edit.SUB.VARIATIONS
 }
 func _open_editor(idx:int):
-	edit.select_window(OPT_SUB[idx])
+	edit.select_window(OPT_SUB[idx], target)
 	crosshair.visible = false
 	interact.active = false
 
@@ -107,5 +97,5 @@ var SUB_OPT:Dictionary = {
 }
 func _on_editor_closed(idx:int):
 	interact.set_focused(SUB_OPT[idx])
-	update_hud(target)
+	target = target
 	crosshair.visible = true

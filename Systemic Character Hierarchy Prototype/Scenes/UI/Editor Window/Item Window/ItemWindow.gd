@@ -140,8 +140,12 @@ func close():
 
 # FILTER FUNCTIONS
 
-func reset_filters(new_filters:Array=[]):
+func construct_filters(_inter:Interactable=null) -> Array:
+	return []
+
+func reset_filters(inter:Interactable=null):
 	clear_filters(false)
+	var new_filters:Array = construct_filters(inter)
 	Resources.append_array(filters, new_filters)
 	display_filter(0)
 
@@ -182,4 +186,5 @@ func clear_filters(safe_clear=true):
 		filter_selector.display(filters[0], 0)
 
 func display_filter(idx=0):
-	filter_selector.display(filters[idx], idx)
+	if not filters.is_empty():
+		filter_selector.display(filters[idx], idx)

@@ -17,5 +17,5 @@ func populate(button : MenuButton, choices : Array):
 		popup.add_item(option)
 
 # Placeholder-- Used for Applying Filters to the Editor
-func list_update(filters=null):
+func list_update(_filters=null):
 	pass

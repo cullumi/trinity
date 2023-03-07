@@ -24,14 +24,14 @@ func update_item_list():  #res = null):
 func add_item(index, event):
 	var last_index = events.size()-1
 	
-	var item#:EventItemEditor = event_editor_item.instantiate()
+	var item:ItemEditor=event_editor_item.instantiate() #:EventItemEditor = event_editor_item.instantiate()
 	item_container.add_child(item)
 	item.update_position(last_index, index)
 	
-	item.connect("move_up",Callable(self,"move_item_up"))
-	item.connect("move_down",Callable(self,"move_item_down"))
-	item.connect("delete",Callable(self,"delete_item"))
-	item.connect("id_entered",Callable(self,"change_event_id").bind(event, item.ev_name))
+	item.moved_up.connect(move_item_up)
+	item.moved_down.connect(move_item_down)
+	item.deleted.connect(delete_item)
+	item.id_entered.connect(change_event_id.bind(event, item.ev_name))
 	
 	update_item(item, event)
 

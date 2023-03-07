@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dp44rdls60a61"]
 
-[ext_resource type="Script" path="res://Scenes/UI/interact_panel.gd" id="1_ccv0x"]
+[ext_resource type="Script" path="res://Scenes/UI/Interact Panel/interact_panel.gd" id="1_vnam8"]
 
 [node name="InteractPanel" type="PanelContainer"]
 anchors_preset = -1
@@ -14,7 +14,7 @@ offset_right = 213.75
 offset_bottom = -23.64
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ccv0x")
+script = ExtResource("1_vnam8")
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

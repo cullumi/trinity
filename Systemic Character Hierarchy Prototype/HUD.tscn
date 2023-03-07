@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxvn5gi6ww6kn"]
+[gd_scene load_steps=7 format=3 uid="uid://dnyutley17hul"]
 
 [ext_resource type="Script" path="res://HUD.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://bdgu5muwrbw0h" path="res://Scenes/UI/mini_map_panel.tscn" id="3_25kru"]
-[ext_resource type="PackedScene" uid="uid://cuy413g1v4frs" path="res://Scenes/UI/name_plate.tscn" id="3_awey1"]
-[ext_resource type="PackedScene" uid="uid://dp44rdls60a61" path="res://Scenes/UI/interact_panel.tscn" id="4_g2jam"]
+[ext_resource type="PackedScene" uid="uid://bdgu5muwrbw0h" path="res://Scenes/UI/Mini Map Panel/mini_map_panel.tscn" id="3_25kru"]
+[ext_resource type="PackedScene" uid="uid://cuy413g1v4frs" path="res://Scenes/UI/Name Plate/name_plate.tscn" id="3_awey1"]
+[ext_resource type="PackedScene" uid="uid://dp44rdls60a61" path="res://Scenes/UI/Interact Panel/interact_panel.tscn" id="4_g2jam"]
 [ext_resource type="Texture2D" uid="uid://cjafmjfy7u75g" path="res://Assets/Crosshair.png" id="5"]
-[ext_resource type="PackedScene" uid="uid://1ri3ntk4quuc" path="res://Scenes/UI/edit_window.tscn" id="5_1h7oi"]
+[ext_resource type="PackedScene" uid="uid://cwht1hbflks5" path="res://Scenes/UI/Editor Window/edit_window.tscn" id="5_1h7oi"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -84,3 +84,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="InteractPanel" to="." method="_on_press"]
 [connection signal="swapped_ranks" from="InteractPanel" to="." method="_swap_ranks"]
 [connection signal="swapped_roles" from="InteractPanel" to="." method="_swap_roles"]
+[connection signal="closed" from="Edit" to="." method="_on_editor_closed"]

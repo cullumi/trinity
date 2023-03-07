@@ -4,7 +4,7 @@ extends Node
 @onready var camera:PlayerCamera = %PlayerCamera
 @onready var hud = %HUD
 @onready var event_handler = %EventHandler
-var player_actor
+var player_actor:Actor
 
 var last_ray_event = null
 
@@ -43,7 +43,8 @@ func set_rand_target_actor():
 		
 	player_actor.is_controlled = true
 	camera.set_player_actor(player_actor)
-	hud.set_player_actor(player_actor)
+	print(player_actor)
+	hud.player = player_actor
 
 func set_actor_role(new_role, actor=player_actor):
 	actor.role = new_role
@@ -56,7 +57,7 @@ func add_ray_event(ray_event):
 
 # Used when the player looks at an object.
 func update_target_hud(target_actor=null):
-	hud.update_target_hud(target_actor)
+	hud.target = target_actor
 
 # Should be signaled by the HUD object (or by other relevant means).
 func swap_roles(actor1, actor2=player_actor):

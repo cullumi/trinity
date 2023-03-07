@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://1ri3ntk4quuc"]
+[gd_scene load_steps=5 format=3 uid="uid://cwht1hbflks5"]
 
 [ext_resource type="PackedScene" path="res://Scenes/UI/OldUI/EventEditor.tscn" id="1_kqp1c"]
-[ext_resource type="Script" path="res://Scenes/UI/edit_window.gd" id="1_oshu2"]
-[ext_resource type="PackedScene" uid="uid://bcwugoxu8b1nu" path="res://Scenes/UI/ItemWindow.tscn" id="2_8oviu"]
-[ext_resource type="PackedScene" uid="uid://bv4pnllttbffl" path="res://Scenes/UI/VariationItemEditor.tscn" id="3_xn1td"]
+[ext_resource type="Script" path="res://Scenes/UI/Editor Window/edit_window.gd" id="1_oshu2"]
+[ext_resource type="PackedScene" uid="uid://bt5t53abc088c" path="res://Scenes/UI/Editor Window/Item Window/ItemWindow.tscn" id="2_8oviu"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/Editor Window/Item Windows/VariationItemEditor.tscn" id="4_32kdf"]
 
 [node name="Edit" type="PanelContainer"]
 visible = false
@@ -36,13 +36,15 @@ visible = false
 layout_mode = 2
 
 [node name="Events" parent="M" instance=ExtResource("2_8oviu")]
+unique_name_in_owner = true
 layout_mode = 2
 use_filters = true
 use_advanced_filters = true
 
 [node name="Variations" parent="M" instance=ExtResource("2_8oviu")]
+unique_name_in_owner = true
 layout_mode = 2
-item_content = ExtResource("3_xn1td")
+item_content = ExtResource("4_32kdf")
 content_source = "Variations"
 
 [connection signal="closed" from="M/Events" to="." method="deselect_window"]

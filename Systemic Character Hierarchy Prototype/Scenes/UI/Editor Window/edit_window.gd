@@ -2,19 +2,18 @@ extends PanelContainer
 
 class_name EditWindow
 
-@onready var rules = null #%Edit/M/Rules
-@onready var events : ItemWindow = %Edit/M/Events
-@onready var variations : ItemWindow = %Edit/M/Variations
-
-signal editor_changed(idx:int)
-
-enum SUB {RULES, EVENTS, VARIATIONS}
-var windows:Array[ItemWindow] = [
+@onready var rules = null #%Rules
+@onready var events : ItemWindow = %Events
+@onready var variations : ItemWindow = %Variations
+@onready var windows:Array[ItemWindow] = [
 	rules, events, variations
 ]
 
+signal closed(idx:int)
+
+enum SUB {RULES, EVENTS, VARIATIONS}
+
 var active:bool = true : set=set_active
-var interactable:Interactable
 var cur_window:int : set=set_window
 
 func set_active(_active):
@@ -28,23 +27,17 @@ func set_window(idx:int):
 		if window:
 			window.visible = w == idx
 
-func select_window(idx:int):
-	print("Select Window")
+func select_window(idx:int, interactable:Interactable=null):
 	var window:ItemWindow = windows[idx]
-	prints(idx, "->", window)
 	if window:
-		print("Found Window")
 		active = true
 		set_window(idx)
 		if not window.has_been_initialized:
 			window.initialize()
-		var filters = Resources.construct_event_filters_from_target(interactable)
-		window.reset_filters(filters)
-		print("Confining?")
+		window.reset_filters(interactable)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-		editor_changed.emit(idx)
 
 func deselect_window():
-	print("Deselect Window")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	editor_changed.emit(cur_window)
+	active = false
+	closed.emit(cur_window)

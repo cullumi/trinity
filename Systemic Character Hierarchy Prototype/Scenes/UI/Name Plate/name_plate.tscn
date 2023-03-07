@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cuy413g1v4frs"]
 
-[ext_resource type="Script" path="res://Scenes/UI/name_plate.gd" id="1_mug3c"]
+[ext_resource type="Script" path="res://Scenes/UI/Name Plate/name_plate.gd" id="1_dlbqo"]
 
 [node name="NamePlate" type="PanelContainer"]
 anchors_preset = -1
@@ -9,7 +9,7 @@ anchor_top = 0.0425926
 anchor_right = 0.544282
 anchor_bottom = 0.0851852
 grow_horizontal = 2
-script = ExtResource("1_mug3c")
+script = ExtResource("1_dlbqo")
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 

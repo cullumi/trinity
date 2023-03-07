@@ -14,5 +14,6 @@ func set_interactable(inter:Interactable):
 	var ranks = inter.ranks
 	rank_label.text = "\n%d   |   %d   |    %d   " % [ranks["Crime"], ranks["Law"], ranks["Politics"]]
 
-func set_velocity(velocity:Vector3):
+func set_velocity(vel:Vector3):
+	velocity = vel
 	velocity_label.text = "(%8d %8d %8d        )" % [velocity.x, abs(velocity.y), velocity.z]

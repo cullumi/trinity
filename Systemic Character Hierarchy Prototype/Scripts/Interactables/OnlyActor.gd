@@ -5,6 +5,7 @@ extends CharacterBody3D
 # Signals
 signal target_found
 signal target_lost
+
 # Functionality
 @export var prepare_back_button_event:bool = true
 @onready var interaction:Interactable = %Interactable
