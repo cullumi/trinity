@@ -175,9 +175,9 @@ func fp_aiming(event):
 	fp_pivot.rotate_x (deg_to_rad(event.relative.y * mouse_sensitivity * -1))
 	fp_pivot.rotation_degrees.x = clamp(fp_pivot.rotation_degrees.x, -75, 75)
 	var global_look = fp_aim.global_transform.origin
-	aim_ray.target_position = aim_ray.to_local(global_look)
 	var actor_look = Vector3(global_look.x, 0, global_look.z)
 	player_actor.look_at(actor_look, Vector3.UP)
+	cast_ray_to_screen_pos(hud.get_crosshair_location())
 
 # Sets up proper camera positioning for first person mode.
 func update_fp_camera():
@@ -193,7 +193,6 @@ func tp_aiming(event):
 	var high_aim_height = aim_height+upper_view_limit
 	tp_aim.position.y = clamp(tp_aim.position.y, low_aim_height, high_aim_height)
 	cast_ray_to_screen_pos(hud.get_crosshair_location())
-#	aim_ray.target_position = aim_ray.to_local(tp_aim.global_transform.origin)
 
 # Aims raycast from and toward a position on the screen.
 func cast_ray_to_screen_pos(screen_pos:Vector2) -> void:
@@ -201,7 +200,7 @@ func cast_ray_to_screen_pos(screen_pos:Vector2) -> void:
 	var ray_direction = camera.project_ray_normal(screen_pos)
 	
 	aim_ray.global_position = ray_origin
-	var target_pos = ray_origin + ray_direction * 1000
+	var target_pos = ray_origin + ray_direction * interact_distance
 	aim_ray.target_position = aim_ray.to_local(target_pos) # Set to max ray distance
 	aim_ray.force_raycast_update()
 
@@ -224,4 +223,3 @@ func update_tp_camera():
 	# Camera3D Direction and Crosshair Raycast
 	camera.look_at(tp_aim.get_global_transform().origin, Vector3(0, 1, 0))
 	cast_ray_to_screen_pos(hud.get_crosshair_location())
-#	aim_ray.target_position = aim_ray.to_local(tp_aim.global_transform.origin)

@@ -29,6 +29,7 @@ var edit_active:bool = false : set=set_edit_active
 
 func _ready():
 	edit_active = false
+	target = target
 
 #func initialize():
 	#event_editor.update_item_list(resources)
