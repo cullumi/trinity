@@ -25,7 +25,8 @@ class_name PlayerCamera
 @export var mouse_sensitivity:float = 0.1
 @export var zoom_sensitivity:float = 2
 @export var mid_offset:float = 0
-@export var interact_distance:float = 1000
+@export var fp_interact_distance:float = 1000
+@export var tp_interact_distance:float = 1000
 
 # Signals
 signal target_found
@@ -34,7 +35,7 @@ signal ray_event
 signal velocity_changed(Vector3)
 
 # Player Objects
-var player_actor = null
+var player:Actor = null : set=set_player
 var player_avatar = null
 
 # Runtime Variables
@@ -65,7 +66,7 @@ func _input(event):
 
 # Raycast pinging and camera perspective updates.
 func _process(_delta):
-	if player_actor != null:
+	if player != null:
 		# Raycast Collisions
 		ping_aim_raycast()
 		# Camera3D Positioning and Aiming
@@ -101,10 +102,10 @@ func _physics_process(_delta):
 	vector += Vector3(x_basis.x,0,x_basis.z) * dir.x
 	vector = vector.normalized()
 	
-	player_actor.apply_velocity_vector(vector, is_moving)
+	player.apply_velocity_vector(vector, is_moving)
 	
 	# Report velocity to the hud -- TODO: change to retrieval by world object?
-	velocity_changed.emit(player_actor.velocity)
+	velocity_changed.emit(player.velocity)
 
 # Creates and parses an input action event.
 func trigger_input_action(action, pressed):
@@ -125,15 +126,15 @@ func get_target_object():
 	return target_object
 
 # Used when swapping characters
-func set_player_actor(actor):
+func set_player(actor):
 	aim_ray.clear_exceptions()
-	if (player_actor != null):
-		player_actor._make_visible(true)
-	player_actor = actor
+	if (player != null):
+		player._make_visible(true)
+	player = actor
 	player_avatar = actor.avatar
-	player_actor._make_visible(false)
-	aim_ray.add_exception(player_actor)
-	for body in player_actor.avatar_bodies:
+	player._make_visible(false)
+	aim_ray.add_exception(player)
+	for body in player.avatar_bodies:
 		aim_ray.add_exception(body)
 	update_perspective()
 
@@ -149,7 +150,7 @@ func cycle_perspectives():
 func update_perspective():
 	var is_fp = view == VIEW.FP
 	camera.set_cull_mask_value(2, not is_fp)
-	player_actor.rotation_follow_velocity = not is_fp
+	player.rotation_follow_velocity = not is_fp
 
 # Handle collisions from the raycast used for aiming.
 func ping_aim_raycast():
@@ -176,12 +177,12 @@ func fp_aiming(event):
 	fp_pivot.rotation_degrees.x = clamp(fp_pivot.rotation_degrees.x, -75, 75)
 	var global_look = fp_aim.global_transform.origin
 	var actor_look = Vector3(global_look.x, 0, global_look.z)
-	player_actor.look_at(actor_look, Vector3.UP)
-	cast_ray_to_screen_pos(hud.get_crosshair_location())
+	player.look_at(actor_look, Vector3.UP)
+	cast_ray_to_screen_pos(hud.get_crosshair_location(), fp_interact_distance)
 
 # Sets up proper camera positioning for first person mode.
 func update_fp_camera():
-	cam_pivot.global_transform.origin = player_actor.global_transform.origin 
+	cam_pivot.global_transform.origin = player.global_transform.origin 
 	camera.transform = fp_pivot.transform
 	aim_ray.transform.origin = fp_pivot.transform.origin
 
@@ -192,10 +193,10 @@ func tp_aiming(event):
 	var low_aim_height = aim_height-lower_view_limit
 	var high_aim_height = aim_height+upper_view_limit
 	tp_aim.position.y = clamp(tp_aim.position.y, low_aim_height, high_aim_height)
-	cast_ray_to_screen_pos(hud.get_crosshair_location())
+	cast_ray_to_screen_pos(hud.get_crosshair_location(), tp_interact_distance)
 
 # Aims raycast from and toward a position on the screen.
-func cast_ray_to_screen_pos(screen_pos:Vector2) -> void:
+func cast_ray_to_screen_pos(screen_pos:Vector2, interact_distance:float=1000) -> void:
 	var ray_origin = camera.project_ray_origin(screen_pos)
 	var ray_direction = camera.project_ray_normal(screen_pos)
 	
@@ -206,7 +207,7 @@ func cast_ray_to_screen_pos(screen_pos:Vector2) -> void:
 
 # Sets up proper camera positioning for third person mode.
 func update_tp_camera():
-	cam_pivot.global_transform.origin = player_actor.global_transform.origin
+	cam_pivot.global_transform.origin = player.global_transform.origin
 	
 	# Camera3D Pivot and Offset
 	var offset = Vector3()
@@ -222,4 +223,4 @@ func update_tp_camera():
 	
 	# Camera3D Direction and Crosshair Raycast
 	camera.look_at(tp_aim.get_global_transform().origin, Vector3(0, 1, 0))
-	cast_ray_to_screen_pos(hud.get_crosshair_location())
+	cast_ray_to_screen_pos(hud.get_crosshair_location(), tp_interact_distance)

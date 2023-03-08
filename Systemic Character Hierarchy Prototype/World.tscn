@@ -108,7 +108,6 @@ environment = SubResource("2")
 [node name="PlayerCamera" parent="." instance=ExtResource("7")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -16.5577, 9.53674e-07, 0.539022)
-interact_distance = 6.0
 
 [node name="Objects" type="Node" parent="."]
 
@@ -898,6 +897,8 @@ script = ExtResource("9")
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("24_h1ofx")
 
+[connection signal="ranks_swapped" from="HUD" to="." method="swap_ranks"]
+[connection signal="roles_swapped" from="HUD" to="." method="swap_roles"]
 [connection signal="scrolled_down" from="InputHandler" to="PlayerCamera" method="zoom" binds= [true]]
 [connection signal="scrolled_up" from="InputHandler" to="PlayerCamera" method="zoom" binds= [false]]
 [connection signal="select_pressed" from="InputHandler" to="PlayerCamera" method="trigger_ray_event"]
