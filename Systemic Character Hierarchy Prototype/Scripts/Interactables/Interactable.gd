@@ -44,6 +44,8 @@ func get_on(property:String, dict:bool=false):
 	else: return ""
 
 func _ready():
+	if not entity:
+		entity = Entity.new()
 	add_to_group("Interactables")
 	if (char_id == ""):
 		char_id = char_name

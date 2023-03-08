@@ -2,10 +2,6 @@ class_name Actor
 
 extends CharacterBody3D
 
-# Signals
-signal target_found
-signal target_lost
-
 # Functionality
 @export var prepare_back_button_event:bool = true
 @export var entity:Entity :
@@ -24,6 +20,11 @@ signal target_lost
 @onready var smile_center = $"Avatar/Happy Person/Face/Smile"
 @onready var smile_left = $"Avatar/Happy Person/Face/Smile/Smile Pivot 1/Smile2"
 @onready var smile_right = $"Avatar/Happy Person/Face/Smile/Smile Pivot 2/Smile2"
+
+# Signals
+signal target_found
+signal target_lost
+signal velocity_changed(Vector3)
 
 # Physics
 var rotation_follow_velocity = true
@@ -129,6 +130,7 @@ func get_target_object():
 func apply_velocity_vector(vector, moving):
 	is_moving = moving
 	velocity = vector * move_acceleration
+	velocity_changed.emit(velocity)
 
 # Render Layer 0 --> Non-Player / Render Layer 1 --> All Objects
 func _make_visible(_visible):

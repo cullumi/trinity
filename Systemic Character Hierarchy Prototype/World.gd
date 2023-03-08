@@ -9,6 +9,7 @@ var player_actor:Actor
 var last_ray_event = null
 
 func _ready():
+	camera.hud = hud
 	Resources.update_world()
 	print("World Ready")
 	set_rand_target_actor()
@@ -56,8 +57,8 @@ func add_ray_event(ray_event):
 	hud.set_ray_event(ray_event)
 
 # Used when the player looks at an object.
-func update_target_hud(target_actor=null):
-	hud.target = target_actor
+func update_target_hud(target=null):
+	hud.target = target
 
 # Should be signaled by the HUD object (or by other relevant means).
 func swap_roles(actor1, actor2=player_actor):

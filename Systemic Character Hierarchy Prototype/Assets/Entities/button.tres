@@ -8,9 +8,9 @@ type = "Button"
 texture = "Smooth"
 char_name = "Button"
 char_id = "button"
-role = "Button"
+role = "Lowly Trigger"
 ranks = {
-"Crime": 0,
-"Law": 0,
-"Politics": 0
+"Crime": 0.0,
+"Law": 0.0,
+"Politics": 0.0
 }

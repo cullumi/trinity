@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5djp6k53qcu2"]
+[gd_scene load_steps=21 format=3 uid="uid://c5djp6k53qcu2"]
 
 [ext_resource type="Script" path="res://Scripts/Interactables/OnlyActor.gd" id="1_vn5dw"]
 [ext_resource type="PackedScene" uid="uid://cd2n1dcwa05ln" path="res://Scenes/Interactables/Button.tscn" id="2"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Interactable.gd" id="2_gp67c"]
 [ext_resource type="Material" uid="uid://uq0xvbdhxmpo" path="res://Assets/Materials/ActorColor.tres" id="3_3t42k"]
 [ext_resource type="Material" uid="uid://3h0of07in3ky" path="res://Assets/Materials/PupilColor.tres" id="4_gd1vk"]
+[ext_resource type="Resource" uid="uid://cfbsdk44qh2xf" path="res://Assets/Entities/button.tres" id="6_jq8d1"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 height = 3.25
@@ -121,8 +122,6 @@ script = ExtResource("1_vn5dw")
 [node name="Interactable" type="Node" parent="." node_paths=PackedStringArray("source_node")]
 unique_name_in_owner = true
 script = ExtResource("2_gp67c")
-type = "Actor"
-char_name = "Character"
 source_node = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -195,8 +194,10 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.00083077, 3.02178, 0.525866)
 collision_layer = 2
 collision_mask = 2
+entity = ExtResource("6_jq8d1")
 
 [node name="TargetRay" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07325, 0)
+visible = false
 target_position = Vector3(0, 0, 7)

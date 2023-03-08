@@ -1,6 +1,6 @@
-class_name HUD
-
 extends Control
+
+class_name HUD
 
 var resources : Resources
 
@@ -24,8 +24,7 @@ var editor_signals:Array[Signal] = [
 var player:Interactable : set=set_player
 var target:Interactable : set=set_target
 var last_ray_event : RayCastEvent
-var velocity:Vector3 :
-	set(val): mini_map.velocity = val; velocity = val;
+var velocity:Vector3 : set=set_velocity
 var edit_active:bool = false : set=set_edit_active
 
 func _ready():
@@ -34,12 +33,25 @@ func _ready():
 #func initialize():
 	#event_editor.update_item_list(resources)
 
+func get_crosshair_location() -> Vector2:
+	var viewport:Viewport = get_viewport()
+	var control_rect:Rect2 = crosshair.get_rect()
+	var control_pos:Vector2 = crosshair.global_position
+	var viewport_pos:Vector2 = viewport.get_visible_rect().position
+	
+	var screen_pos = control_pos - viewport_pos + control_rect.size / 2
+	return screen_pos
+
 func set_edit_active(_show:bool):
 	edit.active = _show
 	crosshair.visible = not _show
 
 func inter_convert(inter):
 	return inter if not inter is Actor else inter.interaction
+
+func set_velocity(vel:Vector3):
+	velocity = vel
+	mini_map.velocity = vel
 
 func set_target(inter):
 	inter = inter_convert(inter)
@@ -49,10 +61,20 @@ func set_target(inter):
 		print("Target: ", target)
 		interact.interactable = target
 
+var velocity_signal
 func set_player(inter):
+	var actor:Actor = null
+	if inter is Actor:
+		actor = inter as Actor
 	inter = inter_convert(inter)
 	player = inter
+	if velocity_signal:
+		velocity_signal.disconnect(set_velocity)
+		velocity_signal = null
 	if player:
+		if actor:
+			velocity_signal = actor.velocity_changed
+			actor.velocity_changed.connect(set_velocity)
 		title.interactable = player
 		mini_map.interactable = player
 

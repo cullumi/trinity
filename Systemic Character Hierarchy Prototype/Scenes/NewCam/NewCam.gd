@@ -16,21 +16,22 @@ class_name PlayerCamera
 @onready var tp_left_offset = %"Left Offset".transform.origin
 @onready var tp_center_offset = %"Center Offset".transform.origin
 @onready var tp_right_offset = %"Right Offset".transform.origin
-@onready var aim_ray : RayCast3D = %RayCast
+@onready var aim_ray:RayCast3D = %RayCast
+@onready var hud:HUD
 
 # Settings
-@export var hud:NodePath
-@export var start_in_first_person:bool = true
 @export var upper_view_limit:float = 15
 @export var lower_view_limit:float = 3
 @export var mouse_sensitivity:float = 0.1
 @export var zoom_sensitivity:float = 2
 @export var mid_offset:float = 0
+@export var interact_distance:float = 1000
 
 # Signals
 signal target_found
 signal target_lost
 signal ray_event
+signal velocity_changed(Vector3)
 
 # Player Objects
 var player_actor = null
@@ -42,14 +43,11 @@ var target_object = null
 var aim_ray_triggered = false
 var zoom_mode_active = false
 var zoom_level = 0
-var first_person = false
-var over_shoulder = false
-var use_left_shoulder = false
+enum VIEW {FP, TP_LS, TP, TP_RS}
+@export var view:VIEW = VIEW.FP
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if (start_in_first_person):
-		first_person = true
 
 # Player Inputs
 func _input(event):
@@ -59,15 +57,11 @@ func _input(event):
 			cycle_perspectives()
 		# Mouse Movements --> First vs Third Person Aiming
 		elif event is InputEventMouseMotion:
-			if (first_person):
-				fp_aiming(event)
-			else:
-				tp_aiming(event)
+			var aim:Callable = fp_aiming if view == VIEW.FP else tp_aiming
+			aim.call(event)
 		# Scroll Wheel --> UI Focus vs Camera3D Zoom
-		elif event.is_action_pressed("zoom_mode"):
-			zoom_mode_active = true
-		elif event.is_action_released("zoom_mode"):
-			zoom_mode_active = false
+		elif event.is_action("zoom_mode"):
+			zoom_mode_active = event.is_pressed()
 
 # Raycast pinging and camera perspective updates.
 func _process(_delta):
@@ -75,10 +69,8 @@ func _process(_delta):
 		# Raycast Collisions
 		ping_aim_raycast()
 		# Camera3D Positioning and Aiming
-		if (first_person):
-			update_fp_camera()
-		else:
-			update_tp_camera()
+		var update_cam:Callable = update_fp_camera if view == VIEW.FP else update_tp_camera
+		update_cam.call()
 
 # Controls movement of the player actor.
 func _physics_process(_delta):
@@ -91,21 +83,17 @@ func _physics_process(_delta):
 	
 	# Interpret direction from player inputs.
 	var dir = Vector3()
-	var is_moving = false
+	var is_moving:bool = false
 	
 	if (Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED):
-		if Input.is_action_pressed("move_right"):
-			is_moving = true
-			dir.x -= 1
-		if Input.is_action_pressed("move_left"):
-			dir.x += 1
-			is_moving = true
-		if Input.is_action_pressed("move_up"):
-			dir.z += 1
-			is_moving = true
-		if Input.is_action_pressed("move_down"):
-			dir.z -= 1
-			is_moving = true
+		var move:Vector3 = Vector3()
+		move.x -= 1 * int(Input.is_action_pressed("move_right"))
+		move.z -= 1 * int(Input.is_action_pressed("move_down"))
+		is_moving = move != Vector3()
+		move.x += 1 * int(Input.is_action_pressed("move_left"))
+		move.z += 1 * int(Input.is_action_pressed("move_up"))
+		is_moving = is_moving or move != Vector3()
+		dir += move
 	
 	# Create direction vector based on horizontal camera orientation.
 	var vector = Vector3()
@@ -116,7 +104,7 @@ func _physics_process(_delta):
 	player_actor.apply_velocity_vector(vector, is_moving)
 	
 	# Report velocity to the hud -- TODO: change to retrieval by world object?
-	get_node(hud).velocity = player_actor.velocity
+	velocity_changed.emit(player_actor.velocity)
 
 # Creates and parses an input action event.
 func trigger_input_action(action, pressed):
@@ -129,7 +117,7 @@ func trigger_input_action(action, pressed):
 func zoom(zoom_in:bool):
 	if zoom_mode_active:
 		var dir = -1 if zoom_in else 1
-		zoom_level += dir * zoom_sensitivity * get_process_delta_time()
+		zoom_level += dir * zoom_sensitivity * get_physics_process_delta_time()
 		zoom_level = clamp(zoom_level, 0, 1)
 
 # Returns the object the player is aiming at.
@@ -151,32 +139,17 @@ func set_player_actor(actor):
 
 # Cycles through first person as well as third person left/center/right perspectives.
 func cycle_perspectives():
-	if (first_person):
-		first_person = false
-		over_shoulder = true
-		use_left_shoulder = true
-		if (!player_avatar.visible):
-			player_avatar.visible = true
-	elif (over_shoulder):
-		if (use_left_shoulder):
-			over_shoulder = false
-		else:
-			first_person = true
-			over_shoulder = false
-			if (player_avatar.visible):
-				player_avatar.visible = false
-	else:
-		over_shoulder = true
-		use_left_shoulder = false
+	match view:
+		VIEW.FP: view = VIEW.TP_LS
+		VIEW.TP_LS: view = VIEW.TP
+		VIEW.TP: view = VIEW.TP_RS
+		VIEW.TP_RS: view = VIEW.FP
 	update_perspective()
 
 func update_perspective():
-	if (first_person):
-		player_avatar.visible = false
-		player_actor.rotation_follow_velocity = false
-	else:
-		player_avatar.visible = true
-		player_actor.rotation_follow_velocity = true
+	var is_fp = view == VIEW.FP
+	camera.set_cull_mask_value(2, not is_fp)
+	player_actor.rotation_follow_velocity = not is_fp
 
 # Handle collisions from the raycast used for aiming.
 func ping_aim_raycast():
@@ -219,7 +192,18 @@ func tp_aiming(event):
 	var low_aim_height = aim_height-lower_view_limit
 	var high_aim_height = aim_height+upper_view_limit
 	tp_aim.position.y = clamp(tp_aim.position.y, low_aim_height, high_aim_height)
-	aim_ray.target_position = aim_ray.to_local(tp_aim.global_transform.origin)
+	cast_ray_to_screen_pos(hud.get_crosshair_location())
+#	aim_ray.target_position = aim_ray.to_local(tp_aim.global_transform.origin)
+
+# Aims raycast from and toward a position on the screen.
+func cast_ray_to_screen_pos(screen_pos:Vector2) -> void:
+	var ray_origin = camera.project_ray_origin(screen_pos)
+	var ray_direction = camera.project_ray_normal(screen_pos)
+	
+	aim_ray.global_position = ray_origin
+	var target_pos = ray_origin + ray_direction * 1000
+	aim_ray.target_position = aim_ray.to_local(target_pos) # Set to max ray distance
+	aim_ray.force_raycast_update()
 
 # Sets up proper camera positioning for third person mode.
 func update_tp_camera():
@@ -227,21 +211,17 @@ func update_tp_camera():
 	
 	# Camera3D Pivot and Offset
 	var offset = Vector3()
-	if (over_shoulder):
-		if (use_left_shoulder):
-			offset = tp_left_offset
-		else:
-			offset = tp_right_offset
-	else:
-		offset = tp_center_offset
-			
+	match view:
+		VIEW.TP_LS: offset = tp_left_offset
+		VIEW.TP: offset = tp_center_offset
+		VIEW.TP_RS: offset = tp_right_offset
+	
 	# Final Camera3D Position Based on Zoom Level
-	var low_pos = tp_pivot.transform.origin + tp_low + offset
-	var high_pos = tp_pivot.transform.origin + tp_high + offset
-	camera.position.x = lerp(low_pos.x, high_pos.x, zoom_level)
-	camera.position.y = lerp(low_pos.y, high_pos.y, zoom_level)
-	camera.position.z = lerp(low_pos.z, high_pos.z, zoom_level)
-			
+	var low_pos:Vector3 = tp_pivot.transform.origin + tp_low + offset
+	var high_pos:Vector3 = tp_pivot.transform.origin + tp_high + offset
+	camera.position = low_pos.lerp(high_pos, zoom_level)
+	
 	# Camera3D Direction and Crosshair Raycast
 	camera.look_at(tp_aim.get_global_transform().origin, Vector3(0, 1, 0))
-	aim_ray.target_position = aim_ray.to_local(tp_aim.global_transform.origin)
+	cast_ray_to_screen_pos(hud.get_crosshair_location())
+#	aim_ray.target_position = aim_ray.to_local(tp_aim.global_transform.origin)

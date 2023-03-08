@@ -9,12 +9,12 @@ class_name Entity
 
 # Identification
 @export_group("Identification")
-@export var char_name:String = "Button"
+@export var char_name:String = "!%()*^)($^#)"
 @export var char_id:String = ""
 
 # Hierarchy
 @export_group("Hierarchy")
-@export var role:String = "Button"
-@export var ranks:Dictionary = {"Law":0, "Politics":0, "Crime":0}
+@export var role:String = "&%8)@#&"
+@export var ranks:Dictionary = {"Law":-INF, "Politics":-INF, "Crime":-INF}
 
 var interactor:Interactable

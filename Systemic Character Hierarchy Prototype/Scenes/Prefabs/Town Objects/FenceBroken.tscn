@@ -1,10 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://qjav61jgcuis"]
 
-[ext_resource path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fenceBroken.glb" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Prefabs/Physics Object Shapes/StaticFenceBroken.tscn" type="PackedScene" id=2]
+[ext_resource type="PackedScene" uid="uid://d1uj5egyl04fy" path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fenceBroken.glb" id="1"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Interactable.gd" id="2_h6aw2"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(0.0754648, 0.38044, 0.0753222)
+
+[sub_resource type="ConvexPolygonShape3D" id="2"]
+points = PackedVector3Array(0.037, 0, 0, -0.037, 0, 0, 0.037, 0.34, 0, -0.037, 0.34, 0, 0.037, 0, 0.8, -0.037, 0, 0.8)
 
 [node name="FenceBroken" type="Node3D"]
 
-[node name="fenceBroken" parent="." instance=ExtResource( 1 )]
+[node name="StaticFenceBroken" type="StaticBody3D" parent="."]
+script = ExtResource("2_h6aw2")
 
-[node name="StaticFenceBroken" parent="fenceBroken" instance=ExtResource( 2 )]
+[node name="Right Post" type="CollisionShape3D" parent="StaticFenceBroken"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.462536, 0.19, -0.462)
+shape = SubResource("1")
+
+[node name="Left Post" type="CollisionShape3D" parent="StaticFenceBroken"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.462775, 0.19, 0.462453)
+shape = SubResource("1")
+
+[node name="Middle Bar" type="CollisionShape3D" parent="StaticFenceBroken"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.462, 0, -0.462)
+shape = SubResource("2")
+
+[node name="fenceBroken" parent="." instance=ExtResource("1")]

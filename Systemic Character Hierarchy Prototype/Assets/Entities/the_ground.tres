@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource("1_onh8k")
-type = "Button"
+type = "Intble"
 texture = "Smooth"
-char_name = "Button"
-char_id = "button"
-role = "Button"
+char_name = "The Ground"
+char_id = "ground"
+role = "The Great Supporter"
 ranks = {
 "Crime": 10,
 "Law": 0,

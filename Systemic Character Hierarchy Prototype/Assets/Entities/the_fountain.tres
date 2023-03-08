@@ -8,9 +8,9 @@ type = "Intble"
 texture = "Splashy"
 char_name = "The Fountain"
 char_id = "fountain"
-role = "The Fountain"
+role = "The High Purifier"
 ranks = {
-"Crime": 10,
-"Law": 10,
+"Crime": 0,
+"Law": 0,
 "Politics": 10
 }

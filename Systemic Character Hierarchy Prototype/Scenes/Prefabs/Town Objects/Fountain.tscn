@@ -1,12 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://xijdjefyoiw0"]
+[gd_scene load_steps=5 format=3 uid="uid://xijdjefyoiw0"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/Physics Object Shapes/StaticFountain.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://7n3ot85cn0ky" path="res://kenny-game-assets-1/3D Assets/Fantasy Town Kit/Models/GLTF format/fountainRoundDetail.glb" id="2"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Interactable.gd" id="2_saubu"]
+
+[sub_resource type="CylinderShape3D" id="1"]
+height = 0.286024
+radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="2"]
+height = 0.361483
+radius = 0.383036
 
 [node name="Fountain" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038125, 0)
 
+[node name="StaticFountain" type="StaticBody3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+script = ExtResource("2_saubu")
+
+[node name="Base Collider" type="CollisionShape3D" parent="StaticFountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140833, 0)
+shape = SubResource("1")
+
+[node name="Center Collider" type="CollisionShape3D" parent="StaticFountain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299949, 0)
+shape = SubResource("2")
+
 [node name="fountainRoundDetail" parent="." instance=ExtResource("2")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
-
-[node name="StaticFountain" parent="fountainRoundDetail" instance=ExtResource("1")]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=2 format=3 uid="uid://cm0tfv5iuh4gk"]
+
+[ext_resource type="Script" path="res://Scripts/Entity.gd" id="1_ien4b"]
+
+[resource]
+script = ExtResource("1_ien4b")
+type = "Intble"
+texture = "Smooth"
+char_name = "The Grand Stage"
+char_id = "fountain"
+role = "The Benevolent Grandstander"
+ranks = {
+"Crime": 0,
+"Law": 10,
+"Politics": 0
+}

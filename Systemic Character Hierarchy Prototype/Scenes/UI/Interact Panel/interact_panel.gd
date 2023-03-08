@@ -16,7 +16,7 @@ enum OPT {PRESS, SWAP_ROLES, SWAP_RANKS, EVENTS, VARIATIONS, RULES}
 var signals:Array[Signal] = [pressed, swapped_roles, swapped_ranks, opened_editor]
 
 var active:bool = true : set=set_active
-var interactable:Interactable
+var interactable:Interactable : set=set_interactable
 
 func _ready():
 	for b in range(op_buttons.size()):
@@ -39,9 +39,12 @@ func set_active(_active:bool):
 
 func set_interactable(inter:Interactable):
 	interactable = inter
-	role_label.text = inter.role
-	var ranks = inter.ranks
-	rank_label.text = "%d / %d / %d" % [ranks["Crime"], ranks["Law"], ranks["Politics"]]
+	if interactable:
+		role_label.text = inter.role
+		var ranks = inter.ranks
+		rank_label.text = "%d / %d / %d" % [ranks["Crime"], ranks["Law"], ranks["Politics"]]
+	else:
+		active = false
 
 func set_focused(idx:int=0):
 	op_buttons[idx].grab_focus()
